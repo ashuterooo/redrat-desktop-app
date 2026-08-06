@@ -1,256 +1,1033 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redrat Cafe & Restaurant</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RedRat IT Solution | Intelligent Software & Web & Offline Desktop App Developers</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts & Custom CSS Integration -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    /* Custom Styling / Transitions adapted from provided CSS styles */
+    .counter {
+      font-size: 16px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: var(--accent, #ef4444);
+      background: var(--accent-bg, rgba(239, 68, 68, 0.1));
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .counter:hover {
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="min-h-screen bg-slate-950 text-slate-100 font-sans relative overflow-x-hidden selection:bg-red-600 selection:text-white">
 
-    <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-amber-600 text-white p-2.5 rounded-xl shadow-md">
-                    <i class="fa-solid fa-mug-hot text-xl"></i>
-                </div>
-                <span class="text-2xl font-bold tracking-tight text-slate-900">Redrat <span class="text-amber-600">Cafe</span></span>
-            </div>
-            <nav class="hidden md:flex items-center space-x-8 font-medium text-slate-600">
-                <a href="#home" class="hover:text-amber-600 transition">Home</a>
-                <a href="#about" class="hover:text-amber-600 transition">About Us</a>
-                <a href="#menu" class="hover:text-amber-600 transition">Our Menu</a>
-                <a href="#services" class="hover:text-amber-600 transition">Services</a>
-                <a href="#contact" class="hover:text-amber-600 transition">Contact</a>
-            </nav>
+  <!-- CUSTOM CURSOR GLOW EFFECT -->
+  <div 
+    id="cursor-glow"
+    class="pointer-events-none fixed w-96 h-96 rounded-full bg-gradient-to-r from-red-600/15 to-orange-600/15 blur-3xl transition-transform duration-75 ease-out z-50 hidden md:block"
+  ></div>
+
+  <!-- BACKGROUND NEON PARTICLES & GLOWS -->
+  <div class="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+  <div class="absolute top-1/3 right-10 w-[500px] h-[500px] bg-rose-700/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+  <!-- ==========================================
+      HEADER / NAVIGATION
+  ========================================== -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/80 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- LOGO -->
+      <div 
+        onclick="switchTab('home')"
+        class="flex items-center gap-3 cursor-pointer group"
+      >
+        <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-tr from-red-600 to-orange-500 p-0.5 shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
+            <i data-lucide="cpu" class="w-6 h-6 text-red-500 animate-pulse"></i>
+          </div>
+          <div class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+        </div>
+        <div>
+          <span id="brandNameText" class="text-xl font-black tracking-wider bg-gradient-to-r from-white via-slate-200 to-red-400 bg-clip-text text-transparent">
+            RedRat IT Solution
+          </span>
+          <span id="ceoTitleText" class="block text-[10px] text-red-400 font-medium tracking-widest uppercase">
+            Founder & CEO: Ashebir Tereda
+          </span>
+        </div>
+      </div>
+
+      <!-- DESKTOP NAV LINKS -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <button onclick="switchTab('home')" id="nav-home-btn" class="hover:text-red-400 transition-colors nav-link">Home</button>
+        <button onclick="switchTab('about')" id="nav-about-btn" class="hover:text-red-400 transition-colors nav-link">About</button>
+        <button onclick="switchTab('services')" id="nav-services-btn" class="hover:text-red-400 transition-colors nav-link">Services</button>
+        <button onclick="switchTab('blog')" id="nav-blog-btn" class="hover:text-red-400 transition-colors nav-link">Blog</button>
+        <button onclick="switchTab('contact')" id="nav-contact-btn" class="hover:text-red-400 transition-colors nav-link">Contact</button>
+        <button onclick="switchTab('portal')" id="nav-portal-btn" class="px-3 py-1.5 rounded-lg bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white transition-all nav-link">Client Dashboard</button>
+      </nav>
+
+      <!-- LANGUAGE SWITCHER & MOBILE TOGGLE -->
+      <div class="flex items-center gap-4">
+        <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1 text-xs font-semibold">
+          <button onclick="setLanguage('en')" id="lang-en" class="px-2.5 py-1 rounded-lg transition-all bg-red-600 text-white shadow">EN</button>
+          <button onclick="setLanguage('am')" id="lang-am" class="px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white">አማ</button>
+          <button onclick="setLanguage('om')" id="lang-om" class="px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white">OM</button>
+        </div>
+
+        <button 
+          onclick="toggleMobileMenu()" 
+          class="md:hidden p-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800"
+        >
+          <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-950 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+      <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Home</button>
+      <button onclick="switchTab('about'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">About</button>
+      <button onclick="switchTab('services'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Services</button>
+      <button onclick="switchTab('blog'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Blog</button>
+      <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Contact</button>
+      <button onclick="switchTab('portal'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg bg-red-600/20 text-red-400">Client Dashboard</button>
+    </div>
+  </header>
+
+  <!-- ==========================================
+      MAIN VIEW ROUTER CONTAINER
+  ========================================== -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- ================= HOME PAGE ================= -->
+    <div id="view-home" class="space-y-24 view-section">
+      
+      <!-- HERO SECTION -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-8">
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-semibold tracking-wide">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span id="t-hero-badge">AI-Driven Digital Transformation & App Development</span>
+          </div>
+
+          <h1 id="t-hero-title" class="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
+            Empowering Enterprises Through Intelligent Software & Custom Apps
+          </h1>
+
+          <p id="t-hero-subtitle" class="text-lg text-slate-400 font-normal leading-relaxed">
+            We are premier web application and offline desktop app development experts[cite: 5]. Led by Ashebir Tereda[cite: 6], we engineer powerful digital ecosystems that drive efficiency and growth.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <button 
+              onclick="switchTab('services')"
+              class="px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold shadow-xl shadow-red-600/30 hover:scale-105 transition-transform flex items-center gap-2"
+            >
+              <span id="t-explore-btn">Explore Solutions</span>
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+            <button 
+              onclick="switchTab('contact')"
+              id="t-contact-btn"
+              class="px-8 py-4 rounded-2xl bg-slate-900 border border-slate-800 text-slate-200 font-semibold hover:bg-slate-800 hover:text-white transition-all"
+            >
+              Get in Touch
+            </button>
+          </div>
+
+          <div class="grid grid-cols-3 pt-6 border-t border-slate-900 gap-4">
             <div>
-                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 transition">
-                    Get in Touch
-                </a>
+              <h3 class="text-2xl font-black text-white">150+</h3>
+              <p id="t-stats-projects" class="text-xs text-slate-400">Successful Projects</p>
             </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">99%</h3>
+              <p id="t-stats-clients" class="text-xs text-slate-400">Satisfied Partners</p>
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">24/7</h3>
+              <p id="t-stats-support" class="text-xs text-slate-400">Expert Support</p>
+            </div>
+          </div>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative bg-slate-900 text-white py-24 lg:py-32 overflow-hidden">
-        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-                <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                    Welcome to Redrat Cafe & Restaurant
-                </span>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                    Experience Exceptional <span class="text-amber-500">Taste & Quality</span>
-                </h1>
-                <p class="text-lg text-slate-300 max-w-xl">
-                    Enjoy freshly brewed coffee, delicious meals, and a warm, inviting atmosphere designed for your ultimate comfort and dining pleasure.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="#menu" class="inline-flex justify-center items-center px-6 py-3.5 rounded-xl font-semibold text-white bg-amber-600 hover:bg-amber-700 shadow-lg shadow-amber-600/30 transition">
-                        Explore Menu
-                    </a>
-                    <a href="#contact" class="inline-flex justify-center items-center px-6 py-3.5 rounded-xl font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 transition">
-                        Visit Us Today
-                    </a>
-                </div>
+        <!-- HERO VISUAL MOCKUP -->
+        <div class="relative group">
+          <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-red-600 to-orange-500 opacity-30 blur-xl group-hover:opacity-50 transition duration-1000"></div>
+          <div class="relative rounded-3xl bg-slate-900/90 border border-slate-800 p-6 backdrop-blur-xl shadow-2xl">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <span class="text-xs font-mono text-slate-500">redrat-core-engine-v3.2.exe</span>
             </div>
-            <div class="relative">
-                <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-800/50 p-4">
-                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Cafe ambiance" class="rounded-2xl object-cover w-full h-[380px]">
-                </div>
+            <div class="py-8 space-y-4 font-mono text-sm">
+              <div class="flex items-center gap-3 text-red-400">
+                <i data-lucide="terminal" class="w-5 h-5"></i>
+                <span>Initializing RedRat Studio & Offline Compiler...</span>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-950 border border-slate-800/80 text-slate-300 space-y-2">
+                <p class="text-emerald-400">✔ Custom Web App Architecture Loaded</p>
+                <p class="text-emerald-400">✔ Offline Desktop WAMP & Local DB Active</p>
+                <p class="text-emerald-400">✔ AI-Powered Automation Engine Ready</p>
+                <p class="text-slate-400 animate-pulse"># Status: Ready for Enterprise Development.</p>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <h2 class="text-amber-600 font-semibold tracking-wide uppercase text-sm">About Our Establishment</h2>
-                    <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-                        Crafting Memorable Dining & Coffee Experiences
-                    </h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        At Redrat Cafe & Restaurant, we take pride in serving high-quality meals, freshly baked goods, and aromatic coffee blends. Our commitment to excellence, welcoming ambiance, and attentive service make us a favorite gathering spot for friends, families, and professionals alike.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6 pt-4">
-                        <div class="border-l-4 border-amber-600 pl-4">
-                            <p class="text-3xl font-extrabold text-slate-900">100%</p>
-                            <p class="text-sm text-slate-500 mt-1">Fresh Ingredients</p>
-                        </div>
-                        <div class="border-l-4 border-amber-600 pl-4">
-                            <p class="text-3xl font-extrabold text-slate-900">5 Star</p>
-                            <p class="text-sm text-slate-500 mt-1">Customer Service</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=500&q=80" alt="Coffee preparation" class="rounded-2xl shadow-md object-cover h-64 w-full">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="Restaurant interior" class="rounded-2xl shadow-md object-cover h-64 w-full mt-8">
-                </div>
-            </div>
+      <!-- SERVICES PREVIEW -->
+      <div class="space-y-12 pt-16">
+        <div class="text-center space-y-4 max-w-2xl mx-auto">
+          <h2 id="t-services-title" class="text-3xl font-black tracking-tight">Our Core Development Solutions</h2>
+          <p id="t-services-sub" class="text-slate-400">Custom web applications and high-performance offline desktop software engineered for scaling enterprises[cite: 5].</p>
         </div>
-    </section>
 
-    <!-- Menu Section -->
-    <section id="menu" class="py-20 bg-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-amber-600 font-semibold tracking-wide uppercase text-sm">Discover Our Offerings</h2>
-                <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Featured Menu Items</h3>
-                <p class="text-slate-600 mt-3">From signature coffee selections to savory dishes prepared fresh daily.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-red-500/50 transition-all hover:-translate-y-1 group">
+            <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
+              <i data-lucide="globe" class="w-7 h-7"></i>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Menu Card 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-200">
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Specialty Coffee" class="w-full h-48 object-cover">
-                    <div class="p-6 space-y-3">
-                        <div class="flex justify-between items-center">
-                            <h4 class="font-bold text-lg text-slate-900">Specialty Coffee</h4>
-                            <span class="text-amber-600 font-bold">Fresh</span>
-                        </div>
-                        <p class="text-slate-600 text-sm">Rich, aromatic brews prepared from premium roasted beans.</p>
-                    </div>
-                </div>
-                <!-- Menu Card 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-200">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Delicious Meals" class="w-full h-48 object-cover">
-                    <div class="p-6 space-y-3">
-                        <div class="flex justify-between items-center">
-                            <h4 class="font-bold text-lg text-slate-900">Chef's Special Dishes</h4>
-                            <span class="text-amber-600 font-bold">Popular</span>
-                        </div>
-                        <p class="text-slate-600 text-sm">Delectable culinary creations crafted with high-quality ingredients.</p>
-                    </div>
-                </div>
-                <!-- Menu Card 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-200">
-                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Fresh Pastries" class="w-full h-48 object-cover">
-                    <div class="p-6 space-y-3">
-                        <div class="flex justify-between items-center">
-                            <h4 class="font-bold text-lg text-slate-900">Baked Pastries</h4>
-                            <span class="text-amber-600 font-bold">Daily</span>
-                        </div>
-                        <p class="text-slate-600 text-sm">Freshly baked breads and pastries made with expert care.</p>
-                    </div>
-                </div>
+            <h3 id="t-s1-title" class="text-xl font-bold mb-3">Custom Web Applications</h3>
+            <p id="t-s1-desc" class="text-slate-400 text-sm leading-relaxed">Scalable, high-performance web solutions built with modern frameworks and robust backend architecture.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-red-500/50 transition-all hover:-translate-y-1 group">
+            <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
+              <i data-lucide="server" class="w-7 h-7"></i>
             </div>
+            <h3 id="t-s2-title" class="text-xl font-bold mb-3">Offline Desktop Applications</h3>
+            <p id="t-s2-desc" class="text-slate-400 text-sm leading-relaxed">Secure, standalone desktop software designed for lightning-fast offline operations and local data storage[cite: 5].</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-red-500/50 transition-all hover:-translate-y-1 group">
+            <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
+              <i data-lucide="layers" class="w-7 h-7"></i>
+            </div>
+            <h3 id="t-s3-title" class="text-xl font-bold mb-3">Enterprise Digital Suites</h3>
+            <p id="t-s3-desc" class="text-slate-400 text-sm leading-relaxed">Integrated inventory, payroll, and profit-cost analysis tools designed to streamline daily management.</p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Services / Operations Section -->
-    <section id="services" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-amber-600 font-semibold tracking-wide uppercase text-sm">What We Offer</h2>
-                <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Our Services</h3>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4">
-                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-xl">
-                        <i class="fa-solid fa-utensils"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900">Dine-In Restaurant</h4>
-                    <p class="text-slate-600 text-sm">A comfortable, premium dining space for families, friends, and business meetings.</p>
-                </div>
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4">
-                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-xl">
-                        <i class="fa-solid fa-mug-saucer"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900">Cafe & Bakery</h4>
-                    <p class="text-slate-600 text-sm">Fresh hot coffee, teas, and daily baked bread and pastries.</p>
-                </div>
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4">
-                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-xl">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900">Takeaway & Orders</h4>
-                    <p class="text-slate-600 text-sm">Quick packaging and prompt service for orders on the go.</p>
-                </div>
-            </div>
+    </div>
+
+    <!-- ================= ABOUT PAGE ================= -->
+    <div id="view-about" class="space-y-16 py-8 hidden view-section">
+      <div class="max-w-3xl space-y-6">
+        <h1 id="t-about-title" class="text-4xl font-black">Architecting the Future of Software Engineering</h1>
+        <p id="t-about-text" class="text-lg text-slate-300 leading-relaxed">
+          Founded by Ashebir Tereda, RedRat IT Solution is a premier software development company specializing in robust web applications and secure offline desktop systems[cite: 5, 6]. We bridge complex enterprise workflows with intuitive user interfaces, providing end-to-end development, deployment, and mastery training.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
+            <i data-lucide="zap" class="w-6 h-6"></i>
+          </div>
+          <h3 id="t-mission-title" class="text-2xl font-bold">Our Mission</h3>
+          <p id="t-mission-desc" class="text-slate-400 leading-relaxed">To empower organizations globally with robust, intelligent, and tailored software solutions that scale effortlessly[cite: 5].</p>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <h2 class="text-amber-600 font-semibold tracking-wide uppercase text-sm">Get in Touch</h2>
-                    <h3 class="text-3xl font-bold text-slate-900 tracking-tight">We'd Love to Hear From You</h3>
-                    <p class="text-slate-600">
-                        Visit our location or reach out to us for inquiries, reservations, or feedback.
-                    </p>
-                    <div class="space-y-4 pt-2">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-amber-100 text-amber-600 p-3 rounded-xl">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-slate-900">Location</h4>
-                                <p class="text-slate-600 text-sm">Main Street, City Center</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-amber-100 text-amber-600 p-3 rounded-xl">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-slate-900">Phone</h4>
-                                <p class="text-slate-600 text-sm">+251 900 000 000</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-amber-100 text-amber-600 p-3 rounded-xl">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-slate-900">Email</h4>
-                                <p class="text-slate-600 text-sm">info@redratcafe.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
-                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent successfully.');">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Your Name</label>
-                            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
-                            <input type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                            <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-3.5 px-6 rounded-xl text-white bg-amber-600 hover:bg-amber-700 font-semibold shadow-md transition">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
+        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
+            <i data-lucide="compass" class="w-6 h-6"></i>
+          </div>
+          <h3 id="t-vision-title" class="text-2xl font-bold">Our Vision</h3>
+          <p id="t-vision-desc" class="text-slate-400 leading-relaxed">To be East Africa and the region's leading pioneer in custom web app engineering and offline desktop software development[cite: 5].</p>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="flex items-center space-x-3">
-                <div class="bg-amber-600 text-white p-2 rounded-lg">
-                    <i class="fa-solid fa-mug-hot"></i>
-                </div>
-                <span class="text-xl font-bold text-white">Redrat Cafe & Restaurant</span>
-            </div>
-            <p class="text-sm">&copy; 2026 Redrat Cafe & Restaurant. All rights reserved.</p>
+    <!-- ================= SERVICES / PRODUCTS & PRICING ================= -->
+    <div id="view-services" class="space-y-16 py-8 hidden view-section">
+      <div class="text-center space-y-4 max-w-2xl mx-auto">
+        <h1 id="t-services-main-title" class="text-4xl font-black">Our Professional Development Services</h1>
+        <p id="t-services-main-sub" class="text-slate-400">Tailored digital systems engineered for modern enterprises, retail businesses, and digital startups[cite: 5].</p>
+      </div>
+
+      <!-- PRICING & PACKAGES -->
+      <div class="space-y-8 pt-8">
+        <div class="text-center space-y-2">
+          <h2 id="t-pricing-title" class="text-2xl font-bold">Transparent Service Packages</h2>
+          <p id="t-pricing-sub" class="text-sm text-slate-400">Choose a tier tailored to your operational scale. All packages include source delivery and onboarding.</p>
         </div>
-    </footer>
 
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- PACKAGE 1 -->
+          <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <h3 id="t-p1-name" class="text-xl font-bold">Starter Web Kit</h3>
+              <div class="text-3xl font-black text-red-500">$499</div>
+              <p id="t-p1-desc" class="text-sm text-slate-400">Perfect for growing businesses establishing their professional web presence.</p>
+              <ul class="space-y-2 text-sm text-slate-300 pt-4 border-t border-slate-800">
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Responsive Web App</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Standard Onboarding</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> 6 Months Support</li>
+              </ul>
+            </div>
+            <button 
+              onclick="openCheckout('Starter Web Kit')"
+              id="t-p1-btn"
+              class="w-full py-3 rounded-xl bg-slate-800 hover:bg-red-600 text-white font-semibold transition-colors flex items-center justify-center gap-2"
+            >
+              <span>Select Package</span>
+              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- PACKAGE 2 -->
+          <div class="p-8 rounded-3xl bg-slate-900 border-2 border-red-500/50 flex flex-col justify-between space-y-6 relative shadow-2xl shadow-red-600/10">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider">
+              Most Popular
+            </div>
+            <div class="space-y-4">
+              <h3 id="t-p2-name" class="text-xl font-bold">Offline Desktop Suite</h3>
+              <div class="text-3xl font-black text-red-500">$1,299</div>
+              <p id="t-p2-desc" class="text-sm text-slate-400">Advanced standalone offline desktop application with local DB & installer[cite: 5].</p>
+              <ul class="space-y-2 text-sm text-slate-300 pt-4 border-t border-slate-800">
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Custom Offline App (.exe)</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Local WAMP / DB Integration</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Full Training & Setup</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> 1 Year Priority Support</li>
+              </ul>
+            </div>
+            <button 
+              onclick="openCheckout('Offline Desktop Suite')"
+              id="t-p2-btn"
+              class="w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-lg shadow-red-600/30"
+            >
+              <span>Select Package</span>
+              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- PACKAGE 3 -->
+          <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <h3 id="t-p3-name" class="text-xl font-bold">Bespoke AI Platform</h3>
+              <div class="text-3xl font-black text-red-500">Custom</div>
+              <p id="t-p3-desc" class="text-sm text-slate-400">Fully customized architecture tailored precisely to enterprise workflows[cite: 5].</p>
+              <ul class="space-y-2 text-sm text-slate-300 pt-4 border-t border-slate-800">
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> 100% Custom App Architecture</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Dedicated Development Team</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Lifetime Mastery Support</li>
+              </ul>
+            </div>
+            <button 
+              onclick="openCheckout('Bespoke AI Platform')"
+              id="t-p3-btn"
+              class="w-full py-3 rounded-xl bg-slate-800 hover:bg-red-600 text-white font-semibold transition-colors flex items-center justify-center gap-2"
+            >
+              <span>Select Package</span>
+              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= BLOG PAGE ================= -->
+    <div id="view-blog" class="space-y-12 py-8 hidden view-section">
+      <div class="text-center space-y-4 max-w-2xl mx-auto">
+        <h1 id="t-blog-title" class="text-4xl font-black">Tech Insights & Development Tips</h1>
+        <p id="t-blog-sub" class="text-slate-400">Discover how modern web apps and offline desktop solutions are transforming enterprise software engineering.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 space-y-4 hover:border-red-500/50 transition-all group cursor-pointer">
+          <span class="text-xs font-mono text-red-400">August 2026</span>
+          <h3 id="t-b1-title" class="text-2xl font-bold group-hover:text-red-400 transition-colors">Why Offline Desktop Apps Deliver Superior Reliability</h3>
+          <p id="t-b1-excerpt" class="text-slate-400 text-sm leading-relaxed">Explore how local WAMP servers and standalone desktop architectures eliminate internet downtime vulnerabilities for businesses[cite: 5].</p>
+          <div class="flex items-center gap-2 text-sm font-semibold text-red-400 pt-2">
+            <span>Read Article</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 space-y-4 hover:border-red-500/50 transition-all group cursor-pointer">
+          <span class="text-xs font-mono text-red-400">July 2026</span>
+          <h3 id="t-b2-title" class="text-2xl font-bold group-hover:text-red-400 transition-colors">The Role of AI in Streamlining Enterprise Software</h3>
+          <p id="t-b2-excerpt" class="text-slate-400 text-sm leading-relaxed">Automating complex database workflows, code compilation, and local development environments for modern developers[cite: 5].</p>
+          <div class="flex items-center gap-2 text-sm font-semibold text-red-400 pt-2">
+            <span>Read Article</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= CONTACT PAGE ================= -->
+    <div id="view-contact" class="space-y-12 py-8 max-w-4xl mx-auto hidden view-section">
+      <div class="text-center space-y-4">
+        <h1 id="t-contact-main-title" class="text-4xl font-black">Connect With Our Engineering Team</h1>
+        <p id="t-contact-main-sub" class="text-slate-400">Ready to build your web app or offline desktop solution? Reach out to Ashebir Tereda and our experts directly[cite: 5, 6].</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-8">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 shrink-0">
+              <i data-lucide="mail" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold">Business Email</h3>
+              <p class="text-slate-400 text-sm">redratitsolution@gmail.com</p>
+              <p class="text-slate-500 text-xs">Personal: ashuterooo@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 shrink-0">
+              <i data-lucide="phone" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold">Phone Contact</h3>
+              <p class="text-slate-400 text-sm">0927440965 / 0902720423</p>
+              <p class="text-slate-500 text-xs">Direct line to Ashebir Tereda</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 shrink-0">
+              <i data-lucide="send" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold">Telegram Channel</h3>
+              <a href="https://t.me/redratitsolution" target="_blank" rel="noreferrer" class="text-red-400 hover:underline text-sm flex items-center gap-1">
+                <span>t.me/redratitsolution</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form onsubmit="handleContactSubmit(event)" class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-6">
+          <div id="form-success-msg" class="hidden py-12 text-center space-y-4">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
+              <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-xl font-bold">Message Received!</h3>
+            <p class="text-slate-400 text-sm">Thank you for reaching out. Ashebir Tereda will respond promptly.</p>
+          </div>
+
+          <div id="form-inputs-container" class="space-y-6">
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-300">Your Full Name</label>
+              <input 
+                type="text" 
+                required
+                id="contact-name"
+                placeholder="Ashebir Tereda" 
+                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm text-slate-100" 
+              />
+            </div>
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-300">Your Email Address</label>
+              <input 
+                type="email" 
+                required
+                id="contact-email"
+                placeholder="redratitsolution@gmail.com" 
+                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm text-slate-100" 
+              />
+            </div>
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-300">Message</label>
+              <textarea 
+                rows="4"
+                id="contact-message"
+                placeholder="Describe your web app or offline desktop requirement..." 
+                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm resize-none text-slate-100" 
+              ></textarea>
+            </div>
+            <button type="submit" id="t-send-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold shadow-lg shadow-red-600/30 hover:scale-[1.02] transition-transform">
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================= CLIENT PORTAL UI CONCEPT ================= -->
+    <div id="view-portal" class="space-y-8 py-8 hidden view-section">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <h1 id="t-portal-title" class="text-3xl font-black">Client Project Dashboard</h1>
+          <p id="t-portal-sub" class="text-slate-400 text-sm">Track active web and desktop development milestones in real time.</p>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="t-operational">All Local & Cloud Nodes Operational</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+          <span class="text-xs text-slate-400 uppercase font-mono">Active Deployments</span>
+          <div class="text-3xl font-black text-white">3 Deployed</div>
+          <p class="text-xs text-emerald-400 font-medium">Custom Web App v3.2, Offline POS .exe</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+          <span class="text-xs text-slate-400 uppercase font-mono">Support Tickets</span>
+          <div class="text-3xl font-black text-white">0 Open Tickets</div>
+          <p class="text-xs text-slate-400 font-medium">All systems running smoothly</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+          <span class="text-xs text-slate-400 uppercase font-mono">Server Health</span>
+          <div class="text-3xl font-black text-red-500">100% Uptime</div>
+          <p class="text-xs text-slate-400 font-medium">Local WAMP & Cloud Servers</p>
+        </div>
+      </div>
+
+      <div class="p-8 rounded-3xl bg-slate-900/40 border border-slate-800 space-y-6">
+        <h3 class="text-xl font-bold">Recent Milestone Activity</h3>
+        <div class="space-y-4 text-sm font-mono">
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-950 border border-slate-800">
+            <div class="flex items-center gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
+              <span>Offline Desktop Application .exe Installer Compiled</span>
+            </div>
+            <span class="text-slate-500 text-xs">Completed Yesterday</span>
+          </div>
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-950 border border-slate-800">
+            <div class="flex items-center gap-3">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
+              <span>Web Application Frontend & Database Sync Module</span>
+            </div>
+            <span class="text-slate-500 text-xs">Completed 3 days ago</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+      CHECKOUT MODAL
+  ========================================== -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md px-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-8 space-y-6 shadow-2xl relative">
+      <button 
+        onclick="closeCheckout()"
+        class="absolute top-6 right-6 p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white"
+      >
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="space-y-2">
+        <h3 class="text-2xl font-bold">Secure Package Checkout</h3>
+        <p class="text-sm text-slate-400">Selected Package: <span id="modal-package-name" class="text-red-400 font-bold"></span></p>
+      </div>
+
+      <div id="checkout-step-1" class="space-y-4">
+        <div class="space-y-2">
+          <label class="text-xs font-semibold text-slate-300">Company / Business Name</label>
+          <input type="text" id="checkout-company" placeholder="e.g. Enterprise Solutions Corp" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm text-slate-100" />
+        </div>
+        <div class="space-y-2">
+          <label class="text-xs font-semibold text-slate-300">Contact Email</label>
+          <input type="email" id="checkout-email" placeholder="manager@business.com" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm text-slate-100" />
+        </div>
+        <button 
+          onclick="proceedToStep2()"
+          class="w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold transition-colors"
+        >
+          Proceed to Payment
+        </button>
+      </div>
+
+      <div id="checkout-step-2" class="space-y-6 text-center py-4 hidden">
+        <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
+          <i data-lucide="credit-card" class="w-8 h-8"></i>
+        </div>
+        <div class="space-y-2">
+          <h4 class="text-lg font-bold">Stripe / Local Gateway Simulation</h4>
+          <p class="text-xs text-slate-400">Secure encrypted transaction processing initialized.</p>
+        </div>
+        <button 
+          onclick="confirmPayment()"
+          class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors"
+        >
+          Confirm & Pay Securely
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+      FLOATING AI CHAT ASSISTANT WIDGET
+  ========================================== -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <div id="chat-window" class="w-80 sm:w-96 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[450px] hidden">
+      <div class="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-red-500 animate-ping"></div>
+          <span class="font-bold text-sm">RedRat Neural AI</span>
+        </div>
+        <button onclick="toggleChat()" class="p-1 text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+        <!-- Messages appended here -->
+      </div>
+
+      <form onsubmit="handleChatSubmit(event)" class="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
+        <input 
+          type="text"
+          id="chat-input"
+          placeholder="Ask about web apps or desktop tools..."
+          class="flex-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs focus:outline-none focus:border-red-500 text-slate-100"
+        />
+        <button type="submit" class="p-2 rounded-xl bg-red-600 text-white hover:bg-red-500">
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+
+    <button 
+      id="chat-toggle-btn"
+      onclick="toggleChat()"
+      class="w-14 h-14 rounded-full bg-gradient-to-r from-red-600 to-orange-600 text-white flex items-center justify-center shadow-2xl shadow-red-600/50 hover:scale-110 transition-transform group"
+    >
+      <i data-lucide="headphones" class="w-6 h-6 animate-pulse"></i>
+    </button>
+  </div>
+
+  <!-- ==========================================
+      FOOTER
+  ========================================== -->
+  <footer class="border-t border-slate-900 bg-slate-950/80 mt-24 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-slate-500 text-xs">
+      <div class="flex items-center gap-3">
+        <i data-lucide="cpu" class="w-5 h-5 text-red-500"></i>
+        <span>© 2026 RedRat IT Solution. Web & Offline Desktop App Developers. Led by Ashebir Tereda. All rights reserved[cite: 5, 6].</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://t.me/redratitsolution" target="_blank" rel="noreferrer" class="hover:text-red-400 transition-colors">Telegram Channel</a>
+        <span>redratitsolution@gmail.com</span>
+        <span>0927440965</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+      APPLICATION SCRIPT LOGIC
+  ========================================== -->
+  <script>
+    // Translations Dictionary for English, Amharic, and Afaan Oromo
+    const translations = {
+      en: {
+        brandName: "RedRat IT Solution",
+        ceoTitle: "Founder & CEO: Ashebir Tereda",
+        navHome: "Home",
+        navAbout: "About",
+        navServices: "Services",
+        navBlog: "Blog",
+        navContact: "Contact",
+        navPortal: "Client Dashboard",
+        heroBadge: "AI-Driven Digital Transformation & App Development",
+        heroTitle: "Empowering Enterprises Through Intelligent Software & Custom Apps",
+        heroSubtitle: "We are premier web application and offline desktop app development experts[cite: 5]. Led by Ashebir Tereda[cite: 6], we engineer powerful digital ecosystems that drive efficiency and growth.",
+        exploreBtn: "Explore Solutions",
+        contactBtn: "Get in Touch",
+        statsProjects: "Successful Projects",
+        statsClients: "Satisfied Partners",
+        statsSupport: "Expert Support",
+        servicesTitle: "Our Core Development Solutions",
+        servicesSub: "Custom web applications and high-performance offline desktop software engineered for scaling enterprises[cite: 5].",
+        s1Title: "Custom Web Applications",
+        s1Desc: "Scalable, high-performance web solutions built with modern frameworks and robust backend architecture.",
+        s2Title: "Offline Desktop Applications",
+        s2Desc: "Secure, standalone desktop software designed for lightning-fast offline operations and local data storage[cite: 5].",
+        s3Title: "Enterprise Digital Suites",
+        s3Desc: "Integrated inventory, payroll, and profit-cost analysis tools designed to streamline daily management.",
+        aboutTitle: "Architecting the Future of Software Engineering",
+        aboutText: "Founded by Ashebir Tereda, RedRat IT Solution is a premier software development company specializing in robust web applications and secure offline desktop systems[cite: 5, 6]. We bridge complex enterprise workflows with intuitive user interfaces, providing end-to-end development, deployment, and mastery training.",
+        missionTitle: "Our Mission",
+        missionDesc: "To empower organizations globally with robust, intelligent, and tailored software solutions that scale effortlessly[cite: 5].",
+        visionTitle: "Our Vision",
+        visionDesc: "To be East Africa and the region's leading pioneer in custom web app engineering and offline desktop software development[cite: 5].",
+        pricingTitle: "Transparent Service Packages",
+        pricingSub: "Choose a tier tailored to your operational scale. All packages include source delivery and onboarding.",
+        p1Name: "Starter Web Kit",
+        p1Desc: "Perfect for growing businesses establishing their professional web presence.",
+        p2Name: "Offline Desktop Suite",
+        p2Desc: "Advanced standalone offline desktop application with local DB & installer[cite: 5].",
+        p3Name: "Bespoke AI Platform",
+        p3Desc: "Fully customized architecture tailored precisely to enterprise workflows[cite: 5].",
+        blogTitle: "Tech Insights & Development Tips",
+        blogSub: "Discover how modern web apps and offline desktop solutions are transforming enterprise software engineering.",
+        b1Title: "Why Offline Desktop Apps Deliver Superior Reliability",
+        b1Excerpt: "Explore how local WAMP servers and standalone desktop architectures eliminate internet downtime vulnerabilities for businesses[cite: 5].",
+        b2Title: "The Role of AI in Streamlining Enterprise Software",
+        b2Excerpt: "Automating complex database workflows, code compilation, and local development environments for modern developers[cite: 5].",
+        contactTitle: "Connect With Our Engineering Team",
+        contactSub: "Ready to build your web app or offline desktop solution? Reach out to Ashebir Tereda and our experts directly[cite: 5, 6].",
+        sendBtn: "Send Message",
+        portalTitle: "Client Project Dashboard",
+        portalSub: "Track active web and desktop development milestones in real time.",
+        operational: "All Local & Cloud Nodes Operational",
+        chatGreeting: "Hello! I'm your RedRat AI Assistant. How can we accelerate your web or offline desktop software project today[cite: 5]?"
+      },
+      am: {
+        brandName: "ሬድራት የIT መፍትሄዎች",
+        ceoTitle: "መስራች እና ዋና ስራ አስፈፃሚ፡ አሸብር ተረደ",
+        navHome: "መነሻ",
+        navAbout: "ስለ እኛ",
+        navServices: "አገልግሎቶች",
+        navBlog: "ብሎግ",
+        navContact: "ያግኙን",
+        navPortal: "የደንበኛ ዳሽቦርድ",
+        heroBadge: "የድረ-ገጽ እና የዴስክቶፕ ሶፍትዌር ልማት",
+        heroTitle: "በዘመናዊ ሶፍትዌሮች እና ብጁ መተግበሪያዎች ድርጅቶችን ማብቃት",
+        heroSubtitle: "እኛ የድረ-ገጽ እና ከኢንተርኔት ነጻ የሆኑ (Offline) የዴስክቶፕ መተግበሪያዎች ባለሙያዎች ነን[cite: 5]። በአሸብር ተረደ የተመሰረተው ሬድራት[cite: 6] የንግድ ስራዎትን የሚያፋጥኑ ሲስተሞችን ይሰራል።",
+        exploreBtn: "መፍትሄዎቻችንን ይመልከቱ",
+        contactBtn: "ያግኙን",
+        statsProjects: "የተሳካላቸው ፕሮጀክቶች",
+        statsClients: "ረኪ አጋሮች",
+        statsSupport: "የባለሙያ ድጋፍ",
+        servicesTitle: "ዋና ዋና የሶፍትዌር ልማት አገልግሎቶቻችን",
+        servicesSub: "ለእድገት ለሚጥሩ ድርጅቶች የተዘጋጁ ዘመናዊ የድረ-ገጽ እና የዴስክቶፕ መተግበሪያዎች[cite: 5]።",
+        s1Title: "ብጁ የድረ-ገጽ መተግበሪያዎች",
+        s1Desc: "በዘመናዊ ቴክኖሎጂዎች እና አስተማማኝ ዳታቤዝ የተገነቡ ኃይለኛ የድር መፍትሄዎች።",
+        s2Title: "ከኢንተርኔት ነጻ የዴስክቶፕ መተግበሪያዎች",
+        s2Desc: "ኢንተርኔት ሳይኖርም በኮምፒዩተር ላይ ብቻ የሚሰሩ አስተማማኝ እና ደህንነታቸው የተጠበቁ የዴስክቶፕ ሲስተሞች[cite: 5]።",
+        s3Title: "የድርጅት አስተዳደር ስብስቦች",
+        s3Desc: "የደመወዝ፣ የእቃ ቆጠራ እና የፋይናንስ ቁጥጥር ማስተካከያ መሳሪያዎች።",
+        aboutTitle: "የሶፍትዌር ኢንጂነሪንግ የወደፊት እጣ ፈንታ መቅረጽ",
+        aboutText: "አሸብር ተረደ ባቋቋመው ሬድራት የIT መፍትሄዎች ድርጅቶች ውስብስብ ስራዎችን በቀላል ቴክኖሎጂ እንዲፈቱ እናደርጋለን[cite: 5, 6]። ከፍተኛ ጥራት ያላቸውን የድር እና የዴስክቶፕ ሲስተሞች እናበለጽጋለን።",
+        missionTitle: "ተልዕኮአችን",
+        missionDesc: "ድርጅቶችን በዘመናዊ፣ አስተማማኝ እና ብልጥ ሶፍትዌሮች ማብቃት[cite: 5]።",
+        visionTitle: "ራዕያችን",
+        visionDesc: "በምስራቅ አፍሪካ ቀዳሚ የድረ-ገጽ እና የዴስክቶፕ ሶፍትዌር ልማት ማዕከል መሆን[cite: 5]።",
+        pricingTitle: "ግልጽ የአገልግሎት ዋጋዎች",
+        pricingSub: "ለሁኔታዎ የሚስማማውን ፓኬጅ ይምረጡ። ሁሉም ፓኬጆች ስልጠናን ያካትታሉ።",
+        p1Name: "ቀላል የድር ፓኬጅ",
+        p1Desc: "ለታዳጊ ንግዶች እና ድርጅቶች የሚሆን የድረ-ገጽ መፍትሄ።",
+        p2Name: "የዴስክቶፕ ሲስተም ስብስብ",
+        p2Desc: "ከኢንተርኔት ነጻ የሚሰራ እና የዳታቤዝ ማከማቻ ያለው ኃይለኛ የዴስክቶፕ ሲስተም[cite: 5]።",
+        p3Name: "ብጁ AI መድረክ",
+        p3Desc: "ልዩ ለሆኑ የድርጅት ፍላጎቶች የተዘጋጀ የላቀ ሶፍትዌር[cite: 5]።",
+        blogTitle: "የቴክኖሎጂ ምክሮች እና መረጃዎች",
+        blogSub: "ዘመናዊ የድር እና የዴስክቶፕ ሲስተሞች በንግድ ስራዎች ላይ የሚያመጡትን ለውጥ ይረዱ።",
+        b1Title: "ከኢንተርኔት ነጻ የሆኑ (Offline) የዴስክቶፕ ሲስተሞች ጥቅሞች",
+        b1Excerpt: "የሀገር ውስጥ ሰርቨሮች እና የዴስክቶፕ አርክቴክቸር እንዴት ንግድዎን ከኢንተርኔት መቆራረጥ እንደሚጠብቁ ይወቁ[cite: 5]።",
+        b2Title: "አርቴፊሻል ኢንተለጀንስ በሶፍትዌር ልማት ውስጥ ያለው ሚና",
+        b2Excerpt: "የዳታቤዝ ስራዎችን እና የሶፍትዌር ማጠናቀሪያ መሳሪያዎችን በራስ-ሰር ማስተካከል[cite: 5]።",
+        contactTitle: "ከኛ ባለሙያዎች ጋር ይገናኙ",
+        contactSub: "ሶፍትዌር ወይም የዴስክቶፕ ሲስተም ለማሰራት ዝግጁ ነዎት? ከአሸብር ተረደ እና ከባለሙያዎቻችን ጋር ይነጋገሩ[cite: 5, 6]።",
+        sendBtn: "መልዕክት ይላኩ",
+        portalTitle: "የደንበኛ ፕሮጀክት ዳሽቦርድ",
+        portalSub: "የንቁ የድር እና የዴስክቶፕ ፕሮጀክቶችዎን ሂደት በእውነተኛ ጊዜ ይከታተሉ።",
+        operational: "ሁሉም ሲስተሞች በትክክል እየሰሩ ናቸው",
+        chatGreeting: "ሰላም! እኔ የሬድራት ረዳት ነኝ። ዛሬ የድር ወይም የዴስክቶፕ ሶፍትዌር ፕሮጀክትዎን እንዴት ልንረዳው እንችላለን[cite: 5]?"
+      },
+      om: {
+        brandName: "RedRat IT Solution",
+        ceoTitle: "Hundeessaa & CEO: Ashebir Tereda",
+        navHome: "Fuula Dura",
+        navAbout: "Waa'ee Keenya",
+        navServices: "Tajaajila",
+        navBlog: "Oduu",
+        navContact: "Nu Quunnamaa",
+        navPortal: "Dashboard Maamiltootaa",
+        heroBadge: "Softwaree Webii Fi Desktop Oomishu",
+        heroTitle: "Daldala Keessan Sooftiweerii Ammayyaa Fi Appiiwwan Amansiisaan Guddifadhaa",
+        heroSubtitle: "Nuni ogeeyyii appii webii fi desktop offline hojjetnu ti[cite: 5]. Ashebir Tereda'n kan durfamu[cite: 6], systemii daldala keessan saffisiisu ni hojjenna.",
+        exploreBtn: "Tajaajila Keenya Ilaalaa",
+        contactBtn: "Nu Quunnamaa",
+        statsProjects: "Pirojektoota Milkaa'an",
+        statsClients: "Maamiltoota Gammadan",
+        statsSupport: "Deeggarsa Ogeessaa",
+        servicesTitle: "Tajaajila Misooma Sooftiweerii Keenya",
+        servicesSub: "Sirna webii fi desktop ammayyaa daldala guddisuuf qophaa'e[cite: 5].",
+        s1Title: "Appiiwwan Webii Ammayyaa",
+        s1Desc: "Systemii saffisaa fi amansiisaa ta'e kan teeknolojii ammayyaatiin ijaarame.",
+        s2Title: "Appiiwwan Desktop Offline",
+        s2Desc: "Intarneeti malees kompiitara keessatti hojjechuu danda'an sirna amansiisaa[cite: 5].",
+        s3Title: "Enterprise Business Suites",
+        s3Desc: "Galmee mindaa, qabeenyaa fi herregaa si'achiisu.",
+        aboutTitle: "Fuuldura Misooma Sooftiweerii Qopheessuu",
+        aboutText: "Ashebir Tereda'n kan hundeeffame RedRat IT Solution, daldala keessan sooftiweerii ammayyaatiin deeggara[cite: 5, 6]. Webii fi desktop systemii amansiisaa ni hojjenna.",
+        missionTitle: "Ergama Keenya",
+        missionDesc: "Dhaabbata sooftiweerii humna qabuun deeggaruu[cite: 5].",
+        visionTitle: "Mul'ata Keenya",
+        visionDesc: "Afrikaa Bahaatti gaggeessaa misooma webii fi desktop ta'uu[cite: 5].",
+        pricingTitle: "Gatii Tajaajilaa Ifa Ta'e",
+        pricingSub: "Pakeejiif mijate filadhaa. Leenjiin guutuun ni kenwama.",
+        p1Name: "Starter Web Kit",
+        p1Desc: "Daldala isa jalqabaa eegaluuf kan mijate.",
+        p2Name: "Offline Desktop Suite",
+        p2Desc: "Systemii desktop offline hojjetuu fi database qabu[cite: 5].",
+        p3Name: "Bespoke AI Platform",
+        p3Desc: "Fedhii daldala keessaniif kan qophaa'e[cite: 5].",
+        blogTitle: "Gorsa Teknolojii",
+        blogSub: "Sirni webii fi desktop akkamitti daldala akka guddise ilaalaa.",
+        b1Title: "Bu'aa Appii Desktop Offline",
+        b1Excerpt: "Serverii keessoo fayyadamuun rakkoo intarneetiitiif mormuu akkamitti danda'amu[cite: 5].",
+        b2Title: "Gahee AI Misooma Sooftiweerii Keessatti",
+        b2Excerpt: "Hojii database automatikiin hojjechuu[cite: 5].",
+        contactTitle: "Ogeeyyii Keenya Quunnamaa",
+        contactSub: "Sooftiweerii yookaan desktop appii hojjechuuf qophooftaniittu? Ashebir Tereda waliin haasa'aa[cite: 5, 6].",
+        sendBtn: "Ergii",
+        portalTitle: "Dashboard Pirojekti",
+        portalSub: "Adeemsa pirojekti webii fi desktop keessanii hordofaa.",
+        operational: "Systemonni Hunduu Sirriitti Hojjechaa Jiru",
+        chatGreeting: "Akkam! Ani gargaaraa RedRat ti. Har'a pirojekti sooftiweerii keessan akkamitti gargaarru[cite: 5]?"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+
+      // Update lang switcher buttons style
+      ['en', 'am', 'om'].forEach(l => {
+        const btn = document.getElementById(`lang-${l}`);
+        if (l === lang) {
+          btn.className = "px-2.5 py-1 rounded-lg transition-all bg-red-600 text-white shadow";
+        } else {
+          btn.className = "px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white";
+        }
+      });
+
+      // Update DOM Text Content
+      document.getElementById('brandNameText').innerText = t.brandName;
+      document.getElementById('ceoTitleText').innerText = t.ceoTitle;
+      document.getElementById('nav-home-btn').innerText = t.navHome;
+      document.getElementById('nav-about-btn').innerText = t.navAbout;
+      document.getElementById('nav-services-btn').innerText = t.navServices;
+      document.getElementById('nav-blog-btn').innerText = t.navBlog;
+      document.getElementById('nav-contact-btn').innerText = t.navContact;
+      document.getElementById('nav-portal-btn').innerText = t.navPortal;
+
+      document.getElementById('t-hero-badge').innerText = t.heroBadge;
+      document.getElementById('t-hero-title').innerText = t.heroTitle;
+      document.getElementById('t-hero-subtitle').innerText = t.heroSubtitle;
+      document.getElementById('t-explore-btn').innerText = t.exploreBtn;
+      document.getElementById('t-contact-btn').innerText = t.contactBtn;
+      document.getElementById('t-stats-projects').innerText = t.statsProjects;
+      document.getElementById('t-stats-clients').innerText = t.statsClients;
+      document.getElementById('t-stats-support').innerText = t.statsSupport;
+
+      document.getElementById('t-services-title').innerText = t.servicesTitle;
+      document.getElementById('t-services-sub').innerText = t.servicesSub;
+      document.getElementById('t-s1-title').innerText = t.s1Title;
+      document.getElementById('t-s1-desc').innerText = t.s1Desc;
+      document.getElementById('t-s2-title').innerText = t.s2Title;
+      document.getElementById('t-s2-desc').innerText = t.s2Desc;
+      document.getElementById('t-s3-title').innerText = t.s3Title;
+      document.getElementById('t-s3-desc').innerText = t.s3Desc;
+
+      document.getElementById('t-about-title').innerText = t.aboutTitle;
+      document.getElementById('t-about-text').innerText = t.aboutText;
+      document.getElementById('t-mission-title').innerText = t.missionTitle;
+      document.getElementById('t-mission-desc').innerText = t.missionDesc;
+      document.getElementById('t-vision-title').innerText = t.visionTitle;
+      document.getElementById('t-vision-desc').innerText = t.visionDesc;
+
+      document.getElementById('t-services-main-title').innerText = t.servicesTitle;
+      document.getElementById('t-services-main-sub').innerText = t.servicesSub;
+      document.getElementById('t-pricing-title').innerText = t.pricingTitle;
+      document.getElementById('t-pricing-sub').innerText = t.pricingSub;
+
+      document.getElementById('t-p1-name').innerText = t.p1Name;
+      document.getElementById('t-p1-desc').innerText = t.p1Desc;
+      document.getElementById('t-p2-name').innerText = t.p2Name;
+      document.getElementById('t-p2-desc').innerText = t.p2Desc;
+      document.getElementById('t-p3-name').innerText = t.p3Name;
+      document.getElementById('t-p3-desc').innerText = t.p3Desc;
+
+      document.getElementById('t-blog-title').innerText = t.blogTitle;
+      document.getElementById('t-blog-sub').innerText = t.blogSub;
+      document.getElementById('t-b1-title').innerText = t.b1Title;
+      document.getElementById('t-b1-excerpt').innerText = t.b1Excerpt;
+      document.getElementById('t-b2-title').innerText = t.b2Title;
+      document.getElementById('t-b2-excerpt').innerText = t.b2Excerpt;
+
+      document.getElementById('t-contact-main-title').innerText = t.contactTitle;
+      document.getElementById('t-contact-main-sub').innerText = t.contactSub;
+      document.getElementById('t-send-btn').innerText = t.sendBtn;
+
+      document.getElementById('t-portal-title').innerText = t.portalTitle;
+      document.getElementById('t-portal-sub').innerText = t.portalSub;
+      document.getElementById('t-operational').innerText = t.operational;
+
+      // Reset initial chat greeting
+      chatMessages = [{ sender: 'ai', text: t.chatGreeting }];
+      renderChatMessages();
+    }
+
+    // Tab Switching Router Logic
+    function switchTab(tabName) {
+      const sections = ['home', 'about', 'services', 'blog', 'contact', 'portal'];
+      sections.forEach(sec => {
+        const el = document.getElementById(`view-${sec}`);
+        if (sec === tabName) {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.add('hidden');
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Custom Cursor Glow Tracking
+    window.addEventListener('mousemove', (e) => {
+      const glow = document.getElementById('cursor-glow');
+      if (glow) {
+        glow.style.transform = `translate(${e.clientX - 192}px, ${e.clientY - 192}px)`;
+      }
+    });
+
+    // Checkout Modal State & Handlers
+    function openCheckout(packageName) {
+      document.getElementById('modal-package-name').innerText = packageName;
+      document.getElementById('checkout-step-1').classList.remove('hidden');
+      document.getElementById('checkout-step-2').classList.add('hidden');
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkout-modal').classList.add('hidden');
+    }
+
+    function proceedToStep2() {
+      const comp = document.getElementById('checkout-company').value;
+      const email = document.getElementById('checkout-email').value;
+      if (!comp || !email) {
+        alert("Please fill in your company name and email.");
+        return;
+      }
+      document.getElementById('checkout-step-1').classList.add('hidden');
+      document.getElementById('checkout-step-2').classList.remove('hidden');
+    }
+
+    function confirmPayment() {
+      alert("Order successfully placed! Ashebir Tereda and the RedRat development team will contact you shortly[cite: 5, 6].");
+      closeCheckout();
+    }
+
+    // Contact Form Submission
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const email = document.getElementById('contact-email').value;
+      if (!name || !email) return;
+
+      document.getElementById('form-inputs-container').classList.add('hidden');
+      document.getElementById('form-success-msg').classList.remove('hidden');
+
+      setTimeout(() => {
+        document.getElementById('form-success-msg').classList.add('hidden');
+        document.getElementById('form-inputs-container').classList.remove('hidden');
+        document.getElementById('contact-name').value = '';
+        document.getElementById('contact-email').value = '';
+        document.getElementById('contact-message').value = '';
+      }, 4000);
+    }
+
+    // AI Chat Widget Logic
+    let chatOpen = false;
+    let chatMessages = [];
+
+    function toggleChat() {
+      chatOpen = !chatOpen;
+      const win = document.getElementById('chat-window');
+      if (chatOpen) {
+        win.classList.remove('hidden');
+        if (chatMessages.length === 0) {
+          chatMessages.push({ sender: 'ai', text: translations[currentLang].chatGreeting });
+          renderChatMessages();
+        }
+      } else {
+        win.classList.add('hidden');
+      }
+    }
+
+    function renderChatMessages() {
+      const container = document.getElementById('chat-messages');
+      container.innerHTML = '';
+      chatMessages.forEach(msg => {
+        const div = document.createElement('div');
+        div.className = `flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`;
+        div.innerHTML = `<div class="max-w-[80%] p-3 rounded-2xl ${msg.sender === 'user' ? 'bg-red-600 text-white rounded-br-none' : 'bg-slate-800 text-slate-200 rounded-bl-none'}">${msg.text}</div>`;
+        container.appendChild(div);
+      });
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      chatMessages.push({ sender: 'user', text });
+      input.value = '';
+      renderChatMessages();
+
+      setTimeout(() => {
+        let reply = "That sounds like an incredible software project! As RedRat IT Solution, we specialize in custom web apps and secure offline desktop systems[cite: 5]. Ashebir Tereda can help you architect this[cite: 6].";
+        if (currentLang === 'am') reply = "ይህ ጥሩ የሶፍትዌር ሃሳብ ነው! ሬድራት የIT መፍትሄዎች ብጁ የድረ-ገጽ እና ከኢንተርኔት ነጻ የዴስክቶፕ ሲስተሞችን ሊሰራርዎ ይችላል[cite: 5]።";
+        if (currentLang === 'om') reply = "Kun pirojekti baay'ee gaarii dha! RedRat IT Solution appii webii fi desktop offline ta'e siif hojjechuu danda'a[cite: 5].";
+        
+        chatMessages.push({ sender: 'ai', text: reply });
+        renderChatMessages();
+      }, 1000);
+    }
+
+    // Initialize Lucide Icons on load
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      setLanguage('en');
+    });
+  </script>
 </body>
 </html>
