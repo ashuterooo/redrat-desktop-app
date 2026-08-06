@@ -182,10 +182,23 @@
           </div>
         </div>
 
-        <!-- HERO VISUAL MOCKUP -->
+        <!-- HERO VISUAL MOCKUP WITH AI-INSPIRED GRAPHIC -->
         <div class="relative group">
           <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-red-600 to-orange-500 opacity-30 blur-xl group-hover:opacity-50 transition duration-1000"></div>
-          <div class="relative rounded-3xl bg-slate-900/90 border border-slate-800 p-6 backdrop-blur-xl shadow-2xl">
+          <div class="relative rounded-3xl bg-slate-900/90 border border-slate-800 p-6 backdrop-blur-xl shadow-2xl space-y-6">
+            <!-- AI Inspired Neural Graphic Header -->
+            <div class="relative h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-slate-950 via-red-950/40 to-slate-900 border border-slate-800 flex items-center justify-center group-hover:scale-[1.01] transition-transform">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-600/20 via-transparent to-transparent"></div>
+              <div class="relative z-10 text-center space-y-2 p-4">
+                <div class="inline-flex p-3 rounded-2xl bg-red-600/20 border border-red-500/40 text-red-400 shadow-lg shadow-red-600/30 animate-pulse">
+                  <i data-lucide="brain-circuit" class="w-10 h-10"></i>
+                </div>
+                <div class="text-xs font-mono uppercase tracking-widest text-red-400 font-bold">Neural Engine v3.2 Active</div>
+              </div>
+              <!-- Decorative Grid Lines -->
+              <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:2rem_2rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"></div>
+            </div>
+
             <div class="flex items-center justify-between pb-4 border-b border-slate-800">
               <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
@@ -194,7 +207,7 @@
               </div>
               <span class="text-xs font-mono text-slate-500">redrat-core-engine-v3.2.exe</span>
             </div>
-            <div class="py-8 space-y-4 font-mono text-sm">
+            <div class="space-y-4 font-mono text-sm">
               <div class="flex items-center gap-3 text-red-400">
                 <i data-lucide="terminal" class="w-5 h-5"></i>
                 <span>Initializing RedRat Studio & Offline Compiler...</span>
@@ -248,11 +261,24 @@
 
     <!-- ================= ABOUT PAGE ================= -->
     <div id="view-about" class="space-y-16 py-8 hidden view-section">
-      <div class="max-w-3xl space-y-6">
-        <h1 id="t-about-title" class="text-4xl font-black">Architecting the Future of Software Engineering</h1>
-        <p id="t-about-text" class="text-lg text-slate-300 leading-relaxed">
-          Founded by Ashebir Tereda, RedRat IT Solution is a premier software development company specializing in robust web applications and secure offline desktop systems. We bridge complex enterprise workflows with intuitive user interfaces, providing end-to-end development, deployment, and mastery training.
-        </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <h1 id="t-about-title" class="text-4xl font-black">Architecting the Future of Software Engineering</h1>
+          <p id="t-about-text" class="text-lg text-slate-300 leading-relaxed">
+            Founded by Ashebir Tereda, RedRat IT Solution is a premier software development company specializing in robust web applications and secure offline desktop systems. We bridge complex enterprise workflows with intuitive user interfaces, providing end-to-end development, deployment, and mastery training.
+          </p>
+        </div>
+        <!-- AI Inspired Vision Graphic -->
+        <div class="relative rounded-3xl p-8 bg-gradient-to-br from-red-950/30 via-slate-900 to-slate-950 border border-slate-800 shadow-2xl overflow-hidden group">
+          <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="relative z-10 flex flex-col items-center text-center space-y-4 py-8">
+            <div class="p-4 rounded-2xl bg-red-600/20 border border-red-500/40 text-red-400 shadow-xl shadow-red-600/20 group-hover:scale-110 transition-transform">
+              <i data-lucide="cpu" class="w-12 h-12"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Next-Gen Intelligent Core</h3>
+            <p class="text-sm text-slate-400">Autonomous workflow compilation and secure offline databases tailored for enterprise supremacy.</p>
+          </div>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -682,30 +708,30 @@
         aboutTitle: "Architecting the Future of Software Engineering",
         aboutText: "Founded by Ashebir Tereda, RedRat IT Solution is a premier software development company specializing in robust web applications and secure offline desktop systems. We bridge complex enterprise workflows with intuitive user interfaces, providing end-to-end development, deployment, and mastery training.",
         missionTitle: "Our Mission",
-        missionDesc: "To empower organizations globally with robust, intelligent, and tailored software solutions that scale effortlessly[cite: 5].",
+        missionDesc: "To empower organizations globally with robust, intelligent, and tailored software solutions that scale effortlessly.",
         visionTitle: "Our Vision",
-        visionDesc: "To be East Africa and the region's leading pioneer in custom web app engineering and offline desktop software development[cite: 5].",
+        visionDesc: "To be East Africa and the region's leading pioneer in custom web app engineering and offline desktop software development.",
         pricingTitle: "Transparent Service Packages",
         pricingSub: "Choose a tier tailored to your operational scale. All packages include source delivery and onboarding.",
         p1Name: "Starter Web Kit",
         p1Desc: "Perfect for growing businesses establishing their professional web presence.",
         p2Name: "Offline Desktop Suite",
-        p2Desc: "Advanced standalone offline desktop application with local DB & installer[cite: 5].",
+        p2Desc: "Advanced standalone offline desktop application with local DB & installer.",
         p3Name: "Bespoke AI Platform",
-        p3Desc: "Fully customized architecture tailored precisely to enterprise workflows[cite: 5].",
+        p3Desc: "Fully customized architecture tailored precisely to enterprise workflows.",
         blogTitle: "Tech Insights & Development Tips",
         blogSub: "Discover how modern web apps and offline desktop solutions are transforming enterprise software engineering.",
         b1Title: "Why Offline Desktop Apps Deliver Superior Reliability",
-        b1Excerpt: "Explore how local WAMP servers and standalone desktop architectures eliminate internet downtime vulnerabilities for businesses[cite: 5].",
+        b1Excerpt: "Explore how local WAMP servers and standalone desktop architectures eliminate internet downtime vulnerabilities for businesses.",
         b2Title: "The Role of AI in Streamlining Enterprise Software",
-        b2Excerpt: "Automating complex database workflows, code compilation, and local development environments for modern developers[cite: 5].",
+        b2Excerpt: "Automating complex database workflows, code compilation, and local development environments for modern developers.",
         contactTitle: "Connect With Our Engineering Team",
-        contactSub: "Ready to build your web app or offline desktop solution? Reach out to Ashebir Tereda and our experts directly[cite: 5, 6].",
+        contactSub: "Ready to build your web app or offline desktop solution? Reach out to Ashebir Tereda and our experts directly.",
         sendBtn: "Send Message",
         portalTitle: "Client Project Dashboard",
         portalSub: "Track active web and desktop development milestones in real time.",
         operational: "All Local & Cloud Nodes Operational",
-        chatGreeting: "Hello! I'm your RedRat AI Assistant. How can we accelerate your web or offline desktop software project today[cite: 5]?"
+        chatGreeting: "Hello! I'm your RedRat AI Assistant. How can we accelerate your web or offline desktop software project today?"
       },
       am: {
         brandName: "ሬድራት የIT መፍትሄዎች",
@@ -725,27 +751,27 @@
         statsClients: "ረኪ አጋሮች",
         statsSupport: "የባለሙያ ድጋፍ",
         servicesTitle: "ዋና ዋና የሶፍትዌር ልማት አገልግሎቶቻችን",
-        servicesSub: "ለእድገት ለሚጥሩ ድርጅቶች የተዘጋጁ ዘመናዊ የድረ-ገጽ እና የዴስክቶፕ መተግበሪያዎች[cite: 5]።",
+        servicesSub: "ለእድገት ለሚጥሩ ድርጅቶች የተዘጋጁ ዘመናዊ የድረ-ገጽ እና የዴስክቶፕ መተግበሪያዎች።",
         s1Title: "ብጁ የድረ-ገጽ መተግበሪያዎች",
         s1Desc: "በዘመናዊ ቴክኖሎጂዎች እና አስተማማኝ ዳታቤዝ የተገነቡ ኃይለኛ የድር መፍትሄዎች።",
         s2Title: "ከኢንተርኔት ነጻ የዴስክቶፕ መተግበሪያዎች",
-        s2Desc: "ኢንተርኔት ሳይኖርም በኮምፒዩተር ላይ ብቻ የሚሰሩ አስተማማኝ እና ደህንነታቸው የተጠበቁ የዴስክቶፕ ሲስተሞች[cite: 5]።",
+        s2Desc: "ኢንተርኔት ሳይኖርም በኮምፒዩተር ላይ ብቻ የሚሰሩ አስተማማኝ እና ደህንነታቸው የተጠበቁ የዴስክቶፕ ሲስተሞች።",
         s3Title: "የድርጅት አስተዳደር ስብስቦች",
         s3Desc: "የደመወዝ፣ የእቃ ቆጠራ እና የፋይናንስ ቁጥጥር ማስተካከያ መሳሪያዎች።",
         aboutTitle: "የሶፍትዌር ኢንጂነሪንግ የወደፊት እጣ ፈንታ መቅረጽ",
         aboutText: "አሸብር ተረደ ባቋቋመው ሬድራት የIT መፍትሄዎች ድርጅቶች ውስብስብ ስራዎችን በቀላል ቴክኖሎጂ እንዲፈቱ እናደርጋለን። ከፍተኛ ጥራት ያላቸውን የድር እና የዴስክቶፕ ሲስተሞች እናበለጽጋለን።",
         missionTitle: "ተልዕኮአችን",
-        missionDesc: "ድርጅቶችን በዘመናዊ፣ አስተማማኝ እና ብልጥ ሶፍትዌሮች ማብቃት[cite: 5]።",
+        missionDesc: "ድርጅቶችን በዘመናዊ፣ አስተማማኝ እና ብልጥ ሶፍትዌሮች ማብቃት።",
         visionTitle: "ራዕያችን",
-        visionDesc: "በምስራቅ አፍሪካ ቀዳሚ የድረ-ገጽ እና የዴስክቶፕ ሶፍትዌር ልማት ማዕከል መሆን[cite: 5]።",
+        visionDesc: "በምስራቅ አፍሪካ ቀዳሚ የድረ-ገጽ እና የዴስክቶፕ ሶፍትዌር ልማት ማዕከል መሆን።",
         pricingTitle: "ግልጽ የአገልግሎት ዋጋዎች",
         pricingSub: "ለሁኔታዎ የሚስማማውን ፓኬጅ ይምረጡ። ሁሉም ፓኬጆች ስልጠናን ያካትታሉ።",
         p1Name: "ቀላል የድር ፓኬጅ",
         p1Desc: "ለታዳጊ ንግዶች እና ድርጅቶች የሚሆን የድረ-ገጽ መፍትሄ።",
         p2Name: "የዴስክቶፕ ሲስተም ስብስብ",
-        p2Desc: "ከኢንተርኔት ነጻ የሚሰራ እና የዳታቤዝ ማከማቻ ያለው ኃይለኛ የዴስክቶፕ ሲስተም[cite: 5]።",
+        p2Desc: "ከኢንተርኔት ነጻ የሚሰራ እና የዳታቤዝ ማከማቻ ያለው ኃይለኛ የዴስክቶፕ ሲስተም።",
         p3Name: "ብጁ AI መድረክ",
-        p3Desc: "ልዩ ለሆኑ የድርጅት ፍላጎቶች የተዘጋጀ የላቀ ሶፍትዌር[cite: 5]።",
+        p3Desc: "ልዩ ለሆኑ የድርጅት ፍላጎቶች የተዘጋጀ የላቀ ሶፍትዌር።",
         blogTitle: "የቴክኖሎጂ ምክሮች እና መረጃዎች",
         blogSub: "ዘመናዊ የድር እና የዴስክቶፕ ሲስተሞች በንግድ ስራዎች ላይ የሚያመጡትን ለውጥ ይረዱ።",
         b1Title: "ከኢንተርኔት ነጻ የሆኑ (Offline) የዴስክቶፕ ሲስተሞች ጥቅሞች",
@@ -758,7 +784,7 @@
         portalTitle: "የደንበኛ ፕሮጀክት ዳሽቦርድ",
         portalSub: "የንቁ የድር እና የዴስክቶፕ ፕሮጀክቶችዎን ሂደት በእውነተኛ ጊዜ ይከታተሉ።",
         operational: "ሁሉም ሲስተሞች በትክክል እየሰሩ ናቸው",
-        chatGreeting: "ሰላም! እኔ የሬድራት ረዳት ነኝ። ዛሬ የድር ወይም የዴስክቶፕ ሶፍትዌር ፕሮጀክትዎን እንዴት ልንረዳው እንችላለን[cite: 5]?"
+        chatGreeting: "ሰላም! እኔ የሬድራት ረዳት ነኝ። ዛሬ የድር ወይም የዴስክቶፕ ሶፍትዌር ፕሮጀክትዎን እንዴት ልንረዳው እንችላለን?"
       },
       om: {
         brandName: "RedRat IT Solution",
@@ -771,47 +797,47 @@
         navPortal: "Dashboard Maamiltootaa",
         heroBadge: "Softwaree Webii Fi Desktop Oomishu",
         heroTitle: "Daldala Keessan Sooftiweerii Ammayyaa Fi Appiiwwan Amansiisaan Guddifadhaa",
-        heroSubtitle: "Nuni ogeeyyii appii webii fi desktop offline hojjetnu ti[cite: 5]. Ashebir Tereda'n kan durfamu[cite: 6], systemii daldala keessan saffisiisu ni hojjenna.",
+        heroSubtitle: "Nuni ogeeyyii appii webii fi desktop offline hojjetnu ti. Ashebir Tereda'n kan durfamu, systemii daldala keessan saffisiisu ni hojjenna.",
         exploreBtn: "Tajaajila Keenya Ilaalaa",
         contactBtn: "Nu Quunnamaa",
         statsProjects: "Pirojektoota Milkaa'an",
         statsClients: "Maamiltoota Gammadan",
         statsSupport: "Deeggarsa Ogeessaa",
         servicesTitle: "Tajaajila Misooma Sooftiweerii Keenya",
-        servicesSub: "Sirna webii fi desktop ammayyaa daldala guddisuuf qophaa'e[cite: 5].",
+        servicesSub: "Sirna webii fi desktop ammayyaa daldala guddisuuf qophaa'e.",
         s1Title: "Appiiwwan Webii Ammayyaa",
         s1Desc: "Systemii saffisaa fi amansiisaa ta'e kan teeknolojii ammayyaatiin ijaarame.",
         s2Title: "Appiiwwan Desktop Offline",
-        s2Desc: "Intarneeti malees kompiitara keessatti hojjechuu danda'an sirna amansiisaa[cite: 5].",
+        s2Desc: "Intarneeti malees kompiitara keessatti hojjechuu danda'an sirna amansiisaa.",
         s3Title: "Enterprise Business Suites",
         s3Desc: "Galmee mindaa, qabeenyaa fi herregaa si'achiisu.",
         aboutTitle: "Fuuldura Misooma Sooftiweerii Qopheessuu",
-        aboutText: "Ashebir Tereda'n kan hundeeffame RedRat IT Solution, daldala keessan sooftiweerii ammayyaatiin deeggara[cite: 5, 6]. Webii fi desktop systemii amansiisaa ni hojjenna.",
+        aboutText: "Ashebir Tereda'n kan hundeeffame RedRat IT Solution, daldala keessan sooftiweerii ammayyaatiin deeggara. Webii fi desktop systemii amansiisaa ni hojjenna.",
         missionTitle: "Ergama Keenya",
-        missionDesc: "Dhaabbata sooftiweerii humna qabuun deeggaruu[cite: 5].",
+        missionDesc: "Dhaabbata sooftiweerii humna qabuun deeggaruu.",
         visionTitle: "Mul'ata Keenya",
-        visionDesc: "Afrikaa Bahaatti gaggeessaa misooma webii fi desktop ta'uu[cite: 5].",
+        visionDesc: "Afrikaa Bahaatti gaggeessaa misooma webii fi desktop ta'uu.",
         pricingTitle: "Gatii Tajaajilaa Ifa Ta'e",
         pricingSub: "Pakeejiif mijate filadhaa. Leenjiin guutuun ni kenwama.",
         p1Name: "Starter Web Kit",
         p1Desc: "Daldala isa jalqabaa eegaluuf kan mijate.",
         p2Name: "Offline Desktop Suite",
-        p2Desc: "Systemii desktop offline hojjetuu fi database qabu[cite: 5].",
+        p2Desc: "Systemii desktop offline hojjetuu fi database qabu.",
         p3Name: "Bespoke AI Platform",
-        p3Desc: "Fedhii daldala keessaniif kan qophaa'e[cite: 5].",
+        p3Desc: "Fedhii daldala keessaniif kan qophaa'e.",
         blogTitle: "Gorsa Teknolojii",
         blogSub: "Sirni webii fi desktop akkamitti daldala akka guddise ilaalaa.",
         b1Title: "Bu'aa Appii Desktop Offline",
-        b1Excerpt: "Serverii keessoo fayyadamuun rakkoo intarneetiitiif mormuu akkamitti danda'amu[cite: 5].",
+        b1Excerpt: "Serverii keessoo fayyadamuun rakkoo intarneetiitiif mormuu akkamitti danda'amu.",
         b2Title: "Gahee AI Misooma Sooftiweerii Keessatti",
-        b2Excerpt: "Hojii database automatikiin hojjechuu[cite: 5].",
+        b2Excerpt: "Hojii database automatikiin hojjechuu.",
         contactTitle: "Ogeeyyii Keenya Quunnamaa",
-        contactSub: "Sooftiweerii yookaan desktop appii hojjechuuf qophooftaniittu? Ashebir Tereda waliin haasa'aa[cite: 5, 6].",
+        contactSub: "Sooftiweerii yookaan desktop appii hojjechuuf qophooftaniittu? Ashebir Tereda waliin haasa'aa.",
         sendBtn: "Ergii",
         portalTitle: "Dashboard Pirojekti",
         portalSub: "Adeemsa pirojekti webii fi desktop keessanii hordofaa.",
         operational: "Systemonni Hunduu Sirriitti Hojjechaa Jiru",
-        chatGreeting: "Akkam! Ani gargaaraa RedRat ti. Har'a pirojekti sooftiweerii keessan akkamitti gargaarru[cite: 5]?"
+        chatGreeting: "Akkam! Ani gargaaraa RedRat ti. Har'a pirojekti sooftiweerii keessan akkamitti gargaarru?"
       }
     };
 
@@ -950,7 +976,7 @@
     }
 
     function confirmPayment() {
-      alert("Order successfully placed! Ashebir Tereda and the RedRat development team will contact you shortly[cite: 5, 6].");
+      alert("Order successfully placed! Ashebir Tereda and the RedRat development team will contact you shortly.");
       closeCheckout();
     }
 
@@ -1014,9 +1040,9 @@
       renderChatMessages();
 
       setTimeout(() => {
-        let reply = "That sounds like an incredible software project! As RedRat IT Solution, we specialize in custom web apps and secure offline desktop systems[cite: 5]. Ashebir Tereda can help you architect this[cite: 6].";
-        if (currentLang === 'am') reply = "ይህ ጥሩ የሶፍትዌር ሃሳብ ነው! ሬድራት የIT መፍትሄዎች ብጁ የድረ-ገጽ እና ከኢንተርኔት ነጻ የዴስክቶፕ ሲስተሞችን ሊሰራርዎ ይችላል[cite: 5]።";
-        if (currentLang === 'om') reply = "Kun pirojekti baay'ee gaarii dha! RedRat IT Solution appii webii fi desktop offline ta'e siif hojjechuu danda'a[cite: 5].";
+        let reply = "That sounds like an incredible software project! As RedRat IT Solution, we specialize in custom web apps and secure offline desktop systems. Ashebir Tereda can help you architect this.";
+        if (currentLang === 'am') reply = "ይህ ጥሩ የሶፍትዌር ሃሳብ ነው! ሬድራት የIT መፍትሄዎች ብጁ የድረ-ገጽ እና ከኢንተርኔት ነጻ የዴስክቶፕ ሲስተሞችን ሊሰራርዎ ይችላል።";
+        if (currentLang === 'om') reply = "Kun pirojekti baay'ee gaarii dha! RedRat IT Solution appii webii fi desktop offline ta'e siif hojjechuu danda'a.";
         
         chatMessages.push({ sender: 'ai', text: reply });
         renderChatMessages();
