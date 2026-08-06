@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redrat Cafe & Restaurant</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-mug-hot text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold tracking-tight text-slate-900">Redrat <span class="text-amber-600">Cafe</span></span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-slate-600">
+                <a href="#home" class="hover:text-amber-600 transition">Home</a>
+                <a href="#about" class="hover:text-amber-600 transition">About Us</a>
+                <a href="#menu" class="hover:text-amber-600 transition">Our Menu</a>
+                <a href="#services" class="hover:text-amber-600 transition">Services</a>
+                <a href="#contact" class="hover:text-amber-600 transition">Contact</a>
+            </nav>
+            <div>
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 transition">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-slate-900 text-white py-24 lg:py-32 overflow-hidden">
+        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                    Welcome to Redrat Cafe & Restaurant
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    Experience Exceptional <span class="text-amber-500">Taste & Quality</span>
+                </h1>
+                <p class="text-lg text-slate-300 max-w-xl">
+                    Enjoy freshly brewed coffee, delicious meals, and a warm, inviting atmosphere designed for your ultimate comfort and dining pleasure.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#menu" class="inline-flex justify-center items-center px-6 py-3.5 rounded-xl font-semibold text-white bg-amber-600 hover:bg-amber-700 shadow-lg shadow-amber-600/30 transition">
+                        Explore Menu
+                    </a>
+                    <a href="#contact" class="inline-flex justify-center items-center px-6 py-3.5 rounded-xl font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 transition">
+                        Visit Us Today
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-800/50 p-4">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Cafe ambiance" class="rounded-2xl object-cover w-full h-[380px]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-amber-600 font-semibold tracking-wide uppercase text-sm">About Our Establishment</h2>
+                    <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+                        Crafting Memorable Dining & Coffee Experiences
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        At Redrat Cafe & Restaurant, we take pride in serving high-quality meals, freshly baked goods, and aromatic coffee blends. Our commitment to excellence, welcoming ambiance, and attentive service make us a favorite gathering spot for friends, families, and professionals alike.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="border-l-4 border-amber-600 pl-4">
+                            <p class="text-3xl font-extrabold text-slate-900">100%</p>
+                            <p class="text-sm text-slate-500 mt-1">Fresh Ingredients</p>
+                        </div>
+                        <div class="border-l-4 border-amber-600 pl-4">
+                            <p class="text-3xl font-extrabold text-slate-900">5 Star</p>
+                            <p class="text-sm text-slate-500 mt-1">Customer Service</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=500&q=80" alt="Coffee preparation" class="rounded-2xl shadow-md object-cover h-64 w-full">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="Restaurant interior" class="rounded-2xl shadow-md object-cover h-64 w-full mt-8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-amber-600 font-semibold tracking-wide uppercase text-sm">Discover Our Offerings</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Featured Menu Items</h3>
+                <p class="text-slate-600 mt-3">From signature coffee selections to savory dishes prepared fresh daily.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Menu Card 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Specialty Coffee" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-lg text-slate-900">Specialty Coffee</h4>
+                            <span class="text-amber-600 font-bold">Fresh</span>
+                        </div>
+                        <p class="text-slate-600 text-sm">Rich, aromatic brews prepared from premium roasted beans.</p>
+                    </div>
+                </div>
+                <!-- Menu Card 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Delicious Meals" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-lg text-slate-900">Chef's Special Dishes</h4>
+                            <span class="text-amber-600 font-bold">Popular</span>
+                        </div>
+                        <p class="text-slate-600 text-sm">Delectable culinary creations crafted with high-quality ingredients.</p>
+                    </div>
+                </div>
+                <!-- Menu Card 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Fresh Pastries" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-lg text-slate-900">Baked Pastries</h4>
+                            <span class="text-amber-600 font-bold">Daily</span>
+                        </div>
+                        <p class="text-slate-600 text-sm">Freshly baked breads and pastries made with expert care.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Operations Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-amber-600 font-semibold tracking-wide uppercase text-sm">What We Offer</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Our Services</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Dine-In Restaurant</h4>
+                    <p class="text-slate-600 text-sm">A comfortable, premium dining space for families, friends, and business meetings.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-mug-saucer"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Cafe & Bakery</h4>
+                    <p class="text-slate-600 text-sm">Fresh hot coffee, teas, and daily baked bread and pastries.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Takeaway & Orders</h4>
+                    <p class="text-slate-600 text-sm">Quick packaging and prompt service for orders on the go.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h2 class="text-amber-600 font-semibold tracking-wide uppercase text-sm">Get in Touch</h2>
+                    <h3 class="text-3xl font-bold text-slate-900 tracking-tight">We'd Love to Hear From You</h3>
+                    <p class="text-slate-600">
+                        Visit our location or reach out to us for inquiries, reservations, or feedback.
+                    </p>
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-amber-100 text-amber-600 p-3 rounded-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900">Location</h4>
+                                <p class="text-slate-600 text-sm">Main Street, City Center</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-amber-100 text-amber-600 p-3 rounded-xl">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900">Phone</h4>
+                                <p class="text-slate-600 text-sm">+251 900 000 000</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-amber-100 text-amber-600 p-3 rounded-xl">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900">Email</h4>
+                                <p class="text-slate-600 text-sm">info@redratcafe.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent successfully.');">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Your Name</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                            <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 px-6 rounded-xl text-white bg-amber-600 hover:bg-amber-700 font-semibold shadow-md transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-600 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <span class="text-xl font-bold text-white">Redrat Cafe & Restaurant</span>
+            </div>
+            <p class="text-sm">&copy; 2026 Redrat Cafe & Restaurant. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
