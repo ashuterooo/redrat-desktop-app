@@ -11,113 +11,173 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Google Fonts & Custom CSS Integration -->
+  <!-- Google Fonts & Custom Futuristic Styles -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
     
-    /* Custom Styling / Transitions adapted from provided CSS styles */
-    .counter {
-      font-size: 16px;
-      padding: 5px 10px;
-      border-radius: 5px;
-      color: var(--accent, #ef4444);
-      background: var(--accent-bg, rgba(239, 68, 68, 0.1));
-      border: 2px solid transparent;
-      transition: border-color 0.3s;
+    /* Cinematic Aurora & Neon Animations */
+    @keyframes aurora {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
     }
-    .counter:hover {
-      border-color: rgba(239, 68, 68, 0.4);
+    @keyframes floatHologram {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+    @keyframes shootingStar {
+      0% { transform: translateX(0) translateY(0); opacity: 1; }
+      100% { transform: translateX(-500px) translateY(500px); opacity: 0; }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
     }
 
-    /* Gradient Brand Title Styling */
-    .brand-title {
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      background: linear-gradient(90deg, #ff5a3c, #ff914d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 10px rgba(255, 90, 60, 0.3);
+    .animate-aurora-1 { animation: aurora 12s ease-in-out infinite; }
+    .animate-aurora-2 { animation: aurora 15s ease-in-out infinite reverse; }
+    .animate-hologram { animation: floatHologram 6s ease-in-out infinite; }
+    .neon-border {
+      position: relative;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.15), inset 0 0 15px rgba(239, 68, 68, 0.05);
     }
-    
+    .neon-border:hover {
+      border-color: rgba(239, 68, 68, 0.8);
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.4), inset 0 0 20px rgba(239, 68, 68, 0.15);
+    }
+
+    /* Glassmorphism */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Liquid Buttons */
+    .liquid-btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .liquid-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    .liquid-btn:hover::before {
+      left: 100%;
+    }
+
     /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #020617;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
-    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #020617; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100 font-sans relative overflow-x-hidden selection:bg-red-600 selection:text-white">
 
-  <!-- CUSTOM CURSOR GLOW EFFECT -->
+  <!-- ==========================================
+      CINEMATIC BACKGROUND & AUDIO ELEMENTS
+  ========================================== -->
+  <audio id="ui-sound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Mouse-Following Light Trail -->
   <div 
     id="cursor-glow"
-    class="pointer-events-none fixed w-96 h-96 rounded-full bg-gradient-to-r from-red-600/15 to-orange-600/15 blur-3xl transition-transform duration-75 ease-out z-50 hidden md:block"
+    class="pointer-events-none fixed w-[450px] h-[450px] rounded-full bg-gradient-to-r from-red-600/15 via-rose-600/10 to-orange-600/15 blur-[90px] transition-transform duration-75 ease-out z-50 hidden md:block"
   ></div>
 
-  <!-- BACKGROUND NEON PARTICLES & GLOWS -->
-  <div class="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
-  <div class="absolute top-1/3 right-10 w-[500px] h-[500px] bg-rose-700/10 rounded-full blur-[150px] pointer-events-none"></div>
+  <!-- Cinematic Aurora Lights & Neural Background -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-red-600/15 rounded-full blur-[140px] animate-aurora-1"></div>
+    <div class="absolute top-1/2 -right-40 w-[700px] h-[700px] bg-orange-600/10 rounded-full blur-[160px] animate-aurora-2"></div>
+    <div class="absolute -bottom-40 left-1/3 w-[800px] h-[800px] bg-rose-900/10 rounded-full blur-[180px] animate-aurora-1"></div>
+    <!-- Neural Grid Overlay -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b0a_1px,transparent_1px),linear-gradient(to_bottom,#1e293b0a_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+  </div>
+
+  <!-- ==========================================
+      PREMIUM LOADING SCREEN
+  ========================================== -->
+  <div id="loading-screen" class="fixed inset-0 z-55 bg-slate-950 flex flex-col items-center justify-center space-y-6 transition-opacity duration-700">
+    <div class="relative w-24 h-24 rounded-3xl bg-gradient-to-tr from-red-600 to-orange-500 p-1 shadow-2xl shadow-red-600/50 animate-pulse">
+      <div class="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center">
+        <i data-lucide="cpu" class="w-12 h-12 text-red-500 animate-spin" style="animation-duration: 8s;"></i>
+      </div>
+      <div class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full animate-ping"></div>
+    </div>
+    <div class="text-center space-y-2">
+      <h2 class="text-xl font-black tracking-widest bg-gradient-to-r from-white via-slate-200 to-red-400 bg-clip-text text-transparent">REDRAT AI ENGINE</h2>
+      <p class="text-xs font-mono text-red-400 tracking-widest uppercase">Initializing Neural Core & Orbiting Nodes...</p>
+    </div>
+    <div class="w-48 h-1 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+      <div id="loading-bar" class="w-0 h-full bg-gradient-to-r from-red-600 to-orange-500 transition-all duration-500"></div>
+    </div>
+  </div>
 
   <!-- ==========================================
       HEADER / NAVIGATION
   ========================================== -->
-  <header class="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/80 border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+  <header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/80 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- LOGO -->
       <div 
-        onclick="switchTab('home')"
-        class="flex items-center gap-3.5 cursor-pointer group"
+        onclick="switchTab('home'); playSound();"
+        class="flex items-center gap-3 cursor-pointer group"
       >
-        <div class="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-red-600 to-orange-500 p-0.5 shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform">
+        <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-tr from-red-600 to-orange-500 p-0.5 shadow-lg shadow-red-600/30 group-hover:scale-110 transition-transform duration-300">
           <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-            <i data-lucide="cpu" class="w-7 h-7 text-red-500 animate-pulse"></i>
+            <i data-lucide="cpu" class="w-6 h-6 text-red-500 animate-pulse"></i>
           </div>
           <div class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
         </div>
-        <div class="flex flex-col">
-          <span id="brandNameText" class="brand-title">
+        <div>
+          <span id="brandNameText" class="text-xl font-black tracking-wider bg-gradient-to-r from-white via-slate-200 to-red-400 bg-clip-text text-transparent">
             RedRat IT Solution
           </span>
-          <span id="ceoTitleText" class="block text-[11px] font-bold text-red-400 tracking-[0.18em] uppercase mt-0.5">
-            FOUNDER & CEO: ASHEBIR TEREDA
+          <span id="ceoTitleText" class="block text-[10px] text-red-400 font-medium tracking-widest uppercase">
+            Founder & CEO: Ashebir Tereda
           </span>
         </div>
       </div>
 
       <!-- DESKTOP NAV LINKS -->
-      <nav class="hidden md:flex items-center gap-8 text-[1.15rem] font-semibold text-slate-200">
-        <button onclick="switchTab('home')" id="nav-home-btn" class="hover:text-red-400 transition-colors nav-link">Home</button>
-        <button onclick="switchTab('about')" id="nav-about-btn" class="hover:text-red-400 transition-colors nav-link">About</button>
-        <button onclick="switchTab('services')" id="nav-services-btn" class="hover:text-red-400 transition-colors nav-link">Services</button>
-        <button onclick="switchTab('blog')" id="nav-blog-btn" class="hover:text-red-400 transition-colors nav-link">Blog</button>
-        <button onclick="switchTab('contact')" id="nav-contact-btn" class="hover:text-red-400 transition-colors nav-link">Contact</button>
-        <button onclick="switchTab('portal')" id="nav-portal-btn" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-base shadow-lg shadow-red-600/40 hover:shadow-red-600/60 hover:scale-[1.02] transition-all nav-link">Client Dashboard</button>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <button onclick="switchTab('home'); playSound();" id="nav-home-btn" class="hover:text-red-400 transition-colors nav-link">Home</button>
+        <button onclick="switchTab('about'); playSound();" id="nav-about-btn" class="hover:text-red-400 transition-colors nav-link">About</button>
+        <button onclick="switchTab('services'); playSound();" id="nav-services-btn" class="hover:text-red-400 transition-colors nav-link">Services</button>
+        <button onclick="switchTab('blog'); playSound();" id="nav-blog-btn" class="hover:text-red-400 transition-colors nav-link">Blog</button>
+        <button onclick="switchTab('contact'); playSound();" id="nav-contact-btn" class="hover:text-red-400 transition-colors nav-link">Contact</button>
+        <button onclick="switchTab('portal'); playSound();" id="nav-portal-btn" class="px-3.5 py-1.5 rounded-xl bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white transition-all nav-link shadow-lg shadow-red-600/10">Client Dashboard</button>
       </nav>
 
-      <!-- LANGUAGE SWITCHER & MOBILE TOGGLE -->
-      <div class="flex items-center gap-4">
+      <!-- AUDIO TOGGLE, LANGUAGE & MOBILE TOGGLE -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleAudio()" id="audio-toggle-btn" class="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors" title="Toggle Sound FX">
+          <i data-lucide="volume-x" id="sound-icon" class="w-4 h-4"></i>
+        </button>
+
         <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1 text-xs font-semibold">
-          <button onclick="setLanguage('en')" id="lang-en" class="px-2.5 py-1 rounded-lg transition-all bg-red-600 text-white shadow">EN</button>
-          <button onclick="setLanguage('am')" id="lang-am" class="px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white">አማ</button>
-          <button onclick="setLanguage('om')" id="lang-om" class="px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white">OM</button>
+          <button onclick="setLanguage('en'); playSound();" id="lang-en" class="px-2.5 py-1 rounded-lg transition-all bg-red-600 text-white shadow">EN</button>
+          <button onclick="setLanguage('am'); playSound();" id="lang-am" class="px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white">አማ</button>
+          <button onclick="setLanguage('om'); playSound();" id="lang-om" class="px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white">OM</button>
         </div>
 
         <button 
-          onclick="toggleMobileMenu()" 
+          onclick="toggleMobileMenu(); playSound();" 
           class="md:hidden p-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800"
         >
           <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
@@ -126,20 +186,20 @@
     </div>
 
     <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="hidden md:hidden bg-slate-950 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
-      <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Home</button>
-      <button onclick="switchTab('about'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">About</button>
-      <button onclick="switchTab('services'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Services</button>
-      <button onclick="switchTab('blog'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Blog</button>
-      <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Contact</button>
-      <button onclick="switchTab('portal'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg bg-red-600/20 text-red-400 font-bold">Client Dashboard</button>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-950/95 backdrop-blur-2xl border-b border-slate-800 px-4 pt-3 pb-6 space-y-3">
+      <button onclick="switchTab('home'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Home</button>
+      <button onclick="switchTab('about'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">About</button>
+      <button onclick="switchTab('services'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Services</button>
+      <button onclick="switchTab('blog'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Blog</button>
+      <button onclick="switchTab('contact'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Contact</button>
+      <button onclick="switchTab('portal'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg bg-red-600/20 text-red-400">Client Dashboard</button>
     </div>
   </header>
 
   <!-- ==========================================
       MAIN VIEW ROUTER CONTAINER
   ========================================== -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
     
     <!-- ================= HOME PAGE ================= -->
     <div id="view-home" class="space-y-24 view-section">
@@ -147,12 +207,12 @@
       <!-- HERO SECTION -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-8">
         <div class="space-y-8">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-semibold tracking-wide">
-            <i data-lucide="sparkles" class="w-4 h-4"></i>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-semibold tracking-wide shadow-lg shadow-red-500/10">
+            <i data-lucide="sparkles" class="w-4 h-4 animate-spin"></i>
             <span id="t-hero-badge">AI-Driven Digital Transformation & App Development</span>
           </div>
 
-          <h1 id="t-hero-title" class="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
+          <h1 id="t-hero-title" class="text-4xl sm:text-6xl font-black tracking-tight leading-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
             Empowering Enterprises Through Intelligent Software & Custom Apps
           </h1>
 
@@ -162,72 +222,81 @@
 
           <div class="flex flex-wrap gap-4 pt-2">
             <button 
-              onclick="switchTab('services')"
-              class="px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold shadow-xl shadow-red-600/30 hover:scale-105 transition-transform flex items-center gap-2"
+              onclick="switchTab('services'); playSound();"
+              class="liquid-btn px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold shadow-xl shadow-red-600/30 hover:scale-105 transition-transform flex items-center gap-2"
             >
               <span id="t-explore-btn">Explore Solutions</span>
               <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </button>
             <button 
-              onclick="switchTab('contact')"
+              onclick="switchTab('contact'); playSound();"
               id="t-contact-btn"
-              class="px-8 py-4 rounded-2xl bg-slate-900 border border-slate-800 text-slate-200 font-semibold hover:bg-slate-800 hover:text-white transition-all"
+              class="liquid-btn px-8 py-4 rounded-2xl glass-card text-slate-200 font-semibold hover:bg-slate-800 hover:text-white transition-all"
             >
               Get in Touch
             </button>
           </div>
 
+          <!-- ANIMATED COUNTERS -->
           <div class="grid grid-cols-3 pt-6 border-t border-slate-900 gap-4">
-            <div>
-              <h3 class="text-2xl font-black text-white">150+</h3>
-              <p id="t-stats-projects" class="text-xs text-slate-400">Successful Projects</p>
+            <div class="p-4 rounded-2xl glass-card border border-slate-800/80">
+              <h3 class="text-3xl font-black text-white counter-anim" data-target="150">0</h3><span class="text-red-500 font-black">+</span>
+              <p id="t-stats-projects" class="text-xs text-slate-400 mt-1">Successful Projects</p>
             </div>
-            <div>
-              <h3 class="text-2xl font-black text-white">99%</h3>
-              <p id="t-stats-clients" class="text-xs text-slate-400">Satisfied Partners</p>
+            <div class="p-4 rounded-2xl glass-card border border-slate-800/80">
+              <h3 class="text-3xl font-black text-white counter-anim" data-target="99">0</h3><span class="text-red-500 font-black">%</span>
+              <p id="t-stats-clients" class="text-xs text-slate-400 mt-1">Satisfied Partners</p>
             </div>
-            <div>
-              <h3 class="text-2xl font-black text-white">24/7</h3>
-              <p id="t-stats-support" class="text-xs text-slate-400">Expert Support</p>
+            <div class="p-4 rounded-2xl glass-card border border-slate-800/80">
+              <h3 class="text-3xl font-black text-white">24/7</h3>
+              <p id="t-stats-support" class="text-xs text-slate-400 mt-1">Expert Support</p>
             </div>
           </div>
         </div>
 
-        <!-- HERO VISUAL MOCKUP WITH AI-INSPIRED GRAPHIC -->
-        <div class="relative group">
-          <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-red-600 to-orange-500 opacity-30 blur-xl group-hover:opacity-50 transition duration-1000"></div>
-          <div class="relative rounded-3xl bg-slate-900/90 border border-slate-800 p-6 backdrop-blur-xl shadow-2xl space-y-6">
-            <!-- AI Inspired Neural Graphic Header -->
-            <div class="relative h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-slate-950 via-red-950/40 to-slate-900 border border-slate-800 flex items-center justify-center group-hover:scale-[1.01] transition-transform">
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-600/20 via-transparent to-transparent"></div>
+        <!-- HERO FLOATING AI HOLOGRAM & NEURAL MOCKUP -->
+        <div class="relative group perspective-1000">
+          <div class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-red-600 to-orange-500 opacity-30 blur-2xl group-hover:opacity-50 transition duration-1000"></div>
+          <div class="relative rounded-3xl glass-card p-6 shadow-2xl space-y-6 neon-border animate-hologram">
+            
+            <!-- Floating Hologram Header -->
+            <div class="relative h-52 rounded-2xl overflow-hidden bg-gradient-to-br from-slate-950 via-red-950/40 to-slate-900 border border-slate-800 flex items-center justify-center">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-600/30 via-transparent to-transparent"></div>
+              
+              <!-- Orbiting Glowing Objects -->
+              <div class="absolute w-32 h-32 rounded-full border border-red-500/20 animate-spin" style="animation-duration: 12s;">
+                <div class="absolute -top-1.5 left-1/2 w-3 h-3 bg-red-500 rounded-full shadow-lg shadow-red-500 animate-ping"></div>
+              </div>
+              <div class="absolute w-48 h-48 rounded-full border border-orange-500/20 animate-spin" style="animation-duration: 18s; animation-direction: reverse;">
+                <div class="absolute -bottom-1.5 right-1/2 w-3 h-3 bg-orange-400 rounded-full shadow-lg shadow-orange-400"></div>
+              </div>
+
               <div class="relative z-10 text-center space-y-2 p-4">
-                <div class="inline-flex p-3 rounded-2xl bg-red-600/20 border border-red-500/40 text-red-400 shadow-lg shadow-red-600/30 animate-pulse">
+                <div class="inline-flex p-3 rounded-2xl bg-red-600/20 border border-red-500/40 text-red-400 shadow-xl shadow-red-600/30 animate-pulse">
                   <i data-lucide="brain-circuit" class="w-10 h-10"></i>
                 </div>
-                <div class="text-xs font-mono uppercase tracking-widest text-red-400 font-bold">Neural Engine v3.2 Active</div>
+                <div class="text-xs font-mono uppercase tracking-widest text-red-400 font-bold">Apple / Tesla AI Grade Engine v3.2</div>
               </div>
-              <!-- Decorative Grid Lines -->
-              <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:2rem_2rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"></div>
             </div>
 
-            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
               <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
                 <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                 <div class="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
-              <span class="text-xs font-mono text-slate-500">redrat-core-engine-v3.2.exe</span>
+              <span class="text-xs font-mono text-slate-400">redrat-core-engine-v3.2.exe</span>
             </div>
-            <div class="space-y-4 font-mono text-sm">
+
+            <div class="space-y-3 font-mono text-xs">
               <div class="flex items-center gap-3 text-red-400">
-                <i data-lucide="terminal" class="w-5 h-5"></i>
-                <span>Initializing RedRat Studio & Offline Compiler...</span>
+                <i data-lucide="terminal" class="w-4 h-4"></i>
+                <span>Compiling Offline Desktop POS & Neural Core...</span>
               </div>
-              <div class="p-4 rounded-xl bg-slate-950 border border-slate-800/80 text-slate-300 space-y-2">
+              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800/80 text-slate-300 space-y-2">
                 <p class="text-emerald-400">✔ Custom Web App Architecture Loaded</p>
                 <p class="text-emerald-400">✔ Offline Desktop WAMP & Local DB Active</p>
                 <p class="text-emerald-400">✔ AI-Powered Automation Engine Ready</p>
-                <p class="text-slate-400 animate-pulse"># Status: Ready for Enterprise Development.</p>
               </div>
             </div>
           </div>
@@ -242,7 +311,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-red-500/50 transition-all hover:-translate-y-1 group">
+          <div class="glass-card p-8 rounded-3xl neon-border transition-all duration-300 hover:-translate-y-2 group">
             <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
               <i data-lucide="globe" class="w-7 h-7"></i>
             </div>
@@ -250,7 +319,7 @@
             <p id="t-s1-desc" class="text-slate-400 text-sm leading-relaxed">Scalable, high-performance web solutions built with modern frameworks and robust backend architecture.</p>
           </div>
 
-          <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-red-500/50 transition-all hover:-translate-y-1 group">
+          <div class="glass-card p-8 rounded-3xl neon-border transition-all duration-300 hover:-translate-y-2 group">
             <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
               <i data-lucide="server" class="w-7 h-7"></i>
             </div>
@@ -258,12 +327,39 @@
             <p id="t-s2-desc" class="text-slate-400 text-sm leading-relaxed">Secure, standalone desktop software designed for lightning-fast offline operations and local data storage.</p>
           </div>
 
-          <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-red-500/50 transition-all hover:-translate-y-1 group">
+          <div class="glass-card p-8 rounded-3xl neon-border transition-all duration-300 hover:-translate-y-2 group">
             <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
               <i data-lucide="layers" class="w-7 h-7"></i>
             </div>
             <h3 id="t-s3-title" class="text-xl font-bold mb-3">Enterprise Digital Suites</h3>
             <p id="t-s3-desc" class="text-slate-400 text-sm leading-relaxed">Integrated inventory, payroll, and profit-cost analysis tools designed to streamline daily management.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE WORLD MAP & GLOBAL REACH -->
+      <div class="pt-12">
+        <div class="glass-card rounded-3xl p-8 border border-slate-800 space-y-6 relative overflow-hidden">
+          <div class="absolute -right-20 -top-20 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2">
+              <div class="inline-flex items-center gap-2 text-xs font-mono text-red-400 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/30">
+                <i data-lucide="globe-2" class="w-4 h-4"></i>
+                <span>Global & East Africa Deployment Network</span>
+              </div>
+              <h3 class="text-2xl font-bold">Connected Enterprise Ecosystem</h3>
+              <p class="text-sm text-slate-400 max-w-xl">Deploying robust offline desktop apps and web solutions across multiple regional sectors with lightning-fast latency and 100% data privacy.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4 shrink-0">
+              <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-center">
+                <div class="text-2xl font-black text-red-500">12+</div>
+                <div class="text-xs text-slate-400">Regions Served</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-center">
+                <div class="text-2xl font-black text-emerald-400">99.9%</div>
+                <div class="text-xs text-slate-400">Node Stability</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -280,7 +376,7 @@
           </p>
         </div>
         <!-- AI Inspired Vision Graphic -->
-        <div class="relative rounded-3xl p-8 bg-gradient-to-br from-red-950/30 via-slate-900 to-slate-950 border border-slate-800 shadow-2xl overflow-hidden group">
+        <div class="relative rounded-3xl p-8 glass-card border border-slate-800 shadow-2xl overflow-hidden group">
           <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
           <div class="relative z-10 flex flex-col items-center text-center space-y-4 py-8">
             <div class="p-4 rounded-2xl bg-red-600/20 border border-red-500/40 text-red-400 shadow-xl shadow-red-600/20 group-hover:scale-110 transition-transform">
@@ -293,7 +389,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+        <div class="glass-card p-8 rounded-3xl neon-border space-y-4">
           <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
             <i data-lucide="zap" class="w-6 h-6"></i>
           </div>
@@ -301,7 +397,7 @@
           <p id="t-mission-desc" class="text-slate-400 leading-relaxed">To empower organizations globally with robust, intelligent, and tailored software solutions that scale effortlessly.</p>
         </div>
 
-        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+        <div class="glass-card p-8 rounded-3xl neon-border space-y-4">
           <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
             <i data-lucide="compass" class="w-6 h-6"></i>
           </div>
@@ -327,7 +423,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- PACKAGE 1 -->
-          <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between space-y-6">
+          <div class="glass-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between space-y-6 hover:border-red-500/50 transition-all">
             <div class="space-y-4">
               <h3 id="t-p1-name" class="text-xl font-bold">Starter Web Kit</h3>
               <div class="text-3xl font-black text-red-500">$499</div>
@@ -339,9 +435,9 @@
               </ul>
             </div>
             <button 
-              onclick="openCheckout('Starter Web Kit')"
+              onclick="openCheckout('Starter Web Kit'); playSound();"
               id="t-p1-btn"
-              class="w-full py-3 rounded-xl bg-slate-800 hover:bg-red-600 text-white font-semibold transition-colors flex items-center justify-center gap-2"
+              class="liquid-btn w-full py-3 rounded-xl bg-slate-800 hover:bg-red-600 text-white font-semibold transition-colors flex items-center justify-center gap-2"
             >
               <span>Select Package</span>
               <i data-lucide="shopping-bag" class="w-4 h-4"></i>
@@ -349,14 +445,14 @@
           </div>
 
           <!-- PACKAGE 2 -->
-          <div class="p-8 rounded-3xl bg-slate-900 border-2 border-red-500/50 flex flex-col justify-between space-y-6 relative shadow-2xl shadow-red-600/10">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider">
+          <div class="glass-card p-8 rounded-3xl border-2 border-red-500/60 flex flex-col justify-between space-y-6 relative shadow-2xl shadow-red-600/20">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-lg shadow-red-600/50">
               Most Popular
             </div>
             <div class="space-y-4">
               <h3 id="t-p2-name" class="text-xl font-bold">Offline Desktop Suite</h3>
               <div class="text-3xl font-black text-red-500">$1,299</div>
-              <p id="t-p2-desc" class="text-sm text-slate-400">Advanced standalone offline desktop application with local DB & installer.</p>
+              <p id="t-p2-desc" class="text-sm text-slate-400">Advanced standalone offline desktop application with local DB & installer (.exe).</p>
               <ul class="space-y-2 text-sm text-slate-300 pt-4 border-t border-slate-800">
                 <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Custom Offline App (.exe)</li>
                 <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Local WAMP / DB Integration</li>
@@ -365,9 +461,9 @@
               </ul>
             </div>
             <button 
-              onclick="openCheckout('Offline Desktop Suite')"
+              onclick="openCheckout('Offline Desktop Suite'); playSound();"
               id="t-p2-btn"
-              class="w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-lg shadow-red-600/30"
+              class="liquid-btn w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-lg shadow-red-600/30"
             >
               <span>Select Package</span>
               <i data-lucide="shopping-bag" class="w-4 h-4"></i>
@@ -375,7 +471,7 @@
           </div>
 
           <!-- PACKAGE 3 -->
-          <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between space-y-6">
+          <div class="glass-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between space-y-6 hover:border-red-500/50 transition-all">
             <div class="space-y-4">
               <h3 id="t-p3-name" class="text-xl font-bold">Bespoke AI Platform</h3>
               <div class="text-3xl font-black text-red-500">Custom</div>
@@ -387,9 +483,9 @@
               </ul>
             </div>
             <button 
-              onclick="openCheckout('Bespoke AI Platform')"
+              onclick="openCheckout('Bespoke AI Platform'); playSound();"
               id="t-p3-btn"
-              class="w-full py-3 rounded-xl bg-slate-800 hover:bg-red-600 text-white font-semibold transition-colors flex items-center justify-center gap-2"
+              class="liquid-btn w-full py-3 rounded-xl bg-slate-800 hover:bg-red-600 text-white font-semibold transition-colors flex items-center justify-center gap-2"
             >
               <span>Select Package</span>
               <i data-lucide="shopping-bag" class="w-4 h-4"></i>
@@ -407,7 +503,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 space-y-4 hover:border-red-500/50 transition-all group cursor-pointer">
+        <div class="glass-card p-8 rounded-3xl neon-border space-y-4 transition-all group cursor-pointer" onclick="playSound()">
           <span class="text-xs font-mono text-red-400">August 2026</span>
           <h3 id="t-b1-title" class="text-2xl font-bold group-hover:text-red-400 transition-colors">Why Offline Desktop Apps Deliver Superior Reliability</h3>
           <p id="t-b1-excerpt" class="text-slate-400 text-sm leading-relaxed">Explore how local WAMP servers and standalone desktop architectures eliminate internet downtime vulnerabilities for businesses.</p>
@@ -417,7 +513,7 @@
           </div>
         </div>
 
-        <div class="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 space-y-4 hover:border-red-500/50 transition-all group cursor-pointer">
+        <div class="glass-card p-8 rounded-3xl neon-border space-y-4 transition-all group cursor-pointer" onclick="playSound()">
           <span class="text-xs font-mono text-red-400">July 2026</span>
           <h3 id="t-b2-title" class="text-2xl font-bold group-hover:text-red-400 transition-colors">The Role of AI in Streamlining Enterprise Software</h3>
           <p id="t-b2-excerpt" class="text-slate-400 text-sm leading-relaxed">Automating complex database workflows, code compilation, and local development environments for modern developers.</p>
@@ -474,7 +570,7 @@
           </div>
         </div>
 
-        <form onsubmit="handleContactSubmit(event)" class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-6">
+        <form onsubmit="handleContactSubmit(event)" class="glass-card p-8 rounded-3xl border border-slate-800 space-y-6">
           <div id="form-success-msg" class="hidden py-12 text-center space-y-4">
             <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
               <i data-lucide="check-circle-2" class="w-8 h-8"></i>
@@ -513,7 +609,7 @@
                 class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm resize-none text-slate-100" 
               ></textarea>
             </div>
-            <button type="submit" id="t-send-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold shadow-lg shadow-red-600/30 hover:scale-[1.02] transition-transform">
+            <button type="submit" id="t-send-btn" class="liquid-btn w-full py-4 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold shadow-lg shadow-red-600/30 hover:scale-[1.02] transition-transform">
               Send Message
             </button>
           </div>
@@ -535,24 +631,24 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-2">
           <span class="text-xs text-slate-400 uppercase font-mono">Active Deployments</span>
           <div class="text-3xl font-black text-white">3 Deployed</div>
           <p class="text-xs text-emerald-400 font-medium">Custom Web App v3.2, Offline POS .exe</p>
         </div>
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-2">
           <span class="text-xs text-slate-400 uppercase font-mono">Support Tickets</span>
           <div class="text-3xl font-black text-white">0 Open Tickets</div>
           <p class="text-xs text-slate-400 font-medium">All systems running smoothly</p>
         </div>
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-2">
           <span class="text-xs text-slate-400 uppercase font-mono">Server Health</span>
           <div class="text-3xl font-black text-red-500">100% Uptime</div>
           <p class="text-xs text-slate-400 font-medium">Local WAMP & Cloud Servers</p>
         </div>
       </div>
 
-      <div class="p-8 rounded-3xl bg-slate-900/40 border border-slate-800 space-y-6">
+      <div class="glass-card p-8 rounded-3xl border border-slate-800 space-y-6">
         <h3 class="text-xl font-bold">Recent Milestone Activity</h3>
         <div class="space-y-4 text-sm font-mono">
           <div class="flex items-center justify-between p-4 rounded-xl bg-slate-950 border border-slate-800">
@@ -579,9 +675,9 @@
       CHECKOUT MODAL
   ========================================== -->
   <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md px-4 hidden">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-8 space-y-6 shadow-2xl relative">
+    <div class="glass-card border border-slate-800 rounded-3xl max-w-lg w-full p-8 space-y-6 shadow-2xl relative neon-border">
       <button 
-        onclick="closeCheckout()"
+        onclick="closeCheckout(); playSound();"
         class="absolute top-6 right-6 p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white"
       >
         <i data-lucide="x" class="w-5 h-5"></i>
@@ -602,8 +698,8 @@
           <input type="email" id="checkout-email" placeholder="manager@business.com" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm text-slate-100" />
         </div>
         <button 
-          onclick="proceedToStep2()"
-          class="w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold transition-colors"
+          onclick="proceedToStep2(); playSound();"
+          class="liquid-btn w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold transition-colors shadow-lg shadow-red-600/30"
         >
           Proceed to Payment
         </button>
@@ -618,8 +714,8 @@
           <p class="text-xs text-slate-400">Secure encrypted transaction processing initialized.</p>
         </div>
         <button 
-          onclick="confirmPayment()"
-          class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors"
+          onclick="confirmPayment(); playSound();"
+          class="liquid-btn w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors shadow-lg shadow-emerald-600/30"
         >
           Confirm & Pay Securely
         </button>
@@ -631,13 +727,13 @@
       FLOATING AI CHAT ASSISTANT WIDGET
   ========================================== -->
   <div class="fixed bottom-6 right-6 z-50">
-    <div id="chat-window" class="w-80 sm:w-96 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[450px] hidden">
-      <div class="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+    <div id="chat-window" class="w-80 sm:w-96 glass-card border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[450px] hidden neon-border">
+      <div class="p-4 bg-slate-950/80 border-b border-slate-800 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <div class="w-3 h-3 rounded-full bg-red-500 animate-ping"></div>
           <span class="font-bold text-sm">RedRat Neural AI</span>
         </div>
-        <button onclick="toggleChat()" class="p-1 text-slate-400 hover:text-white">
+        <button onclick="toggleChat(); playSound();" class="p-1 text-slate-400 hover:text-white">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
@@ -646,14 +742,14 @@
         <!-- Messages appended here -->
       </div>
 
-      <form onsubmit="handleChatSubmit(event)" class="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
+      <form onsubmit="handleChatSubmit(event)" class="p-3 bg-slate-950/90 border-t border-slate-800 flex gap-2">
         <input 
           type="text"
           id="chat-input"
           placeholder="Ask about web apps or desktop tools..."
           class="flex-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs focus:outline-none focus:border-red-500 text-slate-100"
         />
-        <button type="submit" class="p-2 rounded-xl bg-red-600 text-white hover:bg-red-500">
+        <button type="submit" class="p-2 rounded-xl bg-red-600 text-white hover:bg-red-500 shadow-lg shadow-red-600/30" onclick="playSound()">
           <i data-lucide="send" class="w-4 h-4"></i>
         </button>
       </form>
@@ -661,8 +757,8 @@
 
     <button 
       id="chat-toggle-btn"
-      onclick="toggleChat()"
-      class="w-14 h-14 rounded-full bg-gradient-to-r from-red-600 to-orange-600 text-white flex items-center justify-center shadow-2xl shadow-red-600/50 hover:scale-110 transition-transform group"
+      onclick="toggleChat(); playSound();"
+      class="liquid-btn w-14 h-14 rounded-full bg-gradient-to-r from-red-600 to-orange-600 text-white flex items-center justify-center shadow-2xl shadow-red-600/50 hover:scale-110 transition-transform group"
     >
       <i data-lucide="headphones" class="w-6 h-6 animate-pulse"></i>
     </button>
@@ -671,10 +767,10 @@
   <!-- ==========================================
       FOOTER
   ========================================== -->
-  <footer class="border-t border-slate-900 bg-slate-950/80 mt-24 py-12">
+  <footer class="border-t border-slate-900 bg-slate-950/80 mt-24 py-12 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-slate-500 text-xs">
       <div class="flex items-center gap-3">
-        <i data-lucide="cpu" class="w-5 h-5 text-red-500"></i>
+        <i data-lucide="cpu" class="w-5 h-5 text-red-500 animate-pulse"></i>
         <span>© 2026 RedRat IT Solution. Web & Offline Desktop App Developers. Led by Ashebir Tereda. All rights reserved.</span>
       </div>
       <div class="flex items-center gap-6">
@@ -689,11 +785,11 @@
       APPLICATION SCRIPT LOGIC
   ========================================== -->
   <script>
-    // Translations Dictionary for English, Amharic, and Afaan Oromo
+    // Translations Dictionary
     const translations = {
       en: {
         brandName: "RedRat IT Solution",
-        ceoTitle: "FOUNDER & CEO: ASHEBIR TEREDA",
+        ceoTitle: "Founder & CEO: Ashebir Tereda",
         navHome: "Home",
         navAbout: "About",
         navServices: "Services",
@@ -709,7 +805,7 @@
         statsClients: "Satisfied Partners",
         statsSupport: "Expert Support",
         servicesTitle: "Our Core Development Solutions",
-        servicesSub: "Custom web applications and high-performance offline desktop software engineered for scaling enterprises",
+        servicesSub: "Custom web applications and high-performance offline desktop software engineered for scaling enterprises.",
         s1Title: "Custom Web Applications",
         s1Desc: "Scalable, high-performance web solutions built with modern frameworks and robust backend architecture.",
         s2Title: "Offline Desktop Applications",
@@ -853,12 +949,67 @@
     };
 
     let currentLang = 'en';
+    let soundEnabled = false;
+
+    // Loading Screen Removal
+    window.addEventListener('load', () => {
+      const bar = document.getElementById('loading-bar');
+      bar.style.width = '100%';
+      setTimeout(() => {
+        const loader = document.getElementById('loading-screen');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 700);
+        runCounters();
+      }, 500);
+    });
+
+    // Optional Sound FX
+    function toggleAudio() {
+      soundEnabled = !soundEnabled;
+      const icon = document.getElementById('sound-icon');
+      if (soundEnabled) {
+        icon.setAttribute('data-lucide', 'volume-2');
+        icon.classList.add('text-red-400');
+      } else {
+        icon.setAttribute('data-lucide', 'volume-x');
+        icon.classList.remove('text-red-400');
+      }
+      lucide.createIcons();
+    }
+
+    function playSound() {
+      if (!soundEnabled) return;
+      const audio = document.getElementById('ui-sound');
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+      }
+    }
+
+    // Animated Counters
+    function runCounters() {
+      const counters = document.querySelectorAll('.counter-anim');
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+        const speed = target / 35;
+        const updateCount = () => {
+          count += speed;
+          if (count < target) {
+            counter.innerText = Math.ceil(count);
+            setTimeout(updateCount, 40);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCount();
+      });
+    }
 
     function setLanguage(lang) {
       currentLang = lang;
       const t = translations[lang];
 
-      // Update lang switcher buttons style
       ['en', 'am', 'om'].forEach(l => {
         const btn = document.getElementById(`lang-${l}`);
         if (l === lang) {
@@ -868,7 +1019,6 @@
         }
       });
 
-      // Update DOM Text Content
       document.getElementById('brandNameText').innerText = t.brandName;
       document.getElementById('ceoTitleText').innerText = t.ceoTitle;
       document.getElementById('nav-home-btn').innerText = t.navHome;
@@ -930,12 +1080,10 @@
       document.getElementById('t-portal-sub').innerText = t.portalSub;
       document.getElementById('t-operational').innerText = t.operational;
 
-      // Reset initial chat greeting
       chatMessages = [{ sender: 'ai', text: t.chatGreeting }];
       renderChatMessages();
     }
 
-    // Tab Switching Router Logic
     function switchTab(tabName) {
       const sections = ['home', 'about', 'services', 'blog', 'contact', 'portal'];
       sections.forEach(sec => {
@@ -949,21 +1097,19 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Mobile Menu Toggle
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
     }
 
-    // Custom Cursor Glow Tracking
+    // Mouse Light Trail
     window.addEventListener('mousemove', (e) => {
       const glow = document.getElementById('cursor-glow');
       if (glow) {
-        glow.style.transform = `translate(${e.clientX - 192}px, ${e.clientY - 192}px)`;
+        glow.style.transform = `translate(${e.clientX - 225}px, ${e.clientY - 225}px)`;
       }
     });
 
-    // Checkout Modal State & Handlers
     function openCheckout(packageName) {
       document.getElementById('modal-package-name').innerText = packageName;
       document.getElementById('checkout-step-1').classList.remove('hidden');
@@ -991,7 +1137,6 @@
       closeCheckout();
     }
 
-    // Contact Form Submission
     function handleContactSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('contact-name').value;
@@ -1010,7 +1155,7 @@
       }, 4000);
     }
 
-    // AI Chat Widget Logic
+    // AI Chat Widget
     let chatOpen = false;
     let chatMessages = [];
 
@@ -1034,7 +1179,7 @@
       chatMessages.forEach(msg => {
         const div = document.createElement('div');
         div.className = `flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`;
-        div.innerHTML = `<div class="max-w-[80%] p-3 rounded-2xl ${msg.sender === 'user' ? 'bg-red-600 text-white rounded-br-none' : 'bg-slate-800 text-slate-200 rounded-bl-none'}">${msg.text}</div>`;
+        div.innerHTML = `<div class="max-w-[80%] p-3 rounded-2xl ${msg.sender === 'user' ? 'bg-red-600 text-white rounded-br-none' : 'glass-card text-slate-200 rounded-bl-none border border-slate-800'}">${msg.text}</div>`;
         container.appendChild(div);
       });
       container.scrollTop = container.scrollHeight;
@@ -1060,7 +1205,6 @@
       }, 1000);
     }
 
-    // Initialize Lucide Icons on load
     document.addEventListener("DOMContentLoaded", () => {
       lucide.createIcons();
       setLanguage('en');
