@@ -1,1214 +1,4624 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RedRat IT Solution | Intelligent Software & Web & Offline Desktop App Developers</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts & Custom Futuristic Styles -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    /* Cinematic Aurora & Neon Animations */
-    @keyframes aurora {
-      0% { transform: translate(0px, 0px) scale(1); }
-      33% { transform: translate(30px, -50px) scale(1.1); }
-      66% { transform: translate(-20px, 20px) scale(0.9); }
-      100% { transform: translate(0px, 0px) scale(1); }
-    }
-    @keyframes floatHologram {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(1deg); }
-    }
-    @keyframes shootingStar {
-      0% { transform: translateX(0) translateY(0); opacity: 1; }
-      100% { transform: translateX(-500px) translateY(500px); opacity: 0; }
-    }
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 0.8; }
+<title>RedRat IT Solution | Intelligent Software & Custom Apps</title>
+
+<meta name="description"
+      content="RedRat IT Solution - AI-driven web applications, offline desktop software and enterprise digital solutions.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+
+/* =========================================================
+   REDRAT PREMIUM FUTURISTIC DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+    --red: #ef4444;
+    --red-bright: #ff3b30;
+    --orange: #f97316;
+    --pink: #ec4899;
+    --purple: #8b5cf6;
+    --cyan: #22d3ee;
+    --bg: #020617;
+}
+
+/* BASE */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(239,68,68,.10), transparent 25%),
+        radial-gradient(circle at 90% 20%, rgba(249,115,22,.08), transparent 25%),
+        radial-gradient(circle at 50% 90%, rgba(139,92,246,.08), transparent 30%),
+        #020617;
+    color: #f8fafc;
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   MAGICAL BACKGROUND
+   ========================================================= */
+
+#magic-background {
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.magic-gradient {
+    position: absolute;
+    inset: -20%;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(239,68,68,.16), transparent 20%),
+        radial-gradient(circle at 85% 25%, rgba(249,115,22,.13), transparent 20%),
+        radial-gradient(circle at 50% 70%, rgba(139,92,246,.12), transparent 25%),
+        radial-gradient(circle at 25% 90%, rgba(34,211,238,.07), transparent 20%);
+    filter: blur(30px);
+    animation: magicMove 18s ease-in-out infinite alternate;
+}
+
+@keyframes magicMove {
+    0% {
+        transform: translate3d(-2%, -2%, 0) scale(1);
     }
 
-    .animate-aurora-1 { animation: aurora 12s ease-in-out infinite; }
-    .animate-aurora-2 { animation: aurora 15s ease-in-out infinite reverse; }
-    .animate-hologram { animation: floatHologram 6s ease-in-out infinite; }
-    .neon-border {
-      position: relative;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      box-shadow: 0 0 20px rgba(239, 68, 68, 0.15), inset 0 0 15px rgba(239, 68, 68, 0.05);
-    }
-    .neon-border:hover {
-      border-color: rgba(239, 68, 68, 0.8);
-      box-shadow: 0 0 30px rgba(239, 68, 68, 0.4), inset 0 0 20px rgba(239, 68, 68, 0.15);
+    50% {
+        transform: translate3d(3%, 2%, 0) scale(1.06);
     }
 
-    /* Glassmorphism */
-    .glass-card {
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    100% {
+        transform: translate3d(-1%, 4%, 0) scale(1.03);
+    }
+}
+
+/* STAR FIELD */
+
+.stars,
+.stars::before,
+.stars::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+}
+
+.stars {
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1.5px);
+    background-size: 85px 85px;
+    opacity: .28;
+    animation: starsMove 35s linear infinite;
+}
+
+.stars::before {
+    background-image:
+        radial-gradient(circle, rgba(239,68,68,.8) 1px, transparent 1.5px);
+    background-size: 137px 137px;
+    opacity: .22;
+    animation: starsMove 55s linear infinite reverse;
+}
+
+.stars::after {
+    background-image:
+        radial-gradient(circle, rgba(249,115,22,.8) 1px, transparent 1.5px);
+    background-size: 211px 211px;
+    opacity: .18;
+    animation: starsMove 75s linear infinite;
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
     }
 
-    /* Liquid Buttons */
-    .liquid-btn {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    to {
+        transform: translateY(85px);
     }
-    .liquid-btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
-    }
-    .liquid-btn:hover::before {
-      left: 100%;
+}
+
+/* FLOATING LIGHTS */
+
+.light-orb {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .13;
+    animation: floatOrb 12s ease-in-out infinite;
+}
+
+.orb-red {
+    background: #ef4444;
+    left: -80px;
+    top: 20%;
+}
+
+.orb-orange {
+    background: #f97316;
+    right: -80px;
+    top: 45%;
+    animation-delay: -4s;
+}
+
+.orb-purple {
+    background: #8b5cf6;
+    left: 40%;
+    bottom: -100px;
+    animation-delay: -8s;
+}
+
+@keyframes floatOrb {
+    0%,100% {
+        transform: translate(0,0) scale(1);
     }
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #020617; }
-    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #334155; }
-  </style>
+    50% {
+        transform: translate(60px,-40px) scale(1.2);
+    }
+}
+
+/* =========================================================
+   CURSOR GLOW
+   ========================================================= */
+
+#cursor-glow {
+    position: fixed;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+    background:
+        radial-gradient(
+            circle,
+            rgba(239,68,68,.13),
+            rgba(249,115,22,.05) 35%,
+            transparent 70%
+        );
+    transform: translate(-50%,-50%);
+    transition: opacity .3s ease;
+    mix-blend-mode: screen;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+#main-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    background: rgba(2,6,23,.70);
+    border-bottom: 1px solid rgba(148,163,184,.10);
+}
+
+.header-inner {
+    max-width: 1500px;
+    margin: auto;
+}
+
+/* LOGO */
+
+.logo-core {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 17px;
+    padding: 1px;
+    background:
+        linear-gradient(
+            135deg,
+            #ff1f1f,
+            #f97316,
+            #ec4899,
+            #8b5cf6
+        );
+    box-shadow:
+        0 0 30px rgba(239,68,68,.25),
+        inset 0 0 20px rgba(255,255,255,.08);
+    transition: .4s ease;
+}
+
+.logo-core:hover {
+    transform: rotate(8deg) scale(1.1);
+    box-shadow:
+        0 0 45px rgba(239,68,68,.55),
+        0 0 80px rgba(249,115,22,.20);
+}
+
+.logo-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: #020617;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================================
+   GLASS CARDS
+   ========================================================= */
+
+.glass-card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15,23,42,.78),
+            rgba(15,23,42,.45)
+        );
+    border: 1px solid rgba(148,163,184,.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.28),
+        inset 0 1px rgba(255,255,255,.035);
+}
+
+.glass-card:hover {
+    border-color: rgba(239,68,68,.28);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.38),
+        0 0 40px rgba(239,68,68,.06);
+}
+
+/* NEON BORDER */
+
+.neon-border {
+    position: relative;
+    isolation: isolate;
+}
+
+.neon-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(239,68,68,.45),
+            transparent 25%,
+            transparent 70%,
+            rgba(249,115,22,.35)
+        );
+    opacity: 0;
+    transition: .5s ease;
+    z-index: -1;
+}
+
+.neon-border:hover::before {
+    opacity: 1;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero-title {
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff 0%,
+            #f8fafc 30%,
+            #fca5a5 65%,
+            #fb923c 100%
+        );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            110deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+    transform: translateX(-100%);
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0%,50% {
+        transform: translateX(-100%);
+    }
+
+    70%,100% {
+        transform: translateX(100%);
+    }
+}
+
+/* =========================================================
+   HOLOGRAM
+   ========================================================= */
+
+.hologram {
+    animation: hologramFloat 7s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes hologramFloat {
+    0%,100% {
+        transform: translateY(0) rotateX(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotateX(1deg);
+    }
+}
+
+.hologram-screen {
+    position: relative;
+    overflow: hidden;
+}
+
+.hologram-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            transparent 50%,
+            rgba(239,68,68,.035) 50%
+        );
+    background-size: 100% 5px;
+    pointer-events: none;
+}
+
+.hologram-screen::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    left: 0;
+    right: 0;
+    top: -5%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(239,68,68,.8),
+            rgba(249,115,22,.8),
+            transparent
+        );
+    box-shadow: 0 0 20px rgba(239,68,68,.7);
+    animation: scan 5s linear infinite;
+}
+
+@keyframes scan {
+    from {
+        top: -5%;
+    }
+
+    to {
+        top: 105%;
+    }
+}
+
+/* ORBITS */
+
+.orbit {
+    position: absolute;
+    border: 1px solid rgba(239,68,68,.22);
+    border-radius: 50%;
+}
+
+.orbit-1 {
+    width: 150px;
+    height: 150px;
+    animation: orbit 10s linear infinite;
+}
+
+.orbit-2 {
+    width: 230px;
+    height: 230px;
+    border-color: rgba(249,115,22,.18);
+    animation: orbit 16s linear infinite reverse;
+}
+
+.orbit-3 {
+    width: 300px;
+    height: 300px;
+    border-color: rgba(139,92,246,.12);
+    animation: orbit 25s linear infinite;
+}
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.liquid-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.liquid-btn::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    left: -25%;
+    top: -100%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.22),
+            transparent 55%
+        );
+    transition: .5s ease;
+    z-index: -1;
+}
+
+.liquid-btn:hover::before {
+    top: -25%;
+}
+
+.liquid-btn:hover {
+    box-shadow:
+        0 0 30px rgba(239,68,68,.25);
+}
+
+/* =========================================================
+   SERVICE ICON
+   ========================================================= */
+
+.service-icon {
+    transition: .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.service-card:hover .service-icon {
+    transform:
+        translateY(-4px)
+        rotate(-5deg)
+        scale(1.12);
+    box-shadow:
+        0 0 35px rgba(239,68,68,.20);
+}
+
+/* =========================================================
+   STAT CARDS
+   ========================================================= */
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    right: -30px;
+    top: -30px;
+    border-radius: 50%;
+    background: rgba(239,68,68,.12);
+    filter: blur(20px);
+}
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   TILT
+   ========================================================= */
+
+.tilt-card {
+    transform-style: preserve-3d;
+    transition: transform .15s ease;
+}
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+
+#chat-window {
+    transform-origin: bottom right;
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+#chat-window.chat-hidden {
+    opacity: 0;
+    transform: scale(.8) translateY(20px);
+    pointer-events: none;
+}
+
+.chat-dot {
+    box-shadow:
+        0 0 0 5px rgba(239,68,68,.08),
+        0 0 25px rgba(239,68,68,.45);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width: 767px) {
+
+    .hero-title {
+        font-size: 2.7rem;
+    }
+
+    #cursor-glow {
+        display: none;
+    }
+
+    .orbit-3 {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            #ef4444,
+            #f97316
+        );
+    border-radius: 20px;
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+input,
+textarea {
+    transition: .25s ease;
+}
+
+input:focus,
+textarea:focus {
+    box-shadow:
+        0 0 0 3px rgba(239,68,68,.08),
+        0 0 25px rgba(239,68,68,.05);
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal-backdrop {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.modal-panel {
+    animation: modalIn .35s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(30px)
+            scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* =========================================================
+   GLOW TEXT
+   ========================================================= */
+
+.glow-text {
+    text-shadow:
+        0 0 20px rgba(239,68,68,.25);
+}
+
+</style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100 font-sans relative overflow-x-hidden selection:bg-red-600 selection:text-white">
 
-  <!-- ==========================================
-      CINEMATIC BACKGROUND & AUDIO ELEMENTS
-  ========================================== -->
-  <audio id="ui-sound" preload="auto">
-    <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
-  </audio>
+<body>
 
-  <!-- Mouse-Following Light Trail -->
-  <div 
-    id="cursor-glow"
-    class="pointer-events-none fixed w-[450px] h-[450px] rounded-full bg-gradient-to-r from-red-600/15 via-rose-600/10 to-orange-600/15 blur-[90px] transition-transform duration-75 ease-out z-50 hidden md:block"
-  ></div>
+<!-- =======================================================
+     MAGICAL BACKGROUND
+======================================================= -->
 
-  <!-- Cinematic Aurora Lights & Neural Background -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-red-600/15 rounded-full blur-[140px] animate-aurora-1"></div>
-    <div class="absolute top-1/2 -right-40 w-[700px] h-[700px] bg-orange-600/10 rounded-full blur-[160px] animate-aurora-2"></div>
-    <div class="absolute -bottom-40 left-1/3 w-[800px] h-[800px] bg-rose-900/10 rounded-full blur-[180px] animate-aurora-1"></div>
-    <!-- Neural Grid Overlay -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b0a_1px,transparent_1px),linear-gradient(to_bottom,#1e293b0a_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
-  </div>
+<div id="magic-background">
 
-  <!-- ==========================================
-      PREMIUM LOADING SCREEN
-  ========================================== -->
-  <div id="loading-screen" class="fixed inset-0 z-55 bg-slate-950 flex flex-col items-center justify-center space-y-6 transition-opacity duration-700">
-    <div class="relative w-24 h-24 rounded-3xl bg-gradient-to-tr from-red-600 to-orange-500 p-1 shadow-2xl shadow-red-600/50 animate-pulse">
-      <div class="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center">
-        <i data-lucide="cpu" class="w-12 h-12 text-red-500 animate-spin" style="animation-duration: 8s;"></i>
-      </div>
-      <div class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full animate-ping"></div>
-    </div>
-    <div class="text-center space-y-2">
-      <h2 class="text-xl font-black tracking-widest bg-gradient-to-r from-white via-slate-200 to-red-400 bg-clip-text text-transparent">REDRAT AI ENGINE</h2>
-      <p class="text-xs font-mono text-red-400 tracking-widest uppercase">Initializing Neural Core & Orbiting Nodes...</p>
-    </div>
-    <div class="w-48 h-1 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
-      <div id="loading-bar" class="w-0 h-full bg-gradient-to-r from-red-600 to-orange-500 transition-all duration-500"></div>
-    </div>
-  </div>
+    <div class="magic-gradient"></div>
 
-  <!-- ==========================================
-      HEADER / NAVIGATION
-  ========================================== -->
-  <header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/80 border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
-      <!-- LOGO -->
-      <div 
-        onclick="switchTab('home'); playSound();"
-        class="flex items-center gap-3 cursor-pointer group"
-      >
-        <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-tr from-red-600 to-orange-500 p-0.5 shadow-lg shadow-red-600/30 group-hover:scale-110 transition-transform duration-300">
-          <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-            <i data-lucide="cpu" class="w-6 h-6 text-red-500 animate-pulse"></i>
-          </div>
-          <div class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+    <div class="stars"></div>
+
+    <div class="light-orb orb-red"></div>
+    <div class="light-orb orb-orange"></div>
+    <div class="light-orb orb-purple"></div>
+
+</div>
+
+<div id="cursor-glow"></div>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header id="main-header">
+
+<div class="header-inner px-4 sm:px-6 lg:px-10">
+
+<div class="h-20 flex items-center justify-between gap-5">
+
+<!-- LOGO -->
+
+<div
+    onclick="switchTab('home'); playSound();"
+    class="flex items-center gap-3 cursor-pointer group shrink-0"
+>
+
+    <div class="logo-core">
+
+        <div class="logo-inner">
+
+            <i
+                data-lucide="cpu"
+                class="w-6 h-6 text-red-500"
+            ></i>
+
         </div>
-        <div>
-          <span id="brandNameText" class="text-xl font-black tracking-wider bg-gradient-to-r from-white via-slate-200 to-red-400 bg-clip-text text-transparent">
+
+        <div
+            class="absolute -top-1 -right-1
+                   w-3 h-3
+                   bg-red-500
+                   rounded-full
+                   animate-ping"
+        ></div>
+
+    </div>
+
+    <div>
+
+        <span
+            id="brandNameText"
+            class="text-lg sm:text-xl
+                   font-black
+                   tracking-wider
+                   bg-gradient-to-r
+                   from-white
+                   via-slate-200
+                   to-red-400
+                   bg-clip-text
+                   text-transparent"
+        >
             RedRat IT Solution
-          </span>
-          <span id="ceoTitleText" class="block text-[10px] text-red-400 font-medium tracking-widest uppercase">
+        </span>
+
+        <span
+            id="ceoTitleText"
+            class="block
+                   text-[9px]
+                   sm:text-[10px]
+                   text-red-400
+                   font-medium
+                   tracking-widest
+                   uppercase"
+        >
             Founder & CEO: Ashebir Tereda
-          </span>
-        </div>
-      </div>
-
-      <!-- DESKTOP NAV LINKS -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-        <button onclick="switchTab('home'); playSound();" id="nav-home-btn" class="hover:text-red-400 transition-colors nav-link">Home</button>
-        <button onclick="switchTab('about'); playSound();" id="nav-about-btn" class="hover:text-red-400 transition-colors nav-link">About</button>
-        <button onclick="switchTab('services'); playSound();" id="nav-services-btn" class="hover:text-red-400 transition-colors nav-link">Services</button>
-        <button onclick="switchTab('blog'); playSound();" id="nav-blog-btn" class="hover:text-red-400 transition-colors nav-link">Blog</button>
-        <button onclick="switchTab('contact'); playSound();" id="nav-contact-btn" class="hover:text-red-400 transition-colors nav-link">Contact</button>
-        <button onclick="switchTab('portal'); playSound();" id="nav-portal-btn" class="px-3.5 py-1.5 rounded-xl bg-red-600/20 border border-red-500/40 text-red-400 hover:bg-red-600 hover:text-white transition-all nav-link shadow-lg shadow-red-600/10">Client Dashboard</button>
-      </nav>
-
-      <!-- AUDIO TOGGLE, LANGUAGE & MOBILE TOGGLE -->
-      <div class="flex items-center gap-3">
-        <button onclick="toggleAudio()" id="audio-toggle-btn" class="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors" title="Toggle Sound FX">
-          <i data-lucide="volume-x" id="sound-icon" class="w-4 h-4"></i>
-        </button>
-
-        <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1 text-xs font-semibold">
-          <button onclick="setLanguage('en'); playSound();" id="lang-en" class="px-2.5 py-1 rounded-lg transition-all bg-red-600 text-white shadow">EN</button>
-          <button onclick="setLanguage('am'); playSound();" id="lang-am" class="px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white">አማ</button>
-          <button onclick="setLanguage('om'); playSound();" id="lang-om" class="px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white">OM</button>
-        </div>
-
-        <button 
-          onclick="toggleMobileMenu(); playSound();" 
-          class="md:hidden p-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800"
-        >
-          <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="hidden md:hidden bg-slate-950/95 backdrop-blur-2xl border-b border-slate-800 px-4 pt-3 pb-6 space-y-3">
-      <button onclick="switchTab('home'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Home</button>
-      <button onclick="switchTab('about'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">About</button>
-      <button onclick="switchTab('services'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Services</button>
-      <button onclick="switchTab('blog'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Blog</button>
-      <button onclick="switchTab('contact'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-slate-900">Contact</button>
-      <button onclick="switchTab('portal'); toggleMobileMenu(); playSound();" class="block w-full text-left py-2 px-3 rounded-lg bg-red-600/20 text-red-400">Client Dashboard</button>
-    </div>
-  </header>
-
-  <!-- ==========================================
-      MAIN VIEW ROUTER CONTAINER
-  ========================================== -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-    
-    <!-- ================= HOME PAGE ================= -->
-    <div id="view-home" class="space-y-24 view-section">
-      
-      <!-- HERO SECTION -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-8">
-        <div class="space-y-8">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-semibold tracking-wide shadow-lg shadow-red-500/10">
-            <i data-lucide="sparkles" class="w-4 h-4 animate-spin"></i>
-            <span id="t-hero-badge">AI-Driven Digital Transformation & App Development</span>
-          </div>
-
-          <h1 id="t-hero-title" class="text-4xl sm:text-6xl font-black tracking-tight leading-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-            Empowering Enterprises Through Intelligent Software & Custom Apps
-          </h1>
-
-          <p id="t-hero-subtitle" class="text-lg text-slate-400 font-normal leading-relaxed">
-            We are premier web application and offline desktop app development experts. Led by Ashebir Tereda, we engineer powerful digital ecosystems that drive efficiency and growth.
-          </p>
-
-          <div class="flex flex-wrap gap-4 pt-2">
-            <button 
-              onclick="switchTab('services'); playSound();"
-              class="liquid-btn px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold shadow-xl shadow-red-600/30 hover:scale-105 transition-transform flex items-center gap-2"
-            >
-              <span id="t-explore-btn">Explore Solutions</span>
-              <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </button>
-            <button 
-              onclick="switchTab('contact'); playSound();"
-              id="t-contact-btn"
-              class="liquid-btn px-8 py-4 rounded-2xl glass-card text-slate-200 font-semibold hover:bg-slate-800 hover:text-white transition-all"
-            >
-              Get in Touch
-            </button>
-          </div>
-
-          <!-- ANIMATED COUNTERS -->
-          <div class="grid grid-cols-3 pt-6 border-t border-slate-900 gap-4">
-            <div class="p-4 rounded-2xl glass-card border border-slate-800/80">
-              <h3 class="text-3xl font-black text-white counter-anim" data-target="150">0</h3><span class="text-red-500 font-black">+</span>
-              <p id="t-stats-projects" class="text-xs text-slate-400 mt-1">Successful Projects</p>
-            </div>
-            <div class="p-4 rounded-2xl glass-card border border-slate-800/80">
-              <h3 class="text-3xl font-black text-white counter-anim" data-target="99">0</h3><span class="text-red-500 font-black">%</span>
-              <p id="t-stats-clients" class="text-xs text-slate-400 mt-1">Satisfied Partners</p>
-            </div>
-            <div class="p-4 rounded-2xl glass-card border border-slate-800/80">
-              <h3 class="text-3xl font-black text-white">24/7</h3>
-              <p id="t-stats-support" class="text-xs text-slate-400 mt-1">Expert Support</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- HERO FLOATING AI HOLOGRAM & NEURAL MOCKUP -->
-        <div class="relative group perspective-1000">
-          <div class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-red-600 to-orange-500 opacity-30 blur-2xl group-hover:opacity-50 transition duration-1000"></div>
-          <div class="relative rounded-3xl glass-card p-6 shadow-2xl space-y-6 neon-border animate-hologram">
-            
-            <!-- Floating Hologram Header -->
-            <div class="relative h-52 rounded-2xl overflow-hidden bg-gradient-to-br from-slate-950 via-red-950/40 to-slate-900 border border-slate-800 flex items-center justify-center">
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-600/30 via-transparent to-transparent"></div>
-              
-              <!-- Orbiting Glowing Objects -->
-              <div class="absolute w-32 h-32 rounded-full border border-red-500/20 animate-spin" style="animation-duration: 12s;">
-                <div class="absolute -top-1.5 left-1/2 w-3 h-3 bg-red-500 rounded-full shadow-lg shadow-red-500 animate-ping"></div>
-              </div>
-              <div class="absolute w-48 h-48 rounded-full border border-orange-500/20 animate-spin" style="animation-duration: 18s; animation-direction: reverse;">
-                <div class="absolute -bottom-1.5 right-1/2 w-3 h-3 bg-orange-400 rounded-full shadow-lg shadow-orange-400"></div>
-              </div>
-
-              <div class="relative z-10 text-center space-y-2 p-4">
-                <div class="inline-flex p-3 rounded-2xl bg-red-600/20 border border-red-500/40 text-red-400 shadow-xl shadow-red-600/30 animate-pulse">
-                  <i data-lucide="brain-circuit" class="w-10 h-10"></i>
-                </div>
-                <div class="text-xs font-mono uppercase tracking-widest text-red-400 font-bold">Apple / Tesla AI Grade Engine v3.2</div>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-              <div class="flex items-center gap-2">
-                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-              <span class="text-xs font-mono text-slate-400">redrat-core-engine-v3.2.exe</span>
-            </div>
-
-            <div class="space-y-3 font-mono text-xs">
-              <div class="flex items-center gap-3 text-red-400">
-                <i data-lucide="terminal" class="w-4 h-4"></i>
-                <span>Compiling Offline Desktop POS & Neural Core...</span>
-              </div>
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800/80 text-slate-300 space-y-2">
-                <p class="text-emerald-400">✔ Custom Web App Architecture Loaded</p>
-                <p class="text-emerald-400">✔ Offline Desktop WAMP & Local DB Active</p>
-                <p class="text-emerald-400">✔ AI-Powered Automation Engine Ready</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SERVICES PREVIEW -->
-      <div class="space-y-12 pt-16">
-        <div class="text-center space-y-4 max-w-2xl mx-auto">
-          <h2 id="t-services-title" class="text-3xl font-black tracking-tight">Our Core Development Solutions</h2>
-          <p id="t-services-sub" class="text-slate-400">Custom web applications and high-performance offline desktop software engineered for scaling enterprises</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="glass-card p-8 rounded-3xl neon-border transition-all duration-300 hover:-translate-y-2 group">
-            <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="globe" class="w-7 h-7"></i>
-            </div>
-            <h3 id="t-s1-title" class="text-xl font-bold mb-3">Custom Web Applications</h3>
-            <p id="t-s1-desc" class="text-slate-400 text-sm leading-relaxed">Scalable, high-performance web solutions built with modern frameworks and robust backend architecture.</p>
-          </div>
-
-          <div class="glass-card p-8 rounded-3xl neon-border transition-all duration-300 hover:-translate-y-2 group">
-            <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="server" class="w-7 h-7"></i>
-            </div>
-            <h3 id="t-s2-title" class="text-xl font-bold mb-3">Offline Desktop Applications</h3>
-            <p id="t-s2-desc" class="text-slate-400 text-sm leading-relaxed">Secure, standalone desktop software designed for lightning-fast offline operations and local data storage.</p>
-          </div>
-
-          <div class="glass-card p-8 rounded-3xl neon-border transition-all duration-300 hover:-translate-y-2 group">
-            <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="layers" class="w-7 h-7"></i>
-            </div>
-            <h3 id="t-s3-title" class="text-xl font-bold mb-3">Enterprise Digital Suites</h3>
-            <p id="t-s3-desc" class="text-slate-400 text-sm leading-relaxed">Integrated inventory, payroll, and profit-cost analysis tools designed to streamline daily management.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- INTERACTIVE WORLD MAP & GLOBAL REACH -->
-      <div class="pt-12">
-        <div class="glass-card rounded-3xl p-8 border border-slate-800 space-y-6 relative overflow-hidden">
-          <div class="absolute -right-20 -top-20 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="space-y-2">
-              <div class="inline-flex items-center gap-2 text-xs font-mono text-red-400 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/30">
-                <i data-lucide="globe-2" class="w-4 h-4"></i>
-                <span>Global & East Africa Deployment Network</span>
-              </div>
-              <h3 class="text-2xl font-bold">Connected Enterprise Ecosystem</h3>
-              <p class="text-sm text-slate-400 max-w-xl">Deploying robust offline desktop apps and web solutions across multiple regional sectors with lightning-fast latency and 100% data privacy.</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 shrink-0">
-              <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-center">
-                <div class="text-2xl font-black text-red-500">12+</div>
-                <div class="text-xs text-slate-400">Regions Served</div>
-              </div>
-              <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-center">
-                <div class="text-2xl font-black text-emerald-400">99.9%</div>
-                <div class="text-xs text-slate-400">Node Stability</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </span>
 
     </div>
 
-    <!-- ================= ABOUT PAGE ================= -->
-    <div id="view-about" class="space-y-16 py-8 hidden view-section">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6">
-          <h1 id="t-about-title" class="text-4xl font-black">Architecting the Future of Software Engineering</h1>
-          <p id="t-about-text" class="text-lg text-slate-300 leading-relaxed">
-            Founded by Ashebir Tereda, RedRat IT Solution is a premier software development company specializing in robust web applications and secure offline desktop systems. We bridge complex enterprise workflows with intuitive user interfaces, providing end-to-end development, deployment, and mastery training.
-          </p>
-        </div>
-        <!-- AI Inspired Vision Graphic -->
-        <div class="relative rounded-3xl p-8 glass-card border border-slate-800 shadow-2xl overflow-hidden group">
-          <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div class="relative z-10 flex flex-col items-center text-center space-y-4 py-8">
-            <div class="p-4 rounded-2xl bg-red-600/20 border border-red-500/40 text-red-400 shadow-xl shadow-red-600/20 group-hover:scale-110 transition-transform">
-              <i data-lucide="cpu" class="w-12 h-12"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white">Next-Gen Intelligent Core</h3>
-            <p class="text-sm text-slate-400">Autonomous workflow compilation and secure offline databases tailored for enterprise supremacy.</p>
-          </div>
-        </div>
-      </div>
+</div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="glass-card p-8 rounded-3xl neon-border space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
-            <i data-lucide="zap" class="w-6 h-6"></i>
-          </div>
-          <h3 id="t-mission-title" class="text-2xl font-bold">Our Mission</h3>
-          <p id="t-mission-desc" class="text-slate-400 leading-relaxed">To empower organizations globally with robust, intelligent, and tailored software solutions that scale effortlessly.</p>
-        </div>
 
-        <div class="glass-card p-8 rounded-3xl neon-border space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
-            <i data-lucide="compass" class="w-6 h-6"></i>
-          </div>
-          <h3 id="t-vision-title" class="text-2xl font-bold">Our Vision</h3>
-          <p id="t-vision-desc" class="text-slate-400 leading-relaxed">To be East Africa and the region's leading pioneer in custom web app engineering and offline desktop software development.</p>
-        </div>
-      </div>
-    </div>
+<!-- DESKTOP NAV -->
 
-    <!-- ================= SERVICES / PRODUCTS & PRICING ================= -->
-    <div id="view-services" class="space-y-16 py-8 hidden view-section">
-      <div class="text-center space-y-4 max-w-2xl mx-auto">
-        <h1 id="t-services-main-title" class="text-4xl font-black">Our Professional Development Services</h1>
-        <p id="t-services-main-sub" class="text-slate-400">Tailored digital systems engineered for modern enterprises, retail businesses, and digital startups.</p>
-      </div>
+<nav
+    class="hidden lg:flex
+           items-center
+           gap-6
+           text-sm
+           font-medium
+           text-slate-300"
+>
 
-      <!-- PRICING & PACKAGES -->
-      <div class="space-y-8 pt-8">
-        <div class="text-center space-y-2">
-          <h2 id="t-pricing-title" class="text-2xl font-bold">Transparent Service Packages</h2>
-          <p id="t-pricing-sub" class="text-sm text-slate-400">Choose a tier tailored to your operational scale. All packages include source delivery and onboarding.</p>
-        </div>
+<button
+    onclick="switchTab('home'); playSound();"
+    id="nav-home-btn"
+    class="hover:text-red-400 transition-colors nav-link"
+>
+    Home
+</button>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- PACKAGE 1 -->
-          <div class="glass-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between space-y-6 hover:border-red-500/50 transition-all">
-            <div class="space-y-4">
-              <h3 id="t-p1-name" class="text-xl font-bold">Starter Web Kit</h3>
-              <div class="text-3xl font-black text-red-500">$499</div>
-              <p id="t-p1-desc" class="text-sm text-slate-400">Perfect for growing businesses establishing their professional web presence.</p>
-              <ul class="space-y-2 text-sm text-slate-300 pt-4 border-t border-slate-800">
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Responsive Web App</li>
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Standard Onboarding</li>
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> 6 Months Support</li>
-              </ul>
-            </div>
-            <button 
-              onclick="openCheckout('Starter Web Kit'); playSound();"
-              id="t-p1-btn"
-              class="liquid-btn w-full py-3 rounded-xl bg-slate-800 hover:bg-red-600 text-white font-semibold transition-colors flex items-center justify-center gap-2"
-            >
-              <span>Select Package</span>
-              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-            </button>
-          </div>
+<button
+    onclick="switchTab('about'); playSound();"
+    id="nav-about-btn"
+    class="hover:text-red-400 transition-colors nav-link"
+>
+    About
+</button>
 
-          <!-- PACKAGE 2 -->
-          <div class="glass-card p-8 rounded-3xl border-2 border-red-500/60 flex flex-col justify-between space-y-6 relative shadow-2xl shadow-red-600/20">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-lg shadow-red-600/50">
-              Most Popular
-            </div>
-            <div class="space-y-4">
-              <h3 id="t-p2-name" class="text-xl font-bold">Offline Desktop Suite</h3>
-              <div class="text-3xl font-black text-red-500">$1,299</div>
-              <p id="t-p2-desc" class="text-sm text-slate-400">Advanced standalone offline desktop application with local DB & installer (.exe).</p>
-              <ul class="space-y-2 text-sm text-slate-300 pt-4 border-t border-slate-800">
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Custom Offline App (.exe)</li>
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Local WAMP / DB Integration</li>
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Full Training & Setup</li>
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> 1 Year Priority Support</li>
-              </ul>
-            </div>
-            <button 
-              onclick="openCheckout('Offline Desktop Suite'); playSound();"
-              id="t-p2-btn"
-              class="liquid-btn w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-lg shadow-red-600/30"
-            >
-              <span>Select Package</span>
-              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-            </button>
-          </div>
+<button
+    onclick="switchTab('services'); playSound();"
+    id="nav-services-btn"
+    class="hover:text-red-400 transition-colors nav-link"
+>
+    Services
+</button>
 
-          <!-- PACKAGE 3 -->
-          <div class="glass-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between space-y-6 hover:border-red-500/50 transition-all">
-            <div class="space-y-4">
-              <h3 id="t-p3-name" class="text-xl font-bold">Bespoke AI Platform</h3>
-              <div class="text-3xl font-black text-red-500">Custom</div>
-              <p id="t-p3-desc" class="text-sm text-slate-400">Fully customized architecture tailored precisely to enterprise workflows.</p>
-              <ul class="space-y-2 text-sm text-slate-300 pt-4 border-t border-slate-800">
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> 100% Custom App Architecture</li>
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Dedicated Development Team</li>
-                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-red-500"></i> Lifetime Mastery Support</li>
-              </ul>
-            </div>
-            <button 
-              onclick="openCheckout('Bespoke AI Platform'); playSound();"
-              id="t-p3-btn"
-              class="liquid-btn w-full py-3 rounded-xl bg-slate-800 hover:bg-red-600 text-white font-semibold transition-colors flex items-center justify-center gap-2"
-            >
-              <span>Select Package</span>
-              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+<button
+    onclick="switchTab('blog'); playSound();"
+    id="nav-blog-btn"
+    class="hover:text-red-400 transition-colors nav-link"
+>
+    Blog
+</button>
 
-    <!-- ================= BLOG PAGE ================= -->
-    <div id="view-blog" class="space-y-12 py-8 hidden view-section">
-      <div class="text-center space-y-4 max-w-2xl mx-auto">
-        <h1 id="t-blog-title" class="text-4xl font-black">Tech Insights & Development Tips</h1>
-        <p id="t-blog-sub" class="text-slate-400">Discover how modern web apps and offline desktop solutions are transforming enterprise software engineering.</p>
-      </div>
+<button
+    onclick="switchTab('contact'); playSound();"
+    id="nav-contact-btn"
+    class="hover:text-red-400 transition-colors nav-link"
+>
+    Contact
+</button>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="glass-card p-8 rounded-3xl neon-border space-y-4 transition-all group cursor-pointer" onclick="playSound()">
-          <span class="text-xs font-mono text-red-400">August 2026</span>
-          <h3 id="t-b1-title" class="text-2xl font-bold group-hover:text-red-400 transition-colors">Why Offline Desktop Apps Deliver Superior Reliability</h3>
-          <p id="t-b1-excerpt" class="text-slate-400 text-sm leading-relaxed">Explore how local WAMP servers and standalone desktop architectures eliminate internet downtime vulnerabilities for businesses.</p>
-          <div class="flex items-center gap-2 text-sm font-semibold text-red-400 pt-2">
-            <span>Read Article</span>
-            <i data-lucide="chevron-right" class="w-4 h-4"></i>
-          </div>
-        </div>
+<button
+    onclick="switchTab('portal'); playSound();"
+    id="nav-portal-btn"
+    class="px-4 py-2
+           rounded-xl
+           bg-red-600/15
+           border border-red-500/40
+           text-red-400
+           hover:bg-red-600
+           hover:text-white
+           transition-all
+           nav-link
+           shadow-lg
+           shadow-red-600/10"
+>
+    Client Dashboard
+</button>
 
-        <div class="glass-card p-8 rounded-3xl neon-border space-y-4 transition-all group cursor-pointer" onclick="playSound()">
-          <span class="text-xs font-mono text-red-400">July 2026</span>
-          <h3 id="t-b2-title" class="text-2xl font-bold group-hover:text-red-400 transition-colors">The Role of AI in Streamlining Enterprise Software</h3>
-          <p id="t-b2-excerpt" class="text-slate-400 text-sm leading-relaxed">Automating complex database workflows, code compilation, and local development environments for modern developers.</p>
-          <div class="flex items-center gap-2 text-sm font-semibold text-red-400 pt-2">
-            <span>Read Article</span>
-            <i data-lucide="chevron-right" class="w-4 h-4"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+</nav>
 
-    <!-- ================= CONTACT PAGE ================= -->
-    <div id="view-contact" class="space-y-12 py-8 max-w-4xl mx-auto hidden view-section">
-      <div class="text-center space-y-4">
-        <h1 id="t-contact-main-title" class="text-4xl font-black">Connect With Our Engineering Team</h1>
-        <p id="t-contact-main-sub" class="text-slate-400">Ready to build your web app or offline desktop solution? Reach out to Ashebir Tereda and our experts directly.</p>
-      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div class="space-y-8">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 shrink-0">
-              <i data-lucide="mail" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <h3 class="font-bold">Business Email</h3>
-              <p class="text-slate-400 text-sm">redratitsolution@gmail.com</p>
-              <p class="text-slate-500 text-xs">Personal: ashuterooo@gmail.com</p>
-            </div>
-          </div>
+<!-- CONTROLS -->
 
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 shrink-0">
-              <i data-lucide="phone" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <h3 class="font-bold">Phone Contact</h3>
-              <p class="text-slate-400 text-sm">0927440965 / 0902720423</p>
-              <p class="text-slate-500 text-xs">Direct line to Ashebir Tereda</p>
-            </div>
-          </div>
+<div class="flex items-center gap-2 sm:gap-3">
 
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 shrink-0">
-              <i data-lucide="send" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <h3 class="font-bold">Telegram Channel</h3>
-              <a href="https://t.me/redratitsolution" target="_blank" rel="noreferrer" class="text-red-400 hover:underline text-sm flex items-center gap-1">
-                <span>t.me/redratitsolution</span>
-                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-              </a>
-            </div>
-          </div>
-        </div>
+<button
+    onclick="toggleAudio()"
+    id="audio-toggle-btn"
+    class="p-2.5
+           rounded-xl
+           bg-slate-900/80
+           border border-slate-800
+           text-slate-400
+           hover:text-white
+           hover:border-red-500/40
+           transition-colors"
+    title="Toggle Sound FX"
+>
 
-        <form onsubmit="handleContactSubmit(event)" class="glass-card p-8 rounded-3xl border border-slate-800 space-y-6">
-          <div id="form-success-msg" class="hidden py-12 text-center space-y-4">
-            <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
-              <i data-lucide="check-circle-2" class="w-8 h-8"></i>
-            </div>
-            <h3 class="text-xl font-bold">Message Received!</h3>
-            <p class="text-slate-400 text-sm">Thank you for reaching out. Ashebir Tereda will respond promptly.</p>
-          </div>
+<i
+    data-lucide="volume-x"
+    id="sound-icon"
+    class="w-4 h-4"
+></i>
 
-          <div id="form-inputs-container" class="space-y-6">
-            <div class="space-y-2">
-              <label class="text-xs font-semibold text-slate-300">Your Full Name</label>
-              <input 
-                type="text" 
-                required
-                id="contact-name"
-                placeholder="Ashebir Tereda" 
-                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm text-slate-100" 
-              />
-            </div>
-            <div class="space-y-2">
-              <label class="text-xs font-semibold text-slate-300">Your Email Address</label>
-              <input 
-                type="email" 
-                required
-                id="contact-email"
-                placeholder="redratitsolution@gmail.com" 
-                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm text-slate-100" 
-              />
-            </div>
-            <div class="space-y-2">
-              <label class="text-xs font-semibold text-slate-300">Message</label>
-              <textarea 
-                rows="4"
-                id="contact-message"
-                placeholder="Describe your web app or offline desktop requirement..." 
-                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm resize-none text-slate-100" 
-              ></textarea>
-            </div>
-            <button type="submit" id="t-send-btn" class="liquid-btn w-full py-4 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold shadow-lg shadow-red-600/30 hover:scale-[1.02] transition-transform">
-              Send Message
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+</button>
 
-    <!-- ================= CLIENT PORTAL UI CONCEPT ================= -->
-    <div id="view-portal" class="space-y-8 py-8 hidden view-section">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
-        <div>
-          <h1 id="t-portal-title" class="text-3xl font-black">Client Project Dashboard</h1>
-          <p id="t-portal-sub" class="text-slate-400 text-sm">Track active web and desktop development milestones in real time.</p>
-        </div>
-        <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span id="t-operational">All Local & Cloud Nodes Operational</span>
-        </div>
-      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-2">
-          <span class="text-xs text-slate-400 uppercase font-mono">Active Deployments</span>
-          <div class="text-3xl font-black text-white">3 Deployed</div>
-          <p class="text-xs text-emerald-400 font-medium">Custom Web App v3.2, Offline POS .exe</p>
-        </div>
-        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-2">
-          <span class="text-xs text-slate-400 uppercase font-mono">Support Tickets</span>
-          <div class="text-3xl font-black text-white">0 Open Tickets</div>
-          <p class="text-xs text-slate-400 font-medium">All systems running smoothly</p>
-        </div>
-        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-2">
-          <span class="text-xs text-slate-400 uppercase font-mono">Server Health</span>
-          <div class="text-3xl font-black text-red-500">100% Uptime</div>
-          <p class="text-xs text-slate-400 font-medium">Local WAMP & Cloud Servers</p>
-        </div>
-      </div>
+<!-- LANGUAGE -->
 
-      <div class="glass-card p-8 rounded-3xl border border-slate-800 space-y-6">
-        <h3 class="text-xl font-bold">Recent Milestone Activity</h3>
-        <div class="space-y-4 text-sm font-mono">
-          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-950 border border-slate-800">
-            <div class="flex items-center gap-3">
-              <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
-              <span>Offline Desktop Application .exe Installer Compiled</span>
-            </div>
-            <span class="text-slate-500 text-xs">Completed Yesterday</span>
-          </div>
-          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-950 border border-slate-800">
-            <div class="flex items-center gap-3">
-              <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
-              <span>Web Application Frontend & Database Sync Module</span>
-            </div>
-            <span class="text-slate-500 text-xs">Completed 3 days ago</span>
-          </div>
-        </div>
-      </div>
-    </div>
+<div
+    class="hidden sm:flex
+           items-center
+           bg-slate-900/80
+           border border-slate-800
+           rounded-xl
+           p-1
+           text-xs
+           font-semibold"
+>
 
-  </main>
+<button
+    onclick="setLanguage('en'); playSound();"
+    id="lang-en"
+    class="px-2.5 py-1
+           rounded-lg
+           transition-all
+           bg-red-600
+           text-white
+           shadow"
+>
+    EN
+</button>
 
-  <!-- ==========================================
-      CHECKOUT MODAL
-  ========================================== -->
-  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md px-4 hidden">
-    <div class="glass-card border border-slate-800 rounded-3xl max-w-lg w-full p-8 space-y-6 shadow-2xl relative neon-border">
-      <button 
-        onclick="closeCheckout(); playSound();"
-        class="absolute top-6 right-6 p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white"
-      >
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
+<button
+    onclick="setLanguage('am'); playSound();"
+    id="lang-am"
+    class="px-2.5 py-1
+           rounded-lg
+           transition-all
+           text-slate-400
+           hover:text-white"
+>
+    አማ
+</button>
 
-      <div class="space-y-2">
-        <h3 class="text-2xl font-bold">Secure Package Checkout</h3>
-        <p class="text-sm text-slate-400">Selected Package: <span id="modal-package-name" class="text-red-400 font-bold"></span></p>
-      </div>
+<button
+    onclick="setLanguage('om'); playSound();"
+    id="lang-om"
+    class="px-2.5 py-1
+           rounded-lg
+           transition-all
+           text-slate-400
+           hover:text-white"
+>
+    OM
+</button>
 
-      <div id="checkout-step-1" class="space-y-4">
-        <div class="space-y-2">
-          <label class="text-xs font-semibold text-slate-300">Company / Business Name</label>
-          <input type="text" id="checkout-company" placeholder="e.g. Enterprise Solutions Corp" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm text-slate-100" />
-        </div>
-        <div class="space-y-2">
-          <label class="text-xs font-semibold text-slate-300">Contact Email</label>
-          <input type="email" id="checkout-email" placeholder="manager@business.com" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-red-500 focus:outline-none text-sm text-slate-100" />
-        </div>
-        <button 
-          onclick="proceedToStep2(); playSound();"
-          class="liquid-btn w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold transition-colors shadow-lg shadow-red-600/30"
-        >
-          Proceed to Payment
-        </button>
-      </div>
+</div>
 
-      <div id="checkout-step-2" class="space-y-6 text-center py-4 hidden">
-        <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
-          <i data-lucide="credit-card" class="w-8 h-8"></i>
-        </div>
-        <div class="space-y-2">
-          <h4 class="text-lg font-bold">Stripe / Local Gateway Simulation</h4>
-          <p class="text-xs text-slate-400">Secure encrypted transaction processing initialized.</p>
-        </div>
-        <button 
-          onclick="confirmPayment(); playSound();"
-          class="liquid-btn w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors shadow-lg shadow-emerald-600/30"
-        >
-          Confirm & Pay Securely
-        </button>
-      </div>
-    </div>
-  </div>
 
-  <!-- ==========================================
-      FLOATING AI CHAT ASSISTANT WIDGET
-  ========================================== -->
-  <div class="fixed bottom-6 right-6 z-50">
-    <div id="chat-window" class="w-80 sm:w-96 glass-card border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[450px] hidden neon-border">
-      <div class="p-4 bg-slate-950/80 border-b border-slate-800 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <div class="w-3 h-3 rounded-full bg-red-500 animate-ping"></div>
-          <span class="font-bold text-sm">RedRat Neural AI</span>
-        </div>
-        <button onclick="toggleChat(); playSound();" class="p-1 text-slate-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
+<!-- MOBILE -->
 
-      <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
-        <!-- Messages appended here -->
-      </div>
+<button
+    onclick="toggleMobileMenu(); playSound();"
+    class="lg:hidden
+           p-2.5
+           rounded-xl
+           bg-slate-900
+           text-slate-300
+           hover:text-white
+           border border-slate-800"
+>
 
-      <form onsubmit="handleChatSubmit(event)" class="p-3 bg-slate-950/90 border-t border-slate-800 flex gap-2">
-        <input 
-          type="text"
-          id="chat-input"
-          placeholder="Ask about web apps or desktop tools..."
-          class="flex-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs focus:outline-none focus:border-red-500 text-slate-100"
-        />
-        <button type="submit" class="p-2 rounded-xl bg-red-600 text-white hover:bg-red-500 shadow-lg shadow-red-600/30" onclick="playSound()">
-          <i data-lucide="send" class="w-4 h-4"></i>
-        </button>
-      </form>
-    </div>
+<i
+    data-lucide="menu"
+    id="menu-icon"
+    class="w-6 h-6"
+></i>
 
-    <button 
-      id="chat-toggle-btn"
-      onclick="toggleChat(); playSound();"
-      class="liquid-btn w-14 h-14 rounded-full bg-gradient-to-r from-red-600 to-orange-600 text-white flex items-center justify-center shadow-2xl shadow-red-600/50 hover:scale-110 transition-transform group"
-    >
-      <i data-lucide="headphones" class="w-6 h-6 animate-pulse"></i>
-    </button>
-  </div>
+</button>
 
-  <!-- ==========================================
-      FOOTER
-  ========================================== -->
-  <footer class="border-t border-slate-900 bg-slate-950/80 mt-24 py-12 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-slate-500 text-xs">
-      <div class="flex items-center gap-3">
-        <i data-lucide="cpu" class="w-5 h-5 text-red-500 animate-pulse"></i>
-        <span>© 2026 RedRat IT Solution. Web & Offline Desktop App Developers. Led by Ashebir Tereda. All rights reserved.</span>
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="https://t.me/redratitsolution" target="_blank" rel="noreferrer" class="hover:text-red-400 transition-colors">Telegram Channel</a>
-        <span>redratitsolution@gmail.com</span>
-        <span>0927440965</span>
-      </div>
-    </div>
-  </footer>
+</div>
 
-  <!-- ==========================================
-      APPLICATION SCRIPT LOGIC
-  ========================================== -->
-  <script>
-    // Translations Dictionary
-    const translations = {
-      en: {
-        brandName: "RedRat IT Solution",
-        ceoTitle: "Founder & CEO: Ashebir Tereda",
-        navHome: "Home",
-        navAbout: "About",
-        navServices: "Services",
-        navBlog: "Blog",
-        navContact: "Contact",
-        navPortal: "Client Dashboard",
-        heroBadge: "AI-Driven Digital Transformation & App Development",
-        heroTitle: "Empowering Enterprises Through Intelligent Software & Custom Apps",
-        heroSubtitle: "We are premier web application and offline desktop app development experts. Led by Ashebir Tereda, we engineer powerful digital ecosystems that drive efficiency and growth.",
-        exploreBtn: "Explore Solutions",
-        contactBtn: "Get in Touch",
-        statsProjects: "Successful Projects",
-        statsClients: "Satisfied Partners",
-        statsSupport: "Expert Support",
-        servicesTitle: "Our Core Development Solutions",
-        servicesSub: "Custom web applications and high-performance offline desktop software engineered for scaling enterprises.",
-        s1Title: "Custom Web Applications",
-        s1Desc: "Scalable, high-performance web solutions built with modern frameworks and robust backend architecture.",
-        s2Title: "Offline Desktop Applications",
-        s2Desc: "Secure, standalone desktop software designed for lightning-fast offline operations and local data storage.",
-        s3Title: "Enterprise Digital Suites",
-        s3Desc: "Integrated inventory, payroll, and profit-cost analysis tools designed to streamline daily management.",
-        aboutTitle: "Architecting the Future of Software Engineering",
-        aboutText: "Founded by Ashebir Tereda, RedRat IT Solution is a premier software development company specializing in robust web applications and secure offline desktop systems. We bridge complex enterprise workflows with intuitive user interfaces, providing end-to-end development, deployment, and mastery training.",
-        missionTitle: "Our Mission",
-        missionDesc: "To empower organizations globally with robust, intelligent, and tailored software solutions that scale effortlessly.",
-        visionTitle: "Our Vision",
-        visionDesc: "To be East Africa and the region's leading pioneer in custom web app engineering and offline desktop software development.",
-        pricingTitle: "Transparent Service Packages",
-        pricingSub: "Choose a tier tailored to your operational scale. All packages include source delivery and onboarding.",
-        p1Name: "Starter Web Kit",
-        p1Desc: "Perfect for growing businesses establishing their professional web presence.",
-        p2Name: "Offline Desktop Suite",
-        p2Desc: "Advanced standalone offline desktop application with local DB & installer.",
-        p3Name: "Bespoke AI Platform",
-        p3Desc: "Fully customized architecture tailored precisely to enterprise workflows.",
-        blogTitle: "Tech Insights & Development Tips",
-        blogSub: "Discover how modern web apps and offline desktop solutions are transforming enterprise software engineering.",
-        b1Title: "Why Offline Desktop Apps Deliver Superior Reliability",
-        b1Excerpt: "Explore how local WAMP servers and standalone desktop architectures eliminate internet downtime vulnerabilities for businesses.",
-        b2Title: "The Role of AI in Streamlining Enterprise Software",
-        b2Excerpt: "Automating complex database workflows, code compilation, and local development environments for modern developers.",
-        contactTitle: "Connect With Our Engineering Team",
-        contactSub: "Ready to build your web app or offline desktop solution? Reach out to Ashebir Tereda and our experts directly.",
-        sendBtn: "Send Message",
-        portalTitle: "Client Project Dashboard",
-        portalSub: "Track active web and desktop development milestones in real time.",
-        operational: "All Local & Cloud Nodes Operational",
-        chatGreeting: "Hello! I'm your RedRat AI Assistant. How can we accelerate your web or offline desktop software project today?"
-      },
-      am: {
-        brandName: "ሬድራት የIT መፍትሄዎች",
-        ceoTitle: "መስራች እና ዋና ስራ አስፈፃሚ፡ አሸብር ተረደ",
-        navHome: "መነሻ",
-        navAbout: "ስለ እኛ",
-        navServices: "አገልግሎቶች",
-        navBlog: "ብሎግ",
-        navContact: "ያግኙን",
-        navPortal: "የደንበኛ ዳሽቦርድ",
-        heroBadge: "የድረ-ገጽ እና የዴስክቶፕ ሶፍትዌር ልማት",
-        heroTitle: "በዘመናዊ ሶፍትዌሮች እና ብጁ መተግበሪያዎች ድርጅቶችን ማብቃት",
-        heroSubtitle: "እኛ የድረ-ገጽ እና ከኢንተርኔት ነጻ የሆኑ (Offline) የዴስክቶፕ መተግበሪያዎች ባለሙያዎች ነን። በአሸብር ተረደ የተመሰረተው ሬድራት የንግድ ስራዎትን የሚያፋጥኑ ሲስተሞችን ይሰራል።",
-        exploreBtn: "መፍትሄዎቻችንን ይመልከቱ",
-        contactBtn: "ያግኙን",
-        statsProjects: "የተሳካላቸው ፕሮጀክቶች",
-        statsClients: "ረኪ አጋሮች",
-        statsSupport: "የባለሙያ ድጋፍ",
-        servicesTitle: "ዋና ዋና የሶፍትዌር ልማት አገልግሎቶቻችን",
-        servicesSub: "ለእድገት ለሚጥሩ ድርጅቶች የተዘጋጁ ዘመናዊ የድረ-ገጽ እና የዴስክቶፕ መተግበሪያዎች።",
-        s1Title: "ብጁ የድረ-ገጽ መተግበሪያዎች",
-        s1Desc: "በዘመናዊ ቴክኖሎጂዎች እና አስተማማኝ ዳታቤዝ የተገነቡ ኃይለኛ የድር መፍትሄዎች።",
-        s2Title: "ከኢንተርኔት ነጻ የዴስክቶፕ መተግበሪያዎች",
-        s2Desc: "ኢንተርኔት ሳይኖርም በኮምፒዩተር ላይ ብቻ የሚሰሩ አስተማማኝ እና ደህንነታቸው የተጠበቁ የዴስክቶፕ ሲስተሞች።",
-        s3Title: "የድርጅት አስተዳደር ስብስቦች",
-        s3Desc: "የደመወዝ፣ የእቃ ቆጠራ እና የፋይናንስ ቁጥጥር ማስተካከያ መሳሪያዎች።",
-        aboutTitle: "የሶፍትዌር ኢንጂነሪንግ የወደፊት እጣ ፈንታ መቅረጽ",
-        aboutText: "አሸብር ተረደ ባቋቋመው ሬድራት የIT መፍትሄዎች ድርጅቶች ውስብስብ ስራዎችን በቀላል ቴክኖሎጂ እንዲፈቱ እናደርጋለን። ከፍተኛ ጥራት ያላቸውን የድር እና የዴስክቶፕ ሲስተሞች እናበለጽጋለን።",
-        missionTitle: "ተልዕኮአችን",
-        missionDesc: "ድርጅቶችን በዘመናዊ፣ አስተማማኝ እና ብልጥ ሶፍትዌሮች ማብቃት።",
-        visionTitle: "ራዕያችን",
-        visionDesc: "በምስራቅ አፍሪካ ቀዳሚ የድረ-ገጽ እና የዴስክቶፕ ሶፍትዌር ልማት ማዕከል መሆን።",
-        pricingTitle: "ግልጽ የአገልግሎት ዋጋዎች",
-        pricingSub: "ለሁኔታዎ የሚስማማውን ፓኬጅ ይምረጡ። ሁሉም ፓኬጆች ስልጠናን ያካትታሉ።",
-        p1Name: "ቀላል የድር ፓኬጅ",
-        p1Desc: "ለታዳጊ ንግዶች እና ድርጅቶች የሚሆን የድረ-ገጽ መፍትሄ።",
-        p2Name: "የዴስክቶፕ ሲስተም ስብስብ",
-        p2Desc: "ከኢንተርኔት ነጻ የሚሰራ እና የዳታቤዝ ማከማቻ ያለው ኃይለኛ የዴስክቶፕ ሲስተም።",
-        p3Name: "ብጁ AI መድረክ",
-        p3Desc: "ልዩ ለሆኑ የድርጅት ፍላጎቶች የተዘጋጀ የላቀ ሶፍትዌር።",
-        blogTitle: "የቴክኖሎጂ ምክሮች እና መረጃዎች",
-        blogSub: "ዘመናዊ የድር እና የዴስክቶፕ ሲስተሞች በንግድ ስራዎች ላይ የሚያመጡትን ለውጥ ይረዱ።",
-        b1Title: "ከኢንተርኔት ነጻ የሆኑ (Offline) የዴስክቶፕ ሲስተሞች ጥቅሞች",
-        b1Excerpt: "የሀገር ውስጥ ሰርቨሮች እና የዴስክቶፕ አርክቴክቸር እንዴት ንግድዎን ከኢንተርኔት መቆራረጥ እንደሚጠብቁ ይወቁ።",
-        b2Title: "አርቴፊሻል ኢንተለጀንስ በሶፍትዌር ልማት ውስጥ ያለው ሚና",
-        b2Excerpt: "የዳታቤዝ ስራዎችን እና የሶፍትዌር ማጠናቀሪያ መሳሪያዎችን በራስ-ሰር ማስተካከል።",
-        contactTitle: "ከኛ ባለሙያዎች ጋር ይገናኙ",
-        contactSub: "ሶፍትዌር ወይም የዴስክቶፕ ሲስተም ለማሰራት ዝግጁ ነዎት? ከአሸብር ተረደ እና ከባለሙያዎቻችን ጋር ይነጋገሩ።",
-        sendBtn: "መልዕክት ይላኩ",
-        portalTitle: "የደንበኛ ፕሮጀክት ዳሽቦርድ",
-        portalSub: "የንቁ የድር እና የዴስክቶፕ ፕሮጀክቶችዎን ሂደት በእውነተኛ ጊዜ ይከታተሉ።",
-        operational: "ሁሉም ሲስተሞች በትክክል እየሰሩ ናቸው",
-        chatGreeting: "ሰላም! እኔ የሬድራት ረዳት ነኝ። ዛሬ የድር ወይም የዴስክቶፕ ሶፍትዌር ፕሮጀክትዎን እንዴት ልንረዳው እንችላለን?"
-      },
-      om: {
-        brandName: "RedRat IT Solution",
-        ceoTitle: "Hundeessaa & CEO: Ashebir Tereda",
-        navHome: "Fuula Dura",
-        navAbout: "Waa'ee Keenya",
-        navServices: "Tajaajila",
-        navBlog: "Oduu",
-        navContact: "Nu Quunnamaa",
-        navPortal: "Dashboard Maamiltootaa",
-        heroBadge: "Softwaree Webii Fi Desktop Oomishu",
-        heroTitle: "Daldala Keessan Sooftiweerii Ammayyaa Fi Appiiwwan Amansiisaan Guddifadhaa",
-        heroSubtitle: "Nuni ogeeyyii appii webii fi desktop offline hojjetnu ti. Ashebir Tereda'n kan durfamu, systemii daldala keessan saffisiisu ni hojjenna.",
-        exploreBtn: "Tajaajila Keenya Ilaalaa",
-        contactBtn: "Nu Quunnamaa",
-        statsProjects: "Pirojektoota Milkaa'an",
-        statsClients: "Maamiltoota Gammadan",
-        statsSupport: "Deeggarsa Ogeessaa",
-        servicesTitle: "Tajaajila Misooma Sooftiweerii Keenya",
-        servicesSub: "Sirna webii fi desktop ammayyaa daldala guddisuuf qophaa'e.",
-        s1Title: "Appiiwwan Webii Ammayyaa",
-        s1Desc: "Systemii saffisaa fi amansiisaa ta'e kan teeknolojii ammayyaatiin ijaarame.",
-        s2Title: "Appiiwwan Desktop Offline",
-        s2Desc: "Intarneeti malees kompiitara keessatti hojjechuu danda'an sirna amansiisaa.",
-        s3Title: "Enterprise Business Suites",
-        s3Desc: "Galmee mindaa, qabeenyaa fi herregaa si'achiisu.",
-        aboutTitle: "Fuuldura Misooma Sooftiweerii Qopheessuu",
-        aboutText: "Ashebir Tereda'n kan hundeeffame RedRat IT Solution, daldala keessan sooftiweerii ammayyaatiin deeggara. Webii fi desktop systemii amansiisaa ni hojjenna.",
-        missionTitle: "Ergama Keenya",
-        missionDesc: "Dhaabbata sooftiweerii humna qabuun deeggaruu.",
-        visionTitle: "Mul'ata Keenya",
-        visionDesc: "Afrikaa Bahaatti gaggeessaa misooma webii fi desktop ta'uu.",
-        pricingTitle: "Gatii Tajaajilaa Ifa Ta'e",
-        pricingSub: "Pakeejiif mijate filadhaa. Leenjiin guutuun ni kenwama.",
-        p1Name: "Starter Web Kit",
-        p1Desc: "Daldala isa jalqabaa eegaluuf kan mijate.",
-        p2Name: "Offline Desktop Suite",
-        p2Desc: "Systemii desktop offline hojjetuu fi database qabu.",
-        p3Name: "Bespoke AI Platform",
-        p3Desc: "Fedhii daldala keessaniif kan qophaa'e.",
-        blogTitle: "Gorsa Teknolojii",
-        blogSub: "Sirni webii fi desktop akkamitti daldala akka guddise ilaalaa.",
-        b1Title: "Bu'aa Appii Desktop Offline",
-        b1Excerpt: "Serverii keessoo fayyadamuun rakkoo intarneetiitiif mormuu akkamitti danda'amu.",
-        b2Title: "Gahee AI Misooma Sooftiweerii Keessatti",
-        b2Excerpt: "Hojii database automatikiin hojjechuu.",
-        contactTitle: "Ogeeyyii Keenya Quunnamaa",
-        contactSub: "Sooftiweerii yookaan desktop appii hojjechuuf qophooftaniittu? Ashebir Tereda waliin haasa'aa.",
-        sendBtn: "Ergii",
-        portalTitle: "Dashboard Pirojekti",
-        portalSub: "Adeemsa pirojekti webii fi desktop keessanii hordofaa.",
-        operational: "Systemonni Hunduu Sirriitti Hojjechaa Jiru",
-        chatGreeting: "Akkam! Ani gargaaraa RedRat ti. Har'a pirojekti sooftiweerii keessan akkamitti gargaarru?"
-      }
-    };
+</div>
 
-    let currentLang = 'en';
-    let soundEnabled = false;
 
-    // Loading Screen Removal
-    window.addEventListener('load', () => {
-      const bar = document.getElementById('loading-bar');
-      bar.style.width = '100%';
-      setTimeout(() => {
-        const loader = document.getElementById('loading-screen');
-        loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 700);
-        runCounters();
-      }, 500);
+<!-- MOBILE MENU -->
+
+<div
+    id="mobile-menu"
+    class="hidden lg:hidden
+           bg-slate-950/95
+           backdrop-blur-2xl
+           border-t border-slate-800
+           px-4
+           pt-4
+           pb-6
+           space-y-2"
+>
+
+<button onclick="switchTab('home'); toggleMobileMenu(); playSound();"
+        class="mobile-nav">
+    Home
+</button>
+
+<button onclick="switchTab('about'); toggleMobileMenu(); playSound();"
+        class="mobile-nav">
+    About
+</button>
+
+<button onclick="switchTab('services'); toggleMobileMenu(); playSound();"
+        class="mobile-nav">
+    Services
+</button>
+
+<button onclick="switchTab('blog'); toggleMobileMenu(); playSound();"
+        class="mobile-nav">
+    Blog
+</button>
+
+<button onclick="switchTab('contact'); toggleMobileMenu(); playSound();"
+        class="mobile-nav">
+    Contact
+</button>
+
+<button onclick="switchTab('portal'); toggleMobileMenu(); playSound();"
+        class="mobile-nav bg-red-600/15 text-red-400 border border-red-500/20">
+    Client Dashboard
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main class="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-10 pb-24">
+
+
+<!-- =======================================================
+     HOME
+======================================================= -->
+
+<section
+    id="view-home"
+    class="space-y-24 view-section"
+>
+
+<div
+    class="grid grid-cols-1 lg:grid-cols-2
+           gap-12
+           items-center
+           pt-10
+           lg:pt-16"
+>
+
+
+<!-- HERO LEFT -->
+
+<div class="space-y-8 reveal">
+
+<div
+    class="hero-badge
+           inline-flex
+           items-center
+           gap-2
+           px-4 py-2
+           rounded-full
+           bg-red-500/10
+           border border-red-500/30
+           text-red-400
+           text-xs
+           font-semibold
+           tracking-wide
+           shadow-lg
+           shadow-red-500/10"
+>
+
+<i
+    data-lucide="sparkles"
+    class="w-4 h-4"
+></i>
+
+<span>
+AI-Driven Digital Transformation & App Development
+</span>
+
+</div>
+
+
+<h1
+    class="hero-title
+           text-5xl
+           sm:text-6xl
+           xl:text-7xl
+           font-black
+           tracking-tight
+           leading-[1.02]"
+>
+
+Empowering Enterprises Through Intelligent Software & Custom Apps
+
+</h1>
+
+
+<p
+    class="text-lg
+           text-slate-400
+           font-normal
+           leading-relaxed
+           max-w-2xl"
+>
+
+We engineer powerful web applications,
+offline desktop software and intelligent
+digital ecosystems designed to improve
+efficiency, automate workflows and accelerate growth.
+
+</p>
+
+
+<!-- BUTTONS -->
+
+<div class="flex flex-wrap gap-4 pt-2">
+
+<button
+    onclick="switchTab('services'); playSound();"
+    class="liquid-btn
+           px-7 py-4
+           rounded-2xl
+           bg-gradient-to-r
+           from-red-600
+           to-orange-600
+           text-white
+           font-bold
+           shadow-xl
+           shadow-red-600/30
+           hover:scale-105
+           transition-transform
+           flex items-center gap-2"
+>
+
+<span>
+Explore Solutions
+</span>
+
+<i
+    data-lucide="arrow-right"
+    class="w-5 h-5"
+></i>
+
+</button>
+
+
+<button
+    onclick="switchTab('contact'); playSound();"
+    class="liquid-btn
+           px-7 py-4
+           rounded-2xl
+           glass-card
+           text-slate-200
+           font-semibold
+           hover:bg-slate-800
+           hover:text-white
+           transition-all"
+>
+
+Get in Touch
+
+</button>
+
+</div>
+
+
+<!-- STATS -->
+
+<div
+    class="grid grid-cols-3
+           pt-6
+           border-t border-slate-900
+           gap-3"
+>
+
+<div
+    class="stat-card
+           glass-card
+           p-4
+           rounded-2xl"
+>
+
+<div class="flex items-baseline">
+
+<h3
+    class="text-2xl sm:text-3xl
+           font-black
+           text-white
+           counter-anim"
+    data-target="150"
+>
+0
+</h3>
+
+<span class="text-red-500 font-black">
++
+</span>
+
+</div>
+
+<p class="text-xs text-slate-400 mt-1">
+Successful Projects
+</p>
+
+</div>
+
+
+<div
+    class="stat-card
+           glass-card
+           p-4
+           rounded-2xl"
+>
+
+<div class="flex items-baseline">
+
+<h3
+    class="text-2xl sm:text-3xl
+           font-black
+           text-white
+           counter-anim"
+    data-target="99"
+>
+0
+</h3>
+
+<span class="text-red-500 font-black">
+%
+</span>
+
+</div>
+
+<p class="text-xs text-slate-400 mt-1">
+Satisfied Partners
+</p>
+
+</div>
+
+
+<div
+    class="stat-card
+           glass-card
+           p-4
+           rounded-2xl"
+>
+
+<h3
+    class="text-2xl sm:text-3xl
+           font-black
+           text-white"
+>
+24/7
+</h3>
+
+<p class="text-xs text-slate-400 mt-1">
+Expert Support
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     HERO AI HOLOGRAM
+===================================================== -->
+
+<div
+    class="relative
+           group
+           perspective-1000
+           reveal"
+>
+
+<div
+    class="absolute
+           -inset-4
+           rounded-[2rem]
+           bg-gradient-to-r
+           from-red-600
+           via-orange-500
+           to-purple-600
+           opacity-20
+           blur-3xl
+           group-hover:opacity-35
+           transition
+           duration-1000"
+></div>
+
+
+<div
+    class="relative
+           hologram
+           rounded-[2rem]
+           glass-card
+           p-5 sm:p-7
+           shadow-2xl
+           space-y-6
+           neon-border"
+>
+
+
+<!-- HOLOGRAM SCREEN -->
+
+<div
+    class="hologram-screen
+           relative
+           h-64
+           rounded-2xl
+           overflow-hidden
+           bg-gradient-to-br
+           from-slate-950
+           via-red-950/40
+           to-slate-900
+           border border-slate-800
+           flex items-center
+           justify-center"
+>
+
+<div
+    class="absolute inset-0
+           bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
+           from-red-600/30
+           via-orange-500/5
+           to-transparent"
+></div>
+
+
+<div
+    class="orbit orbit-1"
+>
+
+<div
+    class="absolute
+           -top-1.5
+           left-1/2
+           w-3 h-3
+           bg-red-500
+           rounded-full
+           shadow-lg
+           shadow-red-500"
+></div>
+
+</div>
+
+
+<div
+    class="orbit orbit-2"
+>
+
+<div
+    class="absolute
+           top-1/2
+           -right-1.5
+           w-3 h-3
+           bg-orange-400
+           rounded-full
+           shadow-lg
+           shadow-orange-400"
+></div>
+
+</div>
+
+
+<div
+    class="orbit orbit-3"
+></div>
+
+
+<div class="relative z-10 text-center">
+
+<div
+    class="inline-flex
+           p-4
+           rounded-2xl
+           bg-red-600/20
+           border border-red-500/40
+           text-red-400
+           shadow-xl
+           shadow-red-600/30"
+>
+
+<i
+    data-lucide="brain-circuit"
+    class="w-12 h-12"
+></i>
+
+</div>
+
+
+<div
+    class="mt-4
+           text-xs
+           font-mono
+           uppercase
+           tracking-widest
+           text-red-400
+           font-bold"
+>
+
+REDRAT INTELLIGENCE CORE
+
+</div>
+
+
+<div
+    class="text-[10px]
+           text-slate-500
+           font-mono
+           mt-1"
+>
+
+AI AUTOMATION ENGINE • ONLINE
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TERMINAL HEADER -->
+
+<div
+    class="flex
+           items-center
+           justify-between
+           pb-3
+           border-b border-slate-800"
+>
+
+<div class="flex items-center gap-2">
+
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+<div class="w-3 h-3 rounded-full bg-green-500"></div>
+
+</div>
+
+<span
+    class="text-[10px]
+           sm:text-xs
+           font-mono
+           text-slate-400"
+>
+redrat-core-engine-v4.0
+</span>
+
+</div>
+
+
+<!-- TERMINAL -->
+
+<div
+    class="space-y-3
+           font-mono
+           text-xs"
+>
+
+<div
+    class="flex
+           items-center
+           gap-3
+           text-red-400"
+>
+
+<i
+    data-lucide="terminal"
+    class="w-4 h-4"
+></i>
+
+<span>
+System intelligence initialized...
+</span>
+
+</div>
+
+
+<div
+    class="p-4
+           rounded-xl
+           bg-slate-950
+           border border-slate-800/80
+           text-slate-300
+           space-y-2"
+>
+
+<p class="text-emerald-400">
+✔ Custom Web Architecture Loaded
+</p>
+
+<p class="text-emerald-400">
+✔ Offline Desktop Engine Ready
+</p>
+
+<p class="text-emerald-400">
+✔ Local Database Integration Active
+</p>
+
+<p class="text-emerald-400">
+✔ AI Automation Layer Connected
+</p>
+
+<p class="text-orange-400">
+&gt; Awaiting enterprise command...
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     SERVICES PREVIEW
+===================================================== -->
+
+<div class="space-y-12 pt-12">
+
+<div
+    class="text-center
+           space-y-4
+           max-w-3xl
+           mx-auto
+           reveal"
+>
+
+<div
+    class="inline-flex
+           items-center
+           gap-2
+           px-3
+           py-1
+           rounded-full
+           bg-red-500/10
+           border border-red-500/20
+           text-red-400
+           text-xs"
+>
+
+<i
+    data-lucide="layers-3"
+    class="w-4 h-4"
+></i>
+
+CORE TECHNOLOGY
+
+</div>
+
+
+<h2
+    class="text-3xl
+           sm:text-4xl
+           font-black
+           tracking-tight"
+>
+
+Our Core Development Solutions
+
+</h2>
+
+
+<p class="text-slate-400">
+
+Custom web applications and high-performance
+offline desktop software engineered for scaling enterprises.
+
+</p>
+
+</div>
+
+
+<div
+    class="grid
+           grid-cols-1
+           md:grid-cols-3
+           gap-7"
+>
+
+
+<!-- SERVICE 1 -->
+
+<div
+    class="service-card
+           glass-card
+           p-8
+           rounded-3xl
+           neon-border
+           transition-all
+           duration-500
+           hover:-translate-y-3
+           group
+           reveal
+           tilt-card"
+>
+
+<div
+    class="service-icon
+           w-14 h-14
+           rounded-2xl
+           bg-red-500/10
+           border border-red-500/30
+           flex
+           items-center
+           justify-center
+           text-red-500
+           mb-6"
+>
+
+<i
+    data-lucide="globe"
+    class="w-7 h-7"
+></i>
+
+</div>
+
+<h3 class="text-xl font-bold mb-3">
+Custom Web Applications
+</h3>
+
+<p class="text-slate-400 text-sm leading-relaxed">
+Scalable, high-performance web solutions built
+with modern frameworks and robust backend architecture.
+</p>
+
+<div class="mt-6 text-red-400 text-xs font-semibold flex items-center gap-2">
+
+Learn More
+
+<i
+    data-lucide="arrow-up-right"
+    class="w-4 h-4"
+></i>
+
+</div>
+
+</div>
+
+
+<!-- SERVICE 2 -->
+
+<div
+    class="service-card
+           glass-card
+           p-8
+           rounded-3xl
+           neon-border
+           transition-all
+           duration-500
+           hover:-translate-y-3
+           group
+           reveal
+           tilt-card"
+>
+
+<div
+    class="service-icon
+           w-14 h-14
+           rounded-2xl
+           bg-orange-500/10
+           border border-orange-500/30
+           flex
+           items-center
+           justify-center
+           text-orange-400
+           mb-6"
+>
+
+<i
+    data-lucide="monitor-cog"
+    class="w-7 h-7"
+></i>
+
+</div>
+
+<h3 class="text-xl font-bold mb-3">
+Offline Desktop Applications
+</h3>
+
+<p class="text-slate-400 text-sm leading-relaxed">
+Secure standalone desktop software designed for
+fast offline operations, local data storage and reliability.
+</p>
+
+<div class="mt-6 text-orange-400 text-xs font-semibold flex items-center gap-2">
+
+Explore Desktop Solutions
+
+<i
+    data-lucide="arrow-up-right"
+    class="w-4 h-4"
+></i>
+
+</div>
+
+</div>
+
+
+<!-- SERVICE 3 -->
+
+<div
+    class="service-card
+           glass-card
+           p-8
+           rounded-3xl
+           neon-border
+           transition-all
+           duration-500
+           hover:-translate-y-3
+           group
+           reveal
+           tilt-card"
+>
+
+<div
+    class="service-icon
+           w-14 h-14
+           rounded-2xl
+           bg-purple-500/10
+           border border-purple-500/30
+           flex
+           items-center
+           justify-center
+           text-purple-400
+           mb-6"
+>
+
+<i
+    data-lucide="database-zap"
+    class="w-7 h-7"
+></i>
+
+</div>
+
+<h3 class="text-xl font-bold mb-3">
+Enterprise Digital Suites
+</h3>
+
+<p class="text-slate-400 text-sm leading-relaxed">
+Integrated inventory, payroll, accounting,
+automation and profit-cost analysis systems.
+</p>
+
+<div class="mt-6 text-purple-400 text-xs font-semibold flex items-center gap-2">
+
+Build Your System
+
+<i
+    data-lucide="arrow-up-right"
+    class="w-4 h-4"
+></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     GLOBAL REACH
+===================================================== -->
+
+<div class="pt-12 reveal">
+
+<div
+    class="glass-card
+           rounded-3xl
+           p-8
+           sm:p-10
+           border border-slate-800
+           relative
+           overflow-hidden"
+>
+
+<div
+    class="absolute
+           -right-20
+           -top-20
+           w-80
+           h-80
+           bg-red-600/10
+           rounded-full
+           blur-3xl"
+></div>
+
+
+<div
+    class="relative z-10
+           flex
+           flex-col
+           lg:flex-row
+           items-center
+           justify-between
+           gap-8"
+>
+
+<div class="space-y-4">
+
+<div
+    class="inline-flex
+           items-center
+           gap-2
+           text-xs
+           font-mono
+           text-red-400
+           bg-red-500/10
+           px-3 py-1
+           rounded-full
+           border border-red-500/30"
+>
+
+<i
+    data-lucide="globe-2"
+    class="w-4 h-4"
+></i>
+
+GLOBAL & EAST AFRICA TECHNOLOGY NETWORK
+
+</div>
+
+
+<h3 class="text-2xl sm:text-3xl font-bold">
+Connected Enterprise Ecosystem
+</h3>
+
+
+<p class="text-sm text-slate-400 max-w-2xl leading-relaxed">
+
+Building secure digital systems for businesses,
+organizations and entrepreneurs while combining
+local reliability with modern cloud technology.
+
+</p>
+
+</div>
+
+
+<div class="grid grid-cols-2 gap-4 shrink-0">
+
+<div
+    class="p-5
+           rounded-2xl
+           bg-slate-950/80
+           border border-slate-800
+           text-center"
+>
+
+<div class="text-3xl font-black text-red-500">
+12+
+</div>
+
+<div class="text-xs text-slate-400 mt-1">
+Regions Served
+</div>
+
+</div>
+
+
+<div
+    class="p-5
+           rounded-2xl
+           bg-slate-950/80
+           border border-slate-800
+           text-center"
+>
+
+<div class="text-3xl font-black text-emerald-400">
+99.9%
+</div>
+
+<div class="text-xs text-slate-400 mt-1">
+Node Stability
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section
+    id="view-about"
+    class="space-y-16 py-12 hidden view-section"
+>
+
+<div
+    class="grid
+           grid-cols-1
+           lg:grid-cols-2
+           gap-12
+           items-center"
+>
+
+<div class="space-y-6 reveal">
+
+<div
+    class="text-red-400
+           text-xs
+           font-mono
+           uppercase
+           tracking-widest"
+>
+ABOUT REDRAT
+</div>
+
+<h1
+    class="text-4xl
+           sm:text-5xl
+           font-black"
+>
+
+Architecting the Future of Software Engineering
+
+</h1>
+
+<p
+    class="text-lg
+           text-slate-300
+           leading-relaxed"
+>
+
+Founded by Ashebir Tereda, RedRat IT Solution
+specializes in robust web applications, secure
+offline desktop systems and intelligent enterprise
+software.
+
+We bridge complex business workflows with intuitive
+interfaces and practical digital solutions.
+
+</p>
+
+</div>
+
+
+<div
+    class="relative
+           rounded-3xl
+           p-8
+           glass-card
+           border border-slate-800
+           shadow-2xl
+           overflow-hidden
+           group
+           reveal"
+>
+
+<div
+    class="absolute
+           -right-10
+           -bottom-10
+           w-64
+           h-64
+           bg-red-600/10
+           rounded-full
+           blur-3xl"
+></div>
+
+
+<div
+    class="relative z-10
+           flex
+           flex-col
+           items-center
+           text-center
+           space-y-5
+           py-8"
+>
+
+<div
+    class="p-5
+           rounded-3xl
+           bg-red-600/20
+           border border-red-500/40
+           text-red-400
+           shadow-xl
+           shadow-red-600/20"
+>
+
+<i
+    data-lucide="cpu"
+    class="w-14 h-14"
+></i>
+
+</div>
+
+
+<h3 class="text-2xl font-bold">
+Next-Generation Intelligent Core
+</h3>
+
+
+<p class="text-sm text-slate-400 max-w-md">
+
+Intelligent workflow automation,
+secure local databases and custom enterprise
+architectures designed around real business needs.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+    class="grid
+           grid-cols-1
+           md:grid-cols-2
+           gap-8"
+>
+
+<div
+    class="glass-card
+           p-8
+           rounded-3xl
+           neon-border
+           space-y-5
+           reveal"
+>
+
+<div
+    class="w-12 h-12
+           rounded-xl
+           bg-red-500/10
+           flex
+           items-center
+           justify-center
+           text-red-500"
+>
+
+<i data-lucide="zap" class="w-6 h-6"></i>
+
+</div>
+
+<h3 class="text-2xl font-bold">
+Our Mission
+</h3>
+
+<p class="text-slate-400 leading-relaxed">
+
+To empower organizations with robust,
+intelligent and tailored software solutions
+that improve productivity and scale effortlessly.
+
+</p>
+
+</div>
+
+
+<div
+    class="glass-card
+           p-8
+           rounded-3xl
+           neon-border
+           space-y-5
+           reveal"
+>
+
+<div
+    class="w-12 h-12
+           rounded-xl
+           bg-orange-500/10
+           flex
+           items-center
+           justify-center
+           text-orange-400"
+>
+
+<i data-lucide="compass" class="w-6 h-6"></i>
+
+</div>
+
+<h3 class="text-2xl font-bold">
+Our Vision
+</h3>
+
+<p class="text-slate-400 leading-relaxed">
+
+To become a leading East African technology
+partner for custom web applications,
+offline desktop software and intelligent
+digital transformation.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     SERVICES
+======================================================= -->
+
+<section
+    id="view-services"
+    class="space-y-16 py-12 hidden view-section"
+>
+
+<div
+    class="text-center
+           space-y-5
+           max-w-3xl
+           mx-auto"
+>
+
+<div
+    class="text-red-400
+           text-xs
+           font-mono
+           tracking-widest"
+>
+REDRAT SOLUTIONS
+</div>
+
+<h1
+    class="text-4xl
+           sm:text-5xl
+           font-black"
+>
+
+Professional Development Services
+
+</h1>
+
+<p class="text-slate-400">
+
+Tailored digital systems engineered for
+modern enterprises, retail businesses,
+organizations and digital startups.
+
+</p>
+
+</div>
+
+
+<div class="space-y-8 pt-6">
+
+<div class="text-center space-y-2">
+
+<h2 class="text-2xl font-bold">
+Transparent Service Packages
+</h2>
+
+<p class="text-sm text-slate-400">
+Choose a package according to your operational scale.
+</p>
+
+</div>
+
+
+<div
+    class="grid
+           grid-cols-1
+           md:grid-cols-3
+           gap-8"
+>
+
+
+<!-- PACKAGE 1 -->
+
+<div
+    class="glass-card
+           p-8
+           rounded-3xl
+           border border-slate-800
+           flex flex-col
+           justify-between
+           space-y-6
+           hover:-translate-y-2
+           transition-all
+           reveal"
+>
+
+<div class="space-y-5">
+
+<div
+    class="w-12 h-12
+           rounded-xl
+           bg-red-500/10
+           flex items-center
+           justify-center
+           text-red-400"
+>
+
+<i data-lucide="globe" class="w-6 h-6"></i>
+
+</div>
+
+<h3 class="text-xl font-bold">
+Starter Web Kit
+</h3>
+
+<div class="text-4xl font-black text-red-500">
+$499
+</div>
+
+<p class="text-sm text-slate-400">
+Perfect for businesses establishing
+their professional digital presence.
+</p>
+
+<ul
+    class="space-y-3
+           text-sm
+           text-slate-300
+           pt-4
+           border-t border-slate-800"
+>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Responsive Web Application
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Professional UI
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Standard Onboarding
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+6 Months Support
+</li>
+
+</ul>
+
+</div>
+
+
+<button
+    onclick="openCheckout('Starter Web Kit'); playSound();"
+    class="liquid-btn
+           w-full
+           py-3
+           rounded-xl
+           bg-slate-800
+           hover:bg-red-600
+           text-white
+           font-semibold
+           transition-colors
+           flex items-center
+           justify-center
+           gap-2"
+>
+
+Select Package
+
+<i data-lucide="shopping-bag" class="w-4 h-4"></i>
+
+</button>
+
+</div>
+
+
+<!-- PACKAGE 2 -->
+
+<div
+    class="glass-card
+           p-8
+           rounded-3xl
+           border-2
+           border-red-500/60
+           flex flex-col
+           justify-between
+           space-y-6
+           relative
+           shadow-2xl
+           shadow-red-600/20
+           hover:-translate-y-3
+           transition-all
+           reveal"
+>
+
+<div
+    class="absolute
+           -top-3
+           left-1/2
+           -translate-x-1/2
+           px-4 py-1
+           rounded-full
+           bg-gradient-to-r
+           from-red-600
+           to-orange-600
+           text-white
+           text-[10px]
+           font-bold
+           uppercase
+           tracking-wider
+           shadow-lg"
+>
+Most Popular
+</div>
+
+
+<div class="space-y-5">
+
+<div
+    class="w-12 h-12
+           rounded-xl
+           bg-orange-500/10
+           flex items-center
+           justify-center
+           text-orange-400"
+>
+
+<i data-lucide="monitor-cog" class="w-6 h-6"></i>
+
+</div>
+
+<h3 class="text-xl font-bold">
+Offline Desktop Suite
+</h3>
+
+<div class="text-4xl font-black text-red-500">
+$1,299
+</div>
+
+<p class="text-sm text-slate-400">
+Advanced standalone offline desktop
+application with local database integration.
+</p>
+
+<ul
+    class="space-y-3
+           text-sm
+           text-slate-300
+           pt-4
+           border-t border-slate-800"
+>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Custom Offline Application
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Local Database Integration
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Installer Setup
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Full Training
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+1 Year Priority Support
+</li>
+
+</ul>
+
+</div>
+
+
+<button
+    onclick="openCheckout('Offline Desktop Suite'); playSound();"
+    class="liquid-btn
+           w-full
+           py-3.5
+           rounded-xl
+           bg-gradient-to-r
+           from-red-600
+           to-orange-600
+           text-white
+           font-semibold
+           hover:scale-105
+           transition-transform
+           flex items-center
+           justify-center
+           gap-2
+           shadow-lg
+           shadow-red-600/30"
+>
+
+Select Package
+
+<i data-lucide="shopping-bag" class="w-4 h-4"></i>
+
+</button>
+
+</div>
+
+
+<!-- PACKAGE 3 -->
+
+<div
+    class="glass-card
+           p-8
+           rounded-3xl
+           border border-slate-800
+           flex flex-col
+           justify-between
+           space-y-6
+           hover:-translate-y-2
+           transition-all
+           reveal"
+>
+
+<div class="space-y-5">
+
+<div
+    class="w-12 h-12
+           rounded-xl
+           bg-purple-500/10
+           flex items-center
+           justify-center
+           text-purple-400"
+>
+
+<i data-lucide="brain-circuit" class="w-6 h-6"></i>
+
+</div>
+
+<h3 class="text-xl font-bold">
+Bespoke AI Platform
+</h3>
+
+<div class="text-4xl font-black text-red-500">
+Custom
+</div>
+
+<p class="text-sm text-slate-400">
+Fully customized architecture tailored
+precisely to enterprise workflows.
+</p>
+
+<ul
+    class="space-y-3
+           text-sm
+           text-slate-300
+           pt-4
+           border-t border-slate-800"
+>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+100% Custom Architecture
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Dedicated Development
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+AI Automation
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Enterprise Integration
+</li>
+
+<li class="flex gap-2">
+<span class="text-red-500">✓</span>
+Long-Term Support
+</li>
+
+</ul>
+
+</div>
+
+
+<button
+    onclick="openCheckout('Bespoke AI Platform'); playSound();"
+    class="liquid-btn
+           w-full
+           py-3
+           rounded-xl
+           bg-slate-800
+           hover:bg-red-600
+           text-white
+           font-semibold
+           transition-colors
+           flex items-center
+           justify-center
+           gap-2"
+>
+
+Select Package
+
+<i data-lucide="shopping-bag" class="w-4 h-4"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     BLOG
+======================================================= -->
+
+<section
+    id="view-blog"
+    class="space-y-12 py-12 hidden view-section"
+>
+
+<div
+    class="text-center
+           space-y-4
+           max-w-3xl
+           mx-auto"
+>
+
+<div class="text-red-400 text-xs font-mono tracking-widest">
+TECHNOLOGY JOURNAL
+</div>
+
+<h1 class="text-4xl sm:text-5xl font-black">
+Tech Insights & Development Tips
+</h1>
+
+<p class="text-slate-400">
+Discover how modern web apps, AI and offline desktop
+solutions are transforming enterprise software.
+</p>
+
+</div>
+
+
+<div
+    class="grid
+           grid-cols-1
+           md:grid-cols-2
+           gap-8"
+>
+
+
+<div
+    class="glass-card
+           p-8
+           rounded-3xl
+           neon-border
+           space-y-5
+           transition-all
+           group
+           cursor-pointer
+           reveal"
+>
+
+<span class="text-xs font-mono text-red-400">
+August 2026
+</span>
+
+<h3
+    class="text-2xl
+           font-bold
+           group-hover:text-red-400
+           transition-colors"
+>
+Why Offline Desktop Apps Deliver Superior Reliability
+</h3>
+
+<p class="text-slate-400 text-sm leading-relaxed">
+Explore how local architectures can eliminate
+internet dependency for critical business operations.
+</p>
+
+<div class="flex items-center gap-2 text-sm font-semibold text-red-400">
+Read Article
+<i data-lucide="chevron-right" class="w-4 h-4"></i>
+</div>
+
+</div>
+
+
+<div
+    class="glass-card
+           p-8
+           rounded-3xl
+           neon-border
+           space-y-5
+           transition-all
+           group
+           cursor-pointer
+           reveal"
+>
+
+<span class="text-xs font-mono text-orange-400">
+July 2026
+</span>
+
+<h3
+    class="text-2xl
+           font-bold
+           group-hover:text-orange-400
+           transition-colors"
+>
+The Role of AI in Streamlining Enterprise Software
+</h3>
+
+<p class="text-slate-400 text-sm leading-relaxed">
+Discover how intelligent automation can improve
+database workflows, reporting and business operations.
+</p>
+
+<div class="flex items-center gap-2 text-sm font-semibold text-orange-400">
+Read Article
+<i data-lucide="chevron-right" class="w-4 h-4"></i>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section
+    id="view-contact"
+    class="space-y-12
+           py-12
+           max-w-5xl
+           mx-auto
+           hidden
+           view-section"
+>
+
+<div class="text-center space-y-4">
+
+<div class="text-red-400 text-xs font-mono tracking-widest">
+START A PROJECT
+</div>
+
+<h1 class="text-4xl sm:text-5xl font-black">
+Connect With Our Engineering Team
+</h1>
+
+<p class="text-slate-400">
+Ready to build your web app or offline desktop solution?
+Let's discuss your requirements.
+</p>
+
+</div>
+
+
+<div
+    class="grid
+           grid-cols-1
+           md:grid-cols-2
+           gap-10"
+>
+
+
+<div class="space-y-7">
+
+
+<div class="flex items-start gap-4">
+
+<div
+    class="w-12 h-12
+           rounded-2xl
+           bg-red-500/10
+           border border-red-500/30
+           flex items-center
+           justify-center
+           text-red-500
+           shrink-0"
+>
+
+<i data-lucide="mail" class="w-6 h-6"></i>
+
+</div>
+
+<div>
+
+<h3 class="font-bold">
+Business Email
+</h3>
+
+<p class="text-slate-400 text-sm">
+redratitsolution@gmail.com
+</p>
+
+<p class="text-slate-500 text-xs mt-1">
+Professional business contact
+</p>
+
+</div>
+
+</div>
+
+
+<div class="flex items-start gap-4">
+
+<div
+    class="w-12 h-12
+           rounded-2xl
+           bg-orange-500/10
+           border border-orange-500/30
+           flex items-center
+           justify-center
+           text-orange-400
+           shrink-0"
+>
+
+<i data-lucide="phone" class="w-6 h-6"></i>
+
+</div>
+
+<div>
+
+<h3 class="font-bold">
+Phone Contact
+</h3>
+
+<p class="text-slate-400 text-sm">
+0927440965 / 0902720423
+</p>
+
+<p class="text-slate-500 text-xs mt-1">
+Direct project contact
+</p>
+
+</div>
+
+</div>
+
+
+<div class="flex items-start gap-4">
+
+<div
+    class="w-12 h-12
+           rounded-2xl
+           bg-purple-500/10
+           border border-purple-500/30
+           flex items-center
+           justify-center
+           text-purple-400
+           shrink-0"
+>
+
+<i data-lucide="send" class="w-6 h-6"></i>
+
+</div>
+
+<div>
+
+<h3 class="font-bold">
+Telegram Channel
+</h3>
+
+<a
+    href="https://t.me/redratitsolution"
+    target="_blank"
+    rel="noreferrer"
+    class="text-red-400
+           hover:underline
+           text-sm
+           flex items-center gap-1"
+>
+
+<span>
+t.me/redratitsolution
+</span>
+
+<i
+    data-lucide="external-link"
+    class="w-3.5 h-3.5"
+></i>
+
+</a>
+
+</div>
+
+</div>
+
+
+<div
+    class="glass-card
+           p-5
+           rounded-2xl
+           border border-slate-800"
+>
+
+<div class="flex items-center gap-3">
+
+<div
+    class="w-10 h-10
+           rounded-xl
+           bg-emerald-500/10
+           flex items-center
+           justify-center
+           text-emerald-400"
+>
+
+<i data-lucide="shield-check" class="w-5 h-5"></i>
+
+</div>
+
+<div>
+
+<div class="font-bold text-sm">
+Project Consultation
+</div>
+
+<div class="text-xs text-slate-500">
+Confidential • Professional • Direct
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CONTACT FORM -->
+
+<form
+    onsubmit="handleContactSubmit(event)"
+    class="glass-card
+           p-7 sm:p-8
+           rounded-3xl
+           border border-slate-800
+           space-y-6"
+>
+
+<div
+    id="form-success-msg"
+    class="hidden
+           py-12
+           text-center
+           space-y-4"
+>
+
+<div
+    class="w-16 h-16
+           rounded-full
+           bg-emerald-500/10
+           border border-emerald-500/30
+           text-emerald-400
+           flex items-center
+           justify-center
+           mx-auto"
+>
+
+<i data-lucide="check-circle-2" class="w-8 h-8"></i>
+
+</div>
+
+<h3 class="text-xl font-bold">
+Message Received!
+</h3>
+
+<p class="text-slate-400 text-sm">
+Thank you for reaching out.
+We will respond promptly.
+</p>
+
+</div>
+
+
+<div
+    id="form-inputs-container"
+    class="space-y-5"
+>
+
+<div class="space-y-2">
+
+<label class="text-xs font-semibold text-slate-300">
+Your Full Name
+</label>
+
+<input
+    type="text"
+    required
+    id="contact-name"
+    placeholder="Your name"
+    class="w-full px-4 py-3.5
+           rounded-xl
+           bg-slate-950
+           border border-slate-800
+           focus:border-red-500
+           focus:outline-none
+           text-sm
+           text-slate-100"
+/>
+
+</div>
+
+
+<div class="space-y-2">
+
+<label class="text-xs font-semibold text-slate-300">
+Your Email Address
+</label>
+
+<input
+    type="email"
+    required
+    id="contact-email"
+    placeholder="your@email.com"
+    class="w-full px-4 py-3.5
+           rounded-xl
+           bg-slate-950
+           border border-slate-800
+           focus:border-red-500
+           focus:outline-none
+           text-sm
+           text-slate-100"
+/>
+
+</div>
+
+
+<div class="space-y-2">
+
+<label class="text-xs font-semibold text-slate-300">
+Message
+</label>
+
+<textarea
+    rows="5"
+    required
+    id="contact-message"
+    placeholder="Describe your project..."
+    class="w-full px-4 py-3.5
+           rounded-xl
+           bg-slate-950
+           border border-slate-800
+           focus:border-red-500
+           focus:outline-none
+           text-sm
+           resize-none
+           text-slate-100"
+></textarea>
+
+</div>
+
+
+<button
+    type="submit"
+    class="liquid-btn
+           w-full
+           py-4
+           rounded-xl
+           bg-gradient-to-r
+           from-red-600
+           to-orange-600
+           text-white
+           font-bold
+           shadow-lg
+           shadow-red-600/30
+           hover:scale-[1.02]
+           transition-transform
+           flex items-center
+           justify-center
+           gap-2"
+>
+
+Send Message
+
+<i data-lucide="send" class="w-4 h-4"></i>
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     CLIENT PORTAL
+======================================================= -->
+
+<section
+    id="view-portal"
+    class="space-y-8
+           py-12
+           hidden
+           view-section"
+>
+
+<div
+    class="flex
+           flex-col
+           md:flex-row
+           md:items-center
+           justify-between
+           gap-4
+           border-b border-slate-800
+           pb-6"
+>
+
+<div>
+
+<div class="text-red-400 text-xs font-mono mb-2">
+SECURE CLIENT AREA
+</div>
+
+<h1 class="text-3xl sm:text-4xl font-black">
+Client Project Dashboard
+</h1>
+
+<p class="text-slate-400 text-sm mt-2">
+Track project milestones and system status.
+</p>
+
+</div>
+
+
+<div
+    class="flex
+           items-center
+           gap-2
+           px-4 py-2
+           rounded-xl
+           bg-emerald-500/10
+           border border-emerald-500/30
+           text-emerald-400
+           text-xs
+           font-semibold"
+>
+
+<span
+    class="w-2 h-2
+           rounded-full
+           bg-emerald-500
+           animate-pulse"
+></span>
+
+All Systems Operational
+
+</div>
+
+</div>
+
+
+<div
+    class="grid
+           grid-cols-1
+           md:grid-cols-3
+           gap-6"
+>
+
+
+<div
+    class="glass-card
+           p-6
+           rounded-2xl
+           border border-slate-800"
+>
+
+<span class="text-xs text-slate-400 uppercase font-mono">
+Active Deployments
+</span>
+
+<div class="text-3xl font-black text-white mt-2">
+3
+</div>
+
+<p class="text-xs text-emerald-400 mt-2">
+Systems deployed
+</p>
+
+</div>
+
+
+<div
+    class="glass-card
+           p-6
+           rounded-2xl
+           border border-slate-800"
+>
+
+<span class="text-xs text-slate-400 uppercase font-mono">
+Support Tickets
+</span>
+
+<div class="text-3xl font-black text-white mt-2">
+0
+</div>
+
+<p class="text-xs text-slate-400 mt-2">
+No open tickets
+</p>
+
+</div>
+
+
+<div
+    class="glass-card
+           p-6
+           rounded-2xl
+           border border-slate-800"
+>
+
+<span class="text-xs text-slate-400 uppercase font-mono">
+System Health
+</span>
+
+<div class="text-3xl font-black text-red-500 mt-2">
+100%
+</div>
+
+<p class="text-xs text-emerald-400 mt-2">
+Operational
+</p>
+
+</div>
+
+</div>
+
+
+<div
+    class="glass-card
+           p-8
+           rounded-3xl
+           border border-slate-800
+           space-y-6"
+>
+
+<div class="flex items-center justify-between">
+
+<h3 class="text-xl font-bold">
+Recent Milestone Activity
+</h3>
+
+<i
+    data-lucide="activity"
+    class="text-red-400"
+></i>
+
+</div>
+
+
+<div class="space-y-4 text-sm font-mono">
+
+<div
+    class="flex
+           flex-col
+           sm:flex-row
+           sm:items-center
+           justify-between
+           gap-3
+           p-4
+           rounded-xl
+           bg-slate-950
+           border border-slate-800"
+>
+
+<div class="flex items-center gap-3">
+
+<i
+    data-lucide="check-circle-2"
+    class="w-5 h-5 text-emerald-400"
+></i>
+
+<span>
+Offline Desktop Application Installer Compiled
+</span>
+
+</div>
+
+<span class="text-slate-500 text-xs">
+Completed
+</span>
+
+</div>
+
+
+<div
+    class="flex
+           flex-col
+           sm:flex-row
+           sm:items-center
+           justify-between
+           gap-3
+           p-4
+           rounded-xl
+           bg-slate-950
+           border border-slate-800"
+>
+
+<div class="flex items-center gap-3">
+
+<i
+    data-lucide="check-circle-2"
+    class="w-5 h-5 text-emerald-400"
+></i>
+
+<span>
+Web Application Frontend & Database Sync
+</span>
+
+</div>
+
+<span class="text-slate-500 text-xs">
+Completed
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =======================================================
+     CHECKOUT MODAL
+======================================================= -->
+
+<div
+    id="checkout-modal"
+    class="hidden
+           fixed
+           inset-0
+           z-[200]
+           bg-black/70
+           modal-backdrop
+           p-4
+           items-center
+           justify-center"
+>
+
+<div
+    class="modal-panel
+           w-full
+           max-w-lg
+           glass-card
+           rounded-3xl
+           border border-slate-700
+           p-7
+           sm:p-8
+           relative"
+>
+
+<button
+    onclick="closeCheckout()"
+    class="absolute
+           top-4
+           right-4
+           w-9 h-9
+           rounded-xl
+           bg-slate-900
+           text-slate-400
+           hover:text-white
+           flex items-center
+           justify-center"
+>
+
+<i data-lucide="x" class="w-5 h-5"></i>
+
+</button>
+
+
+<div class="space-y-2 mb-6">
+
+<div
+    class="inline-flex
+           items-center
+           gap-2
+           px-3 py-1
+           rounded-full
+           bg-red-500/10
+           text-red-400
+           border border-red-500/20
+           text-[10px]
+           font-mono"
+>
+
+<i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+
+SECURE PROJECT REQUEST
+
+</div>
+
+
+<h3 class="text-2xl font-bold">
+Secure Package Checkout
+</h3>
+
+<p class="text-sm text-slate-400">
+Selected Package:
+<span
+    id="modal-package-name"
+    class="text-red-400 font-bold"
+></span>
+</p>
+
+</div>
+
+
+<!-- STEP 1 -->
+
+<div
+    id="checkout-step-1"
+    class="space-y-5"
+>
+
+<div class="space-y-2">
+
+<label class="text-xs font-semibold text-slate-300">
+Company / Business Name
+</label>
+
+<input
+    type="text"
+    id="checkout-company"
+    placeholder="Your company or business"
+    class="w-full px-4 py-3
+           rounded-xl
+           bg-slate-950
+           border border-slate-800
+           focus:border-red-500
+           focus:outline-none
+           text-sm"
+/>
+
+</div>
+
+
+<div class="space-y-2">
+
+<label class="text-xs font-semibold text-slate-300">
+Contact Email
+</label>
+
+<input
+    type="email"
+    id="checkout-email"
+    placeholder="manager@business.com"
+    class="w-full px-4 py-3
+           rounded-xl
+           bg-slate-950
+           border border-slate-800
+           focus:border-red-500
+           focus:outline-none
+           text-sm"
+/>
+
+</div>
+
+
+<button
+    onclick="proceedToStep2(); playSound();"
+    class="liquid-btn
+           w-full
+           py-3.5
+           rounded-xl
+           bg-gradient-to-r
+           from-red-600
+           to-orange-600
+           text-white
+           font-bold
+           shadow-lg
+           shadow-red-600/30"
+>
+
+Continue
+
+<i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+
+</button>
+
+</div>
+
+
+<!-- STEP 2 -->
+
+<div
+    id="checkout-step-2"
+    class="space-y-6
+           text-center
+           py-4
+           hidden"
+>
+
+<div
+    class="w-16 h-16
+           rounded-2xl
+           bg-emerald-500/10
+           border border-emerald-500/30
+           text-emerald-400
+           flex items-center
+           justify-center
+           mx-auto"
+>
+
+<i data-lucide="credit-card" class="w-8 h-8"></i>
+
+</div>
+
+
+<h4 class="text-lg font-bold">
+Project Request Ready
+</h4>
+
+<p class="text-xs text-slate-400">
+Your request details have been captured.
+Final payment integration can be connected to
+your preferred gateway.
+</p>
+
+
+<button
+    onclick="confirmPayment(); playSound();"
+    class="liquid-btn
+           w-full
+           py-3.5
+           rounded-xl
+           bg-emerald-600
+           hover:bg-emerald-500
+           text-white
+           font-bold"
+>
+
+Confirm Project Request
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =======================================================
+     AI CHAT
+======================================================= -->
+
+<div
+    id="chat-window"
+    class="chat-hidden
+           fixed
+           bottom-24
+           right-4
+           sm:right-6
+           z-[150]
+           w-[calc(100%-2rem)]
+           sm:w-[390px]
+           h-[520px]
+           glass-card
+           rounded-3xl
+           border border-slate-700
+           overflow-hidden
+           shadow-2xl
+           flex flex-col"
+>
+
+
+<!-- CHAT HEADER -->
+
+<div
+    class="p-4
+           bg-gradient-to-r
+           from-red-950/80
+           to-slate-950
+           border-b border-slate-800
+           flex items-center
+           justify-between"
+>
+
+<div class="flex items-center gap-3">
+
+<div
+    class="relative
+           w-10 h-10
+           rounded-xl
+           bg-gradient-to-br
+           from-red-600
+           to-orange-500
+           flex items-center
+           justify-center"
+>
+
+<i data-lucide="bot" class="w-5 h-5 text-white"></i>
+
+<div
+    class="absolute
+           -right-1
+           -bottom-1
+           w-3 h-3
+           rounded-full
+           bg-emerald-500
+           chat-dot"
+></div>
+
+</div>
+
+
+<div>
+
+<div class="font-bold text-sm">
+RedRat AI Assistant
+</div>
+
+<div class="text-[10px] text-emerald-400">
+Online • Ready to help
+</div>
+
+</div>
+
+</div>
+
+
+<button
+    onclick="toggleChat()"
+    class="text-slate-400 hover:text-white"
+>
+
+<i data-lucide="x" class="w-5 h-5"></i>
+
+</button>
+
+</div>
+
+
+<!-- CHAT MESSAGES -->
+
+<div
+    id="chat-messages"
+    class="flex-1
+           p-4
+           overflow-y-auto
+           space-y-3
+           text-xs"
+>
+
+<div
+    class="max-w-[85%]
+           rounded-2xl
+           rounded-tl-sm
+           bg-slate-900
+           border border-slate-800
+           p-3
+           text-slate-300"
+>
+
+Hello! 👋 I'm the RedRat AI Assistant.
+
+Ask me about:
+
+<ul class="mt-2 space-y-1 text-slate-400">
+
+<li>• Web applications</li>
+<li>• Offline desktop software</li>
+<li>• Business systems</li>
+<li>• AI automation</li>
+<li>• Project packages</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<!-- CHAT INPUT -->
+
+<form
+    onsubmit="handleChatSubmit(event)"
+    class="p-3
+           bg-slate-950/90
+           border-t border-slate-800
+           flex gap-2"
+>
+
+<input
+    type="text"
+    id="chat-input"
+    placeholder="Ask RedRat AI..."
+    class="flex-1
+           px-3 py-2.5
+           rounded-xl
+           bg-slate-900
+           border border-slate-800
+           text-xs
+           focus:outline-none
+           focus:border-red-500
+           text-slate-100"
+/>
+
+<button
+    type="submit"
+    class="p-2.5
+           rounded-xl
+           bg-gradient-to-r
+           from-red-600
+           to-orange-600
+           text-white
+           hover:scale-105
+           transition"
+>
+
+<i data-lucide="send" class="w-4 h-4"></i>
+
+</button>
+
+</form>
+
+</div>
+
+
+<!-- CHAT TOGGLE -->
+
+<button
+    id="chat-toggle-btn"
+    onclick="toggleChat(); playSound();"
+    class="liquid-btn
+           fixed
+           bottom-6
+           right-4
+           sm:right-6
+           z-[160]
+           w-14
+           h-14
+           rounded-full
+           bg-gradient-to-r
+           from-red-600
+           to-orange-600
+           text-white
+           flex
+           items-center
+           justify-center
+           shadow-2xl
+           shadow-red-600/50
+           hover:scale-110
+           transition-transform"
+>
+
+<i
+    data-lucide="bot"
+    class="w-6 h-6"
+></i>
+
+</button>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer
+    class="border-t
+           border-slate-800/80
+           mt-10
+           py-10"
+>
+
+<div
+    class="flex
+           flex-col
+           md:flex-row
+           items-center
+           justify-between
+           gap-5"
+>
+
+<div>
+
+<div class="font-black text-lg">
+RedRat IT Solution
+</div>
+
+<div class="text-xs text-slate-500 mt-1">
+Intelligent Software • Custom Applications • Digital Transformation
+</div>
+
+</div>
+
+
+<div class="text-xs text-slate-500 text-center">
+© 2026 RedRat IT Solution. All rights reserved.
+</div>
+
+
+<div class="flex items-center gap-3">
+
+<a
+    href="mailto:redratitsolution@gmail.com"
+    class="w-9 h-9
+           rounded-xl
+           bg-slate-900
+           border border-slate-800
+           flex items-center
+           justify-center
+           text-slate-400
+           hover:text-red-400
+           transition"
+>
+
+<i data-lucide="mail" class="w-4 h-4"></i>
+
+</a>
+
+
+<a
+    href="https://t.me/redratitsolution"
+    target="_blank"
+    rel="noreferrer"
+    class="w-9 h-9
+           rounded-xl
+           bg-slate-900
+           border border-slate-800
+           flex items-center
+           justify-center
+           text-slate-400
+           hover:text-red-400
+           transition"
+>
+
+<i data-lucide="send" class="w-4 h-4"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+/* =========================================================
+   LUCIDE
+========================================================= */
+
+function refreshIcons() {
+
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+
+}
+
+refreshIcons();
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+function switchTab(tab) {
+
+    const sections = [
+        "home",
+        "about",
+        "services",
+        "blog",
+        "contact",
+        "portal"
+    ];
+
+    sections.forEach(name => {
+
+        const section =
+            document.getElementById("view-" + name);
+
+        if (section) {
+
+            section.classList.toggle(
+                "hidden",
+                name !== tab
+            );
+
+        }
+
     });
 
-    // Optional Sound FX
-    function toggleAudio() {
-      soundEnabled = !soundEnabled;
-      const icon = document.getElementById('sound-icon');
-      if (soundEnabled) {
-        icon.setAttribute('data-lucide', 'volume-2');
-        icon.classList.add('text-red-400');
-      } else {
-        icon.setAttribute('data-lucide', 'volume-x');
-        icon.classList.remove('text-red-400');
-      }
-      lucide.createIcons();
-    }
 
-    function playSound() {
-      if (!soundEnabled) return;
-      const audio = document.getElementById('ui-sound');
-      if (audio) {
-        audio.currentTime = 0;
-        audio.play().catch(() => {});
-      }
-    }
+    document.querySelectorAll(".nav-link").forEach(btn => {
 
-    // Animated Counters
-    function runCounters() {
-      const counters = document.querySelectorAll('.counter-anim');
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        let count = 0;
-        const speed = target / 35;
-        const updateCount = () => {
-          count += speed;
-          if (count < target) {
-            counter.innerText = Math.ceil(count);
-            setTimeout(updateCount, 40);
-          } else {
-            counter.innerText = target;
-          }
-        };
-        updateCount();
-      });
-    }
+        btn.classList.remove(
+            "text-red-400",
+            "font-bold"
+        );
 
-    function setLanguage(lang) {
-      currentLang = lang;
-      const t = translations[lang];
-
-      ['en', 'am', 'om'].forEach(l => {
-        const btn = document.getElementById(`lang-${l}`);
-        if (l === lang) {
-          btn.className = "px-2.5 py-1 rounded-lg transition-all bg-red-600 text-white shadow";
-        } else {
-          btn.className = "px-2.5 py-1 rounded-lg transition-all text-slate-400 hover:text-white";
-        }
-      });
-
-      document.getElementById('brandNameText').innerText = t.brandName;
-      document.getElementById('ceoTitleText').innerText = t.ceoTitle;
-      document.getElementById('nav-home-btn').innerText = t.navHome;
-      document.getElementById('nav-about-btn').innerText = t.navAbout;
-      document.getElementById('nav-services-btn').innerText = t.navServices;
-      document.getElementById('nav-blog-btn').innerText = t.navBlog;
-      document.getElementById('nav-contact-btn').innerText = t.navContact;
-      document.getElementById('nav-portal-btn').innerText = t.navPortal;
-
-      document.getElementById('t-hero-badge').innerText = t.heroBadge;
-      document.getElementById('t-hero-title').innerText = t.heroTitle;
-      document.getElementById('t-hero-subtitle').innerText = t.heroSubtitle;
-      document.getElementById('t-explore-btn').innerText = t.exploreBtn;
-      document.getElementById('t-contact-btn').innerText = t.contactBtn;
-      document.getElementById('t-stats-projects').innerText = t.statsProjects;
-      document.getElementById('t-stats-clients').innerText = t.statsClients;
-      document.getElementById('t-stats-support').innerText = t.statsSupport;
-
-      document.getElementById('t-services-title').innerText = t.servicesTitle;
-      document.getElementById('t-services-sub').innerText = t.servicesSub;
-      document.getElementById('t-s1-title').innerText = t.s1Title;
-      document.getElementById('t-s1-desc').innerText = t.s1Desc;
-      document.getElementById('t-s2-title').innerText = t.s2Title;
-      document.getElementById('t-s2-desc').innerText = t.s2Desc;
-      document.getElementById('t-s3-title').innerText = t.s3Title;
-      document.getElementById('t-s3-desc').innerText = t.s3Desc;
-
-      document.getElementById('t-about-title').innerText = t.aboutTitle;
-      document.getElementById('t-about-text').innerText = t.aboutText;
-      document.getElementById('t-mission-title').innerText = t.missionTitle;
-      document.getElementById('t-mission-desc').innerText = t.missionDesc;
-      document.getElementById('t-vision-title').innerText = t.visionTitle;
-      document.getElementById('t-vision-desc').innerText = t.visionDesc;
-
-      document.getElementById('t-services-main-title').innerText = t.servicesTitle;
-      document.getElementById('t-services-main-sub').innerText = t.servicesSub;
-      document.getElementById('t-pricing-title').innerText = t.pricingTitle;
-      document.getElementById('t-pricing-sub').innerText = t.pricingSub;
-
-      document.getElementById('t-p1-name').innerText = t.p1Name;
-      document.getElementById('t-p1-desc').innerText = t.p1Desc;
-      document.getElementById('t-p2-name').innerText = t.p2Name;
-      document.getElementById('t-p2-desc').innerText = t.p2Desc;
-      document.getElementById('t-p3-name').innerText = t.p3Name;
-      document.getElementById('t-p3-desc').innerText = t.p3Desc;
-
-      document.getElementById('t-blog-title').innerText = t.blogTitle;
-      document.getElementById('t-blog-sub').innerText = t.blogSub;
-      document.getElementById('t-b1-title').innerText = t.b1Title;
-      document.getElementById('t-b1-excerpt').innerText = t.b1Excerpt;
-      document.getElementById('t-b2-title').innerText = t.b2Title;
-      document.getElementById('t-b2-excerpt').innerText = t.b2Excerpt;
-
-      document.getElementById('t-contact-main-title').innerText = t.contactTitle;
-      document.getElementById('t-contact-main-sub').innerText = t.contactSub;
-      document.getElementById('t-send-btn').innerText = t.sendBtn;
-
-      document.getElementById('t-portal-title').innerText = t.portalTitle;
-      document.getElementById('t-portal-sub').innerText = t.portalSub;
-      document.getElementById('t-operational').innerText = t.operational;
-
-      chatMessages = [{ sender: 'ai', text: t.chatGreeting }];
-      renderChatMessages();
-    }
-
-    function switchTab(tabName) {
-      const sections = ['home', 'about', 'services', 'blog', 'contact', 'portal'];
-      sections.forEach(sec => {
-        const el = document.getElementById(`view-${sec}`);
-        if (sec === tabName) {
-          el.classList.remove('hidden');
-        } else {
-          el.classList.add('hidden');
-        }
-      });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
-
-    // Mouse Light Trail
-    window.addEventListener('mousemove', (e) => {
-      const glow = document.getElementById('cursor-glow');
-      if (glow) {
-        glow.style.transform = `translate(${e.clientX - 225}px, ${e.clientY - 225}px)`;
-      }
     });
 
-    function openCheckout(packageName) {
-      document.getElementById('modal-package-name').innerText = packageName;
-      document.getElementById('checkout-step-1').classList.remove('hidden');
-      document.getElementById('checkout-step-2').classList.add('hidden');
-      document.getElementById('checkout-modal').classList.remove('hidden');
+
+    const active =
+        document.getElementById(
+            "nav-" + tab + "-btn"
+        );
+
+    if (active) {
+
+        active.classList.add(
+            "text-red-400",
+            "font-bold"
+        );
+
     }
 
-    function closeCheckout() {
-      document.getElementById('checkout-modal').classList.add('hidden');
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+
+    setTimeout(() => {
+
+        refreshIcons();
+        revealElements();
+
+    }, 100);
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMobileMenu() {
+
+    const menu =
+        document.getElementById("mobile-menu");
+
+    const icon =
+        document.getElementById("menu-icon");
+
+    menu.classList.toggle("hidden");
+
+    if (!menu.classList.contains("hidden")) {
+
+        icon.setAttribute("data-lucide", "x");
+
+    } else {
+
+        icon.setAttribute("data-lucide", "menu");
+
     }
 
-    function proceedToStep2() {
-      const comp = document.getElementById('checkout-company').value;
-      const email = document.getElementById('checkout-email').value;
-      if (!comp || !email) {
-        alert("Please fill in your company name and email.");
+    refreshIcons();
+
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+let audioEnabled = false;
+let audioContext = null;
+
+function toggleAudio() {
+
+    audioEnabled = !audioEnabled;
+
+    const icon =
+        document.getElementById("sound-icon");
+
+    icon.setAttribute(
+        "data-lucide",
+        audioEnabled
+            ? "volume-2"
+            : "volume-x"
+    );
+
+    refreshIcons();
+
+}
+
+
+function playSound() {
+
+    if (!audioEnabled) return;
+
+    try {
+
+        if (!audioContext) {
+
+            audioContext =
+                new (
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
+
+        }
+
+        const oscillator =
+            audioContext.createOscillator();
+
+        const gain =
+            audioContext.createGain();
+
+        oscillator.type = "sine";
+
+        oscillator.frequency.value = 520;
+
+        gain.gain.setValueAtTime(
+            0.035,
+            audioContext.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioContext.currentTime + .08
+        );
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+
+        oscillator.stop(
+            audioContext.currentTime + .08
+        );
+
+    } catch (error) {
+
+        console.log("Audio unavailable.");
+
+    }
+
+}
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+const translations = {
+
+    en: {
+
+        brand: "RedRat IT Solution",
+        ceo: "Founder & CEO: Ashebir Tereda"
+
+    },
+
+    am: {
+
+        brand: "ሬድራት አይቲ ሶሉሽን",
+        ceo: "መስራች እና ዋና ስራ አስፈፃሚ፡ አሸብር ተረዳ"
+
+    },
+
+    om: {
+
+        brand: "RedRat IT Solution",
+        ceo: "Hundheessaa fi CEO: Ashebir Tereda"
+
+    }
+
+};
+
+
+function setLanguage(language) {
+
+    const data =
+        translations[language];
+
+    if (!data) return;
+
+
+    document.getElementById(
+        "brandNameText"
+    ).textContent = data.brand;
+
+
+    document.getElementById(
+        "ceoTitleText"
+    ).textContent = data.ceo;
+
+
+    ["en","am","om"].forEach(lang => {
+
+        const button =
+            document.getElementById(
+                "lang-" + lang
+            );
+
+        if (!button) return;
+
+        if (lang === language) {
+
+            button.classList.add(
+                "bg-red-600",
+                "text-white",
+                "shadow"
+            );
+
+            button.classList.remove(
+                "text-slate-400"
+            );
+
+        } else {
+
+            button.classList.remove(
+                "bg-red-600",
+                "text-white",
+                "shadow"
+            );
+
+            button.classList.add(
+                "text-slate-400"
+            );
+
+        }
+
+    });
+
+
+    localStorage.setItem(
+        "redrat-language",
+        language
+    );
+
+}
+
+
+/* =========================================================
+   COUNTERS
+========================================================= */
+
+function animateCounters() {
+
+    document.querySelectorAll(
+        ".counter-anim"
+    ).forEach(counter => {
+
+        if (counter.dataset.animated) {
+            return;
+        }
+
+        counter.dataset.animated = "true";
+
+        const target =
+            Number(counter.dataset.target);
+
+        let current = 0;
+
+        const duration = 1500;
+
+        const start =
+            performance.now();
+
+        function update(now) {
+
+            const progress =
+                Math.min(
+                    (now - start) / duration,
+                    1
+                );
+
+            const eased =
+                1 - Math.pow(
+                    1 - progress,
+                    3
+                );
+
+            current =
+                Math.floor(
+                    target * eased
+                );
+
+            counter.textContent =
+                current;
+
+            if (progress < 1) {
+
+                requestAnimationFrame(update);
+
+            }
+
+        }
+
+        requestAnimationFrame(update);
+
+    });
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+function revealElements() {
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "active"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: .12
+            }
+        );
+
+
+    document.querySelectorAll(
+        ".reveal"
+    ).forEach(element => {
+
+        if (!element.classList.contains("active")) {
+
+            observer.observe(element);
+
+        }
+
+    });
+
+}
+
+
+revealElements();
+
+
+/* =========================================================
+   TILT EFFECT
+========================================================= */
+
+document.querySelectorAll(
+    ".tilt-card"
+).forEach(card => {
+
+    card.addEventListener(
+        "mousemove",
+        event => {
+
+            if (window.innerWidth < 900) {
+                return;
+            }
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const centerX =
+                rect.width / 2;
+
+            const centerY =
+                rect.height / 2;
+
+            const rotateX =
+                ((y - centerY) / centerY) * -3;
+
+            const rotateY =
+                ((x - centerX) / centerX) * 3;
+
+            card.style.transform =
+                `perspective(1000px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-6px)`;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        () => {
+
+            card.style.transform =
+                "";
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const cursorGlow =
+    document.getElementById(
+        "cursor-glow"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        cursorGlow.style.left =
+            event.clientX + "px";
+
+        cursorGlow.style.top =
+            event.clientY + "px";
+
+    }
+);
+
+
+/* =========================================================
+   CHAT
+========================================================= */
+
+function toggleChat() {
+
+    const chat =
+        document.getElementById(
+            "chat-window"
+        );
+
+    chat.classList.toggle(
+        "chat-hidden"
+    );
+
+}
+
+
+function addChatMessage(
+    message,
+    user = false
+) {
+
+    const container =
+        document.getElementById(
+            "chat-messages"
+        );
+
+    const bubble =
+        document.createElement("div");
+
+    bubble.className =
+        user
+            ? "ml-auto max-w-[85%] rounded-2xl rounded-tr-sm bg-gradient-to-r from-red-600 to-orange-600 p-3 text-white"
+            : "max-w-[85%] rounded-2xl rounded-tl-sm bg-slate-900 border border-slate-800 p-3 text-slate-300";
+
+    bubble.textContent = message;
+
+    container.appendChild(
+        bubble
+    );
+
+    container.scrollTop =
+        container.scrollHeight;
+
+}
+
+
+function handleChatSubmit(event) {
+
+    event.preventDefault();
+
+    const input =
+        document.getElementById(
+            "chat-input"
+        );
+
+    const message =
+        input.value.trim();
+
+    if (!message) return;
+
+    addChatMessage(
+        message,
+        true
+    );
+
+    input.value = "";
+
+
+    setTimeout(() => {
+
+        let response =
+            "Thank you for your message. RedRat IT Solution can help with custom web applications, offline desktop software, enterprise systems and AI automation. Please use the Contact page for a project consultation.";
+
+        const lower =
+            message.toLowerCase();
+
+        if (
+            lower.includes("web") ||
+            lower.includes("website")
+        ) {
+
+            response =
+                "We build custom responsive web applications with modern interfaces, databases, dashboards and business automation.";
+
+        }
+
+        else if (
+            lower.includes("desktop") ||
+            lower.includes("offline")
+        ) {
+
+            response =
+                "Our offline desktop solutions are designed for reliable local operation, local databases and business environments where internet dependency is not desirable.";
+
+        }
+
+        else if (
+            lower.includes("price") ||
+            lower.includes("cost")
+        ) {
+
+            response =
+                "Our packages currently include Starter Web Kit, Offline Desktop Suite and fully customized Bespoke AI Platforms. Open Services to review the packages.";
+
+        }
+
+        else if (
+            lower.includes("ai")
+        ) {
+
+            response =
+                "RedRat AI solutions can automate workflows, reporting, data processing and intelligent business operations.";
+
+        }
+
+
+        addChatMessage(
+            response
+        );
+
+    }, 700);
+
+}
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+function handleContactSubmit(event) {
+
+    event.preventDefault();
+
+    const form =
+        document.getElementById(
+            "form-inputs-container"
+        );
+
+    const success =
+        document.getElementById(
+            "form-success-msg"
+        );
+
+
+    form.classList.add("hidden");
+
+    success.classList.remove("hidden");
+
+    refreshIcons();
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+let selectedPackage = "";
+
+
+function openCheckout(packageName) {
+
+    selectedPackage =
+        packageName;
+
+    document.getElementById(
+        "modal-package-name"
+    ).textContent =
+        packageName;
+
+
+    document.getElementById(
+        "checkout-step-1"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "checkout-step-2"
+    ).classList.add("hidden");
+
+
+    const modal =
+        document.getElementById(
+            "checkout-modal"
+        );
+
+    modal.classList.remove("hidden");
+
+    modal.classList.add("flex");
+
+    refreshIcons();
+
+}
+
+
+function closeCheckout() {
+
+    const modal =
+        document.getElementById(
+            "checkout-modal"
+        );
+
+    modal.classList.add("hidden");
+
+    modal.classList.remove("flex");
+
+}
+
+
+function proceedToStep2() {
+
+    const company =
+        document.getElementById(
+            "checkout-company"
+        ).value.trim();
+
+    const email =
+        document.getElementById(
+            "checkout-email"
+        ).value.trim();
+
+
+    if (!company || !email) {
+
+        alert(
+            "Please enter your company/business name and email address."
+        );
+
         return;
-      }
-      document.getElementById('checkout-step-1').classList.add('hidden');
-      document.getElementById('checkout-step-2').classList.remove('hidden');
+
     }
 
-    function confirmPayment() {
-      alert("Order successfully placed! Ashebir Tereda and the RedRat development team will contact you shortly.");
-      closeCheckout();
-    }
 
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('contact-name').value;
-      const email = document.getElementById('contact-email').value;
-      if (!name || !email) return;
+    document.getElementById(
+        "checkout-step-1"
+    ).classList.add("hidden");
 
-      document.getElementById('form-inputs-container').classList.add('hidden');
-      document.getElementById('form-success-msg').classList.remove('hidden');
 
-      setTimeout(() => {
-        document.getElementById('form-success-msg').classList.add('hidden');
-        document.getElementById('form-inputs-container').classList.remove('hidden');
-        document.getElementById('contact-name').value = '';
-        document.getElementById('contact-email').value = '';
-        document.getElementById('contact-message').value = '';
-      }, 4000);
-    }
+    document.getElementById(
+        "checkout-step-2"
+    ).classList.remove("hidden");
 
-    // AI Chat Widget
-    let chatOpen = false;
-    let chatMessages = [];
 
-    function toggleChat() {
-      chatOpen = !chatOpen;
-      const win = document.getElementById('chat-window');
-      if (chatOpen) {
-        win.classList.remove('hidden');
-        if (chatMessages.length === 0) {
-          chatMessages.push({ sender: 'ai', text: translations[currentLang].chatGreeting });
-          renderChatMessages();
+    refreshIcons();
+
+}
+
+
+function confirmPayment() {
+
+    alert(
+        "Your project request for \"" +
+        selectedPackage +
+        "\" has been received. Please contact RedRat IT Solution to complete project confirmation and payment."
+    );
+
+    closeCheckout();
+
+}
+
+
+/* =========================================================
+   CHECKOUT BACKDROP
+========================================================= */
+
+document.getElementById(
+    "checkout-modal"
+).addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target.id ===
+            "checkout-modal"
+        ) {
+
+            closeCheckout();
+
         }
-      } else {
-        win.classList.add('hidden');
-      }
+
     }
+);
 
-    function renderChatMessages() {
-      const container = document.getElementById('chat-messages');
-      container.innerHTML = '';
-      chatMessages.forEach(msg => {
-        const div = document.createElement('div');
-        div.className = `flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`;
-        div.innerHTML = `<div class="max-w-[80%] p-3 rounded-2xl ${msg.sender === 'user' ? 'bg-red-600 text-white rounded-br-none' : 'glass-card text-slate-200 rounded-bl-none border border-slate-800'}">${msg.text}</div>`;
-        container.appendChild(div);
-      });
-      container.scrollTop = container.scrollHeight;
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const savedLanguage =
+            localStorage.getItem(
+                "redrat-language"
+            );
+
+        if (savedLanguage) {
+
+            setLanguage(
+                savedLanguage
+            );
+
+        }
+
+        switchTab("home");
+
+        animateCounters();
+
+        refreshIcons();
+
     }
+);
 
-    function handleChatSubmit(e) {
-      e.preventDefault();
-      const input = document.getElementById('chat-input');
-      const text = input.value.trim();
-      if (!text) return;
 
-      chatMessages.push({ sender: 'user', text });
-      input.value = '';
-      renderChatMessages();
+/* =========================================================
+   RE-ANIMATE COUNTERS WHEN HOME IS SHOWN
+========================================================= */
 
-      setTimeout(() => {
-        let reply = "That sounds like an incredible software project! As RedRat IT Solution, we specialize in custom web apps and secure offline desktop systems. Ashebir Tereda can help you architect this.";
-        if (currentLang === 'am') reply = "ይህ ጥሩ የሶፍትዌር ሃሳብ ነው! ሬድራት የIT መፍትሄዎች ብጁ የድረ-ገጽ እና ከኢንተርኔት ነጻ የዴስክቶፕ ሲስተሞችን ሊሰራርዎ ይችላል።";
-        if (currentLang === 'om') reply = "Kun pirojekti baay'ee gaarii dha! RedRat IT Solution appii webii fi desktop offline ta'e siif hojjechuu danda'a.";
-        
-        chatMessages.push({ sender: 'ai', text: reply });
-        renderChatMessages();
-      }, 1000);
+const originalSwitchTab =
+    switchTab;
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+
+            closeCheckout();
+
+            document
+                .getElementById("chat-window")
+                .classList.add(
+                    "chat-hidden"
+                );
+
+        }
+
     }
+);
 
-    document.addEventListener("DOMContentLoaded", () => {
-      lucide.createIcons();
-      setLanguage('en');
-    });
-  </script>
+</script>
+
 </body>
 </html>
