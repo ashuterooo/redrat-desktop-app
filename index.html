@@ -742,6 +742,10 @@ body {
     gap: 1.25rem;
 }
 
+.founder-identity { grid-column: 1; }
+.founder-status { grid-column: 1; justify-self: start; }
+.founder-ai-showcase { grid-column: 2; grid-row: 1 / span 2; align-self: stretch; }
+
 .founder-ai-showcase {
     position: relative;
     overflow: hidden;
@@ -909,11 +913,78 @@ body {
     margin-right: .4rem;
 }
 
-.hero-secondary-hologram { display: none !important; }
+.hero-secondary-hologram {
+    display: none;
+    width: 100%;
+}
+
+.hero-right-hologram {
+    align-self: stretch;
+    min-height: 100%;
+}
+
+.hero-right-label {
+    grid-column: 2;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: -1.4rem;
+    padding: 0 .25rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-right-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    color: #fca5a5;
+    font-size: .68rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.hero-right-caption {
+    color: #64748b;
+    font-size: .66rem;
+    text-align: right;
+}
+
+@media (min-width: 1025px) {
+    .hero-main-copy {
+        grid-row: 1 / span 2;
+        align-self: center;
+    }
+
+    .hero-secondary-hologram {
+        display: block;
+    }
+
+    .hero-right-label {
+        display: flex;
+    }
+}
+
+.hero-right-hologram > .relative.hologram {
+    height: 100%;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 @media (max-width: 1024px) {
     .founder-hero-inner { grid-template-columns: 1fr; }
+    .founder-identity,
+    .founder-status,
+    .founder-ai-showcase {
+        grid-column: 1;
+        grid-row: auto;
+    }
 }
+
 
 @media (max-width: 640px) {
     .founder-ai-layout { grid-template-columns: 1fr; }
@@ -1516,16 +1587,18 @@ textarea:focus {
 
 <div
     class="grid grid-cols-1
+           lg:grid-cols-[minmax(0,1.06fr)_minmax(380px,0.94fr)]
            gap-10
-           items-start
+           lg:gap-12
+           items-center
            pt-4
-           lg:pt-6"
+           lg:pt-8"
 >
 
 
 <!-- HERO LEFT -->
 
-<div class="space-y-8 reveal max-w-6xl mx-auto w-full">
+<div class="space-y-8 reveal w-full min-w-0 hero-main-copy">
 
 <div
     class="hero-badge
@@ -1760,12 +1833,18 @@ Built Around You
      HERO AI HOLOGRAM
 ===================================================== -->
 
+<div class="hero-right-label">
+    <span class="hero-right-kicker"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> REDRAT INTELLIGENCE</span>
+    <span class="hero-right-caption">AI + Automation + Verified Business Data</span>
+</div>
+
 <div
     class="relative
            group
            perspective-1000
            reveal
-           hero-secondary-hologram"
+           hero-secondary-hologram
+           hero-right-hologram"
 >
 
 <div
