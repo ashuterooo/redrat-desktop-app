@@ -649,6 +649,19 @@ body {
 }
 
 /* =========================================================
+   MULTILINGUAL TYPOGRAPHY
+========================================================= */
+body.lang-am {
+  font-family: "Noto Sans Ethiopic", "Abyssinica SIL", "Nyala", "Segoe UI", sans-serif;
+}
+body.lang-am h1, body.lang-am h2, body.lang-am h3, body.lang-am h4 {
+  letter-spacing: -0.01em;
+}
+body.lang-om {
+  font-family: Inter, "Segoe UI", sans-serif;
+}
+
+/* =========================================================
    CUSTOM SCROLLBAR
    ========================================================= */
 
@@ -4253,96 +4266,114 @@ function playSound() {
 
 
 /* =========================================================
-   LANGUAGE
+   MULTILINGUAL REDRAT LANGUAGE ENGINE
 ========================================================= */
 
-const translations = {
+const languagePack = {
+  en: {},
+  am: {
+    "Home":"መነሻ", "About":"ስለ እኛ", "Services":"አገልግሎቶች", "Blog":"ብሎግ", "Warkaw":"ዋርካው", "Work":"ስራዎቻችን", "Why RedRat":"ለምን RedRat?", "Contact":"አግኙን", "Client Dashboard":"የደንበኛ ዳሽቦርድ", "Request Quote":"የዋጋ ጥያቄ ላክ", "Explore Solutions":"መፍትሄዎችን ይመልከቱ", "Get in Touch":"አግኙን", "See Warkaw":"ዋርካውን ይመልከቱ", "Our Work":"ስራዎቻችን", "Start Project":"ፕሮጀክት ጀምር",
+    "AI-Driven Digital Transformation & App Development":"በAI የሚመራ ዲጂታል ሽግግር እና የመተግበሪያ ልማት",
+    "Empowering Enterprises Through Intelligent Software & Custom Apps":"ድርጅቶችን በብልህ ሶፍትዌር እና በተለየ መተግበሪያ ማበረታታት",
+    "We engineer powerful web applications, offline desktop software and intelligent digital ecosystems designed to improve efficiency, automate workflows and accelerate growth.":"የስራ ቅልጥፍናን ለማሻሻል፣ ሂደቶችን ለማስተካከል እና እድገትን ለማፋጠን የተዘጋጁ ኃይለኛ የድር መተግበሪያዎች፣ የኦፍላይን ዴስክቶፕ ሶፍትዌሮች እና ብልህ ዲጂታል ስርዓቶችን እንሰራለን።",
+    "Ethiopia • East Africa":"ኢትዮጵያ • ምስራቅ አፍሪካ", "Ashebir Tereda • Founder & CEO":"አሸብር ተረዳ • መስራች እና ዋና ስራ አስፈፃሚ",
+    "Offline-first":"ኦፍላይን-ቀዳሚ", "Reliable operations without constant Internet dependency.":"ያለማቋረጥ በኢንተርኔት ላይ ሳይመሰረት የሚሰራ አስተማማኝ አሠራር።", "Built to fit":"ለእርስዎ ሂደት የተሰራ", "Systems designed around your real workflow.":"በእርስዎ እውነተኛ የስራ ሂደት ዙሪያ የተነደፈ ስርዓት።", "AI + verified data":"AI + የተረጋገጠ ውሂብ", "Intelligence with business calculations kept authoritative.":"የንግድ ስሌቶችን በትክክል እየጠበቀ የሚሰጥ ብልህ ትንተና።", "Local & multilingual":"አካባቢያዊ እና ብዙ ቋንቋ", "English, Amharic and Afaan Oromoo ready.":"እንግሊዝኛ፣ አማርኛ እና አፋን ኦሮሞ ዝግጁ።", "Core Languages":"ዋና ቋንቋዎች", "Offline-First Option":"ኦፍላይን-ቀዳሚ አማራጭ", "Built Around You":"በእርስዎ ዙሪያ የተገነባ",
+    "Founder & CEO • RedRat Ai Core":"መስራች እና ዋና ስራ አስፈፃሚ • RedRat Ai Core", "Building":"እየገነባን", "REDRAT INTELLIGENCE CORE":"የREDRAT ብልህነት ማዕከል", "AI AUTOMATION ENGINE • ONLINE":"የAI አውቶሜሽን ሞተር • መስመር ላይ", "System intelligence initialized...":"የስርዓት ብልህነት ተጀምሯል...", "✔ Custom Web Architecture Loaded":"✔ ብጁ የድር አርክቴክቸር ተጭኗል", "✔ Offline Desktop Engine Ready":"✔ የኦፍላይን ዴስክቶፕ ሞተር ዝግጁ ነው", "✔ Local Database Integration Active":"✔ የአካባቢ ዳታቤዝ ግንኙነት ንቁ ነው", "✔ AI Automation Layer Connected":"✔ የAI አውቶሜሽን ክፍል ተገናኝቷል", "> Awaiting enterprise command...":"> የድርጅት ትዕዛዝ በመጠባበቅ ላይ...",
+    "Our Core Development Solutions":"ዋና የልማት መፍትሄዎቻችን", "Custom web applications and high-performance offline desktop software engineered for scaling enterprises.":"ለሚያድጉ ድርጅቶች የተሰሩ ብጁ የድር መተግበሪያዎች እና ከፍተኛ አፈጻጸም ያላቸው ኦፍላይን ዴስክቶፕ ሶፍትዌሮች።", "Custom Web Applications":"ብጁ የድር መተግበሪያዎች", "Scalable, high-performance web solutions built with modern frameworks and robust backend architecture.":"በዘመናዊ ፍሬምወርኮች እና ጠንካራ የኋላ ጎን አርክቴክቸር የተገነቡ ሊያድጉ የሚችሉ ከፍተኛ አፈጻጸም ያላቸው የድር መፍትሄዎች።", "Learn More":"ተጨማሪ ይወቁ", "Offline Desktop Applications":"ኦፍላይን ዴስክቶፕ መተግበሪያዎች", "Secure standalone desktop software designed for fast offline operations, local data storage and reliability.":"ፈጣን ኦፍላይን ስራ፣ የአካባቢ ውሂብ ማከማቻ እና አስተማማኝነት የተነደፈ የተለየ ዴስክቶፕ ሶፍትዌር።", "Explore Desktop Solutions":"የዴስክቶፕ መፍትሄዎችን ይመልከቱ", "Enterprise Digital Suites":"የድርጅት ዲጂታል ስርዓቶች", "Integrated inventory, payroll, accounting, automation and profit-cost analysis systems.":"የተቀናጀ የእቃ ክምችት፣ የደመወዝ፣ የሂሳብ፣ የአውቶሜሽን እና የወጪ-ትርፍ ትንተና ስርዓቶች።", "Build Your System":"ስርዓትዎን ይገንቡ",
+    "Connected Enterprise Ecosystem":"የተገናኘ የድርጅት ኢኮሲስተም", "Building secure digital systems for businesses, organizations and entrepreneurs while combining local reliability with modern cloud technology.":"ለንግዶች፣ ድርጅቶች እና ሥራ ፈጣሪዎች ደህንነቱ የተጠበቀ ዲጂታል ስርዓት እንገነባለን፤ የአካባቢ አስተማማኝነትን ከዘመናዊ ክላውድ ቴክኖሎጂ ጋር በማጣመር።", "Regions Served":"የተገለገሉ ክልሎች", "Node Stability":"የስርዓት መረጋጋት",
+    "Architecting the Future of Software Engineering":"የሶፍትዌር ኢንጂነሪንግ የወደፊትን እየገነባን", "Founded by Ashebir Tereda, RedRat Ai Core specializes in robust web applications, secure offline desktop systems and intelligent enterprise software. We bridge complex business workflows with intuitive interfaces and practical digital solutions.":"በአሸብር ተረዳ የተመሰረተው RedRat Ai Core ጠንካራ የድር መተግበሪያዎችን፣ ደህንነታቸው የተጠበቀ ኦፍላይን ዴስክቶፕ ስርዓቶችን እና ብልህ የድርጅት ሶፍትዌሮችን ያበረታታል። የተወሳሰቡ የንግድ ሂደቶችን ከቀላል በይነገጾች እና ተግባራዊ ዲጂታል መፍትሄዎች ጋር እናገናኛለን።", "Next-Generation Intelligent Core":"የቀጣይ ትውልድ ብልህ ማዕከል", "Intelligent workflow automation, secure local databases and custom enterprise architectures designed around real business needs.":"የብልህ የስራ ሂደት አውቶሜሽን፣ ደህንነቱ የተጠበቀ የአካባቢ ዳታቤዝ እና በእውነተኛ የንግድ ፍላጎቶች ዙሪያ የተነደፈ ብጁ አርክቴክቸር።", "Our Mission":"ተልዕኳችን", "To empower organizations with robust, intelligent and tailored software solutions that improve productivity and scale effortlessly.":"ድርጅቶችን በጠንካራ፣ ብልህ እና ተስማሚ የሶፍትዌር መፍትሄዎች በማበረታታት ምርታማነትን ማሻሻል እና በቀላሉ እንዲያድጉ ማድረግ።", "Our Vision":"ራዕያችን", "To become a leading East African technology partner for custom web applications, offline desktop software and intelligent digital transformation.":"በምስራቅ አፍሪካ ለብጁ የድር መተግበሪያዎች፣ ኦፍላይን ዴስክቶፕ ሶፍትዌሮች እና ብልህ ዲጂታል ሽግግር ታላቅ የቴክኖሎጂ አጋር መሆን።",
+    "Flagship Product • v1.0.0":"ዋና ምርት • v1.0.0", "RedRat Ai Core Product":"የRedRat Ai Core ምርት", "Café & Restaurant":"ካፌ እና ሬስቶራንት", "Management System":"የአስተዳደር ስርዓት", "An all-in-one platform connecting POS, finance, inventory, recipes, purchasing, management intelligence, security, backup and multilingual operations in one system.":"POS፣ ፋይናንስ፣ እቃ ክምችት፣ ሬሲፒ፣ ግዥ፣ የአስተዳደር ብልህነት፣ ደህንነት፣ ባክአፕ እና ብዙ ቋንቋ አሠራርን በአንድ ስርዓት የሚያገናኝ ሁሉን-በአንድ መድረክ።", "Open Live Demo":"የቀጥታ ዴሞ ክፈት", "Discuss a Similar System":"ተመሳሳይ ስርዓት እንወያይ", "Sales, payments, cash & reports":"ሽያጭ፣ ክፍያዎች፣ ጥሬ ገንዘብ እና ሪፖርቶች", "Purchasing, recipes & stock control":"ግዥ፣ ሬሲፒ እና የክምችት ቁጥጥር", "Verified business intelligence":"የተረጋገጠ የንግድ ብልህነት", "WARKAW COMMAND CENTER":"የዋርካው ኮማንድ ማዕከል", "What needs attention?":"ትኩረት የሚፈልገው ምንድነው?", "Low stock, cash reviews, margin pressure, supplier planning and operational alerts in one place.":"ዝቅተኛ ክምችት፣ የጥሬ ገንዘብ ግምገማ፣ የማርጂን ጫና፣ የአቅራቢ እቅድ እና የስራ ማስጠንቀቂያዎች በአንድ ቦታ።",
+    "Professional Development Services":"የፕሮፌሽናል ልማት አገልግሎቶች", "Tailored digital systems engineered for modern enterprises, retail businesses, organizations and digital startups.":"ለዘመናዊ ድርጅቶች፣ የችርቻሮ ንግዶች፣ ድርጅቶች እና ዲጂታል ስታርታፕ ቢዝነሶች የተስማሙ ዲጂታል ስርዓቶች።", "Transparent Service Packages":"ግልጽ የአገልግሎት ጥቅሎች", "Choose a package according to your operational scale.":"በእርስዎ የስራ መጠን መሰረት ጥቅል ይምረጡ።", "Starter Web Kit":"መነሻ የድር ጥቅል", "Perfect for businesses establishing their professional digital presence.":"የፕሮፌሽናል ዲጂታል መገኘት ለሚጀምሩ ንግዶች ተስማሚ።", "Responsive Web Application":"ተስማሚ የድር መተግበሪያ", "Professional UI":"ፕሮፌሽናል የተጠቃሚ በይነገጽ", "Standard Onboarding":"መደበኛ መነሻ ስልጠና", "6 Months Support":"6 ወር ድጋፍ", "Request Consultation":"የምክር ጥያቄ ላክ", "Most Popular":"በጣም ተወዳጅ", "Offline Desktop Suite":"ኦፍላይን ዴስክቶፕ ስብስብ", "Advanced standalone offline desktop application with local database integration.":"የላቀ ኦፍላይን ዴስክቶፕ መተግበሪያ ከአካባቢ ዳታቤዝ ግንኙነት ጋር።", "Custom Offline Application":"ብጁ ኦፍላይን መተግበሪያ", "Local Database Integration":"የአካባቢ ዳታቤዝ ግንኙነት", "Installer Setup":"የመጫኛ ማዋቀር", "Full Training":"ሙሉ ስልጠና", "1 Year Priority Support":"1 ዓመት ቅድሚያ ድጋፍ", "Bespoke AI Platform":"ብጁ AI መድረክ", "Fully customized architecture tailored precisely to enterprise workflows.":"በድርጅት የስራ ሂደቶች ላይ በትክክል የተስማማ ሙሉ ብጁ አርክቴክቸር።", "Custom":"ብጁ", "100% Custom Architecture":"100% ብጁ አርክቴክቸር", "Dedicated Development":"የተለየ ልማት", "AI Automation":"AI አውቶሜሽን", "Enterprise Integration":"የድርጅት ግንኙነት", "Long-Term Support":"የረጅም ጊዜ ድጋፍ",
+    "Selected Work":"የተመረጡ ስራዎች", "Software Built for Real Business Problems":"ለእውነተኛ የንግድ ችግኝ የተገነባ ሶፍትዌር", "A small showcase is more convincing than a long list of claims. Here is the kind of systems RedRat builds.":"አጭር የስራ ማሳያ ከረጅም የማስታወቂያ ዝርዝር ይልቅ የበለጠ እምነት ያለው ነው። RedRat የሚገነባቸው ስርዓቶች እንዲህ ያሉ ናቸው።", "Hospitality":"አስተናጋጅነት", "Flagship":"ዋና ምርት", "Warkaw Café & Restaurant Management System":"የዋርካው ካፌ እና ሬስቶራንት አስተዳደር ስርዓት", "A full operational platform connecting sales, finance, inventory, recipes, purchasing, AI, security and management reporting.":"ሽያጭ፣ ፋይናንስ፣ እቃ ክምችት፣ ሬሲፒ፣ ግዥ፣ AI፣ ደህንነት እና የአስተዳደር ሪፖርትን የሚያገናኝ ሙሉ የስራ መድረክ።", "Orders & payments":"ትዕዛዞች እና ክፍያዎች", "Stock & purchasing":"ክምችት እና ግዥ", "AI + management insights":"AI + የአስተዳደር ግንዛቤ", "Explore Warkaw":"ዋርካውን ይመልከቱ", "Custom Systems":"ብጁ ስርዓቶች", "Service":"አገልግሎት", "Business Management Software":"የንግድ አስተዳደር ሶፍትዌር", "Custom systems can connect inventory, costing, workflow, reporting, approvals and role-based operations around the way a business already works.":"ብጁ ስርዓቶች እቃ ክምችት፣ ወጪ ስሌት፣ የስራ ሂደት፣ ሪፖርት፣ ፈቃድ እና የሚና-ተኮር ስራዎችን ከንግዱ ነባር አሠራር ጋር ሊያገናኙ ይችላሉ።", "Workflow-driven design":"በስራ ሂደት የሚመራ ንድፍ", "Web or offline desktop deployment":"የድር ወይም ኦፍላይን ዴስክቶፕ ማስኬጃ", "Training, support and upgrades":"ስልጠና፣ ድጋፍ እና ማሻሻያ", "Discuss Your Workflow":"የስራ ሂደትዎን እንወያይ",
+    "Technology That Fits the Business":"ከንግዱ ጋር የሚስማማ ቴክኖሎጂ", "We focus on practical systems, not software for software's sake.":"ለሶፍትዌር ብቻ ሶፍትዌር ሳይሆን ተግባራዊ ስርዓቶችን እንመርጣለን።", "Built Around Your Workflow":"በስራ ሂደትዎ ዙሪያ የተገነባ", "We adapt the software to the real process instead of forcing your team into a rigid template.":"ቡድንዎን በጠንካራ ቅርጽ ውስጥ ከማስገባት ይልቅ ሶፍትዌሩን ከእውነተኛ ሂደትዎ ጋር እናስማማዋለን።", "Offline When It Matters":"በሚያስፈልግበት ጊዜ ኦፍላይን", "Offline-capable systems reduce dependency on connectivity for critical daily operations.":"ኦፍላይን የሚሰሩ ስርዓቶች ለወሳኝ የዕለት ተዕለት ስራዎች በግንኙነት ላይ ያለውን ጥገኝነት ይቀንሳሉ።", "AI With Grounded Data":"AI ከተረጋገጠ ውሂብ ጋር", "AI is paired with verified business calculations so the numbers remain authoritative.":"AI ከተረጋገጡ የንግድ ስሌቶች ጋር ይጣመራል፤ ስለዚህ ቁጥሮቹ ታማኝ ይቆያሉ።", "Multilingual by Design":"ከመጀመሪያው ብዙ ቋንቋ የተነደፈ", "English, Amharic and Afaan Oromoo support make adoption easier for local teams.":"የእንግሊዝኛ፣ አማርኛ እና አፋን ኦሮሞ ድጋፍ ለአካባቢያዊ ቡድኖች አጠቃቀሙን ቀላል ያደርጋል።", "Security & Recovery":"ደህንነት እና ማገገሚያ", "Role controls, audit trails, backups, migrations and support diagnostics are part of the product mindset.":"የሚና ቁጥጥር፣ የኦዲት መዝገቦች፣ ባክአፕ፣ ማይግሬሽን እና የድጋፍ ምርመራ ከምርቱ መሰረታዊ አስተሳሰብ ናቸው።", "Training & Support":"ስልጠና እና ድጋፍ", "We don't just hand over software—we provide onboarding, user guidance and ongoing support.":"ሶፍትዌሩን ብቻ አንሰጥም—መነሻ ስልጠና፣ የተጠቃሚ መመሪያ እና ቀጣይ ድጋፍ እንሰጣለን።",
+    "Tech Insights & Development Tips":"የቴክኖሎጂ ግንዛቤዎች እና የልማት ምክሮች", "Discover how modern web apps, AI and offline desktop solutions are transforming enterprise software.":"ዘመናዊ የድር መተግበሪያዎች፣ AI እና ኦፍላይን ዴስክቶፕ መፍትሄዎች የድርጅት ሶፍትዌርን እንዴት እየቀየሩ እንደሆነ ይወቁ።", "Why Offline Desktop Apps Deliver Superior Reliability":"ለምን ኦፍላይን ዴስክቶፕ አፕሊኬሽኖች የተሻለ አስተማማኝነት ይሰጣሉ", "Explore how local architectures can eliminate internet dependency for critical business operations.":"የአካባቢ አርክቴክቸሮች ለወሳኝ የንግድ ስራዎች በኢንተርኔት ላይ ያለውን ጥገኝነት እንዴት ሊያስወግዱ እንደሚችሉ ይመልከቱ።", "Read Article":"ጽሑፉን ያንብቡ", "The Role of AI in Streamlining Enterprise Software":"AI የድርጅት ሶፍትዌርን ለማቀላጠፍ ያለው ሚና", "Discover how intelligent automation can improve database workflows, reporting and business operations.":"ብልህ አውቶሜሽን የዳታቤዝ ሂደትን፣ ሪፖርትን እና የንግድ ስራዎችን እንዴት ሊያሻሽል እንደሚችል ይወቁ።",
+    "Connect With Our Engineering Team":"ከኢንጂነሪንግ ቡድናችን ጋር ይገናኙ", "Ready to build your web app or offline desktop solution? Let's discuss your requirements.":"የድር መተግበሪያዎን ወይም ኦፍላይን ዴስክቶፕ መፍትሄዎን ለመገንባት ዝግጁ ነዎት? ፍላጎቶችዎን እንወያይ።", "Business Email":"የንግድ ኢሜይል", "Professional business contact":"የፕሮፌሽናል የንግድ ግንኙነት", "Phone Contact":"የስልክ ግንኙነት", "Direct project contact":"ቀጥተኛ የፕሮጀክት ግንኙነት", "Telegram Channel":"የቴሌግራም ቻናል", "Project Consultation":"የፕሮጀክት ምክር", "Confidential • Professional • Direct":"ሚስጥራዊ • ፕሮፌሽናል • ቀጥተኛ", "Message Received!":"መልዕክትዎ ደርሷል!", "Thank you for reaching out. We will respond promptly.":"ስለገናኙን እናመሰግናለን። በፍጥነት ምላሽ እንሰጣለን።", "Your Full Name":"ሙሉ ስምዎ", "Your Email Address":"የኢሜይል አድራሻዎ", "Message":"መልዕክት", "Send Message":"መልዕክት ላክ",
+    "Client Project Dashboard":"የደንበኛ ፕሮጀክት ዳሽቦርድ", "Track project milestones and system status.":"የፕሮጀክት ደረጃዎችን እና የስርዓቱን ሁኔታ ይከታተሉ።", "All Systems Operational":"ሁሉም ስርዓቶች በመደበኛ ሁኔታ እየሰሩ ነው", "Active Deployments":"ንቁ ማስተዋወቂያዎች", "Systems deployed":"የተጫኑ ስርዓቶች", "Support Tickets":"የድጋፍ ጥያቄዎች", "No open tickets":"ክፍት የድጋፍ ጥያቄ የለም", "System Health":"የስርዓት ጤና", "Operational":"በስራ ላይ", "Recent Milestone Activity":"የቅርብ ጊዜ የደረጃ እንቅስቃሴ", "Offline Desktop Application Installer Compiled":"የኦፍላይን ዴስክቶፕ መጫኛ ተጠናቋል", "Completed":"ተጠናቋል", "Web Application Frontend & Database Sync":"የድር መተግበሪያ ፊት-ገጽ እና ዳታቤዝ ማመሳሰያ",
+    "Secure Package Checkout":"ደህንነቱ የተጠበቀ የጥቅል ጥያቄ", "Selected Package:":"የተመረጠ ጥቅል:", "Company / Business Name":"የኩባንያ / የንግድ ስም", "Contact Email":"የግንኙነት ኢሜይል", "Continue":"ቀጥል", "Project Request Ready":"የፕሮጀክት ጥያቄ ዝግጁ ነው", "Your request details have been captured. Final payment integration can be connected to your preferred gateway.":"የጥያቄዎ ዝርዝሮች ተመዝግበዋል። የመጨረሻ ክፍያ ከመረጡት የክፍያ ስርዓት ጋር ሊገናኝ ይችላል።", "Confirm Project Request":"የፕሮጀክት ጥያቄን አረጋግጥ",
+    "RedRat AI Assistant":"RedRat AI ረዳት", "Online • Ready to help":"መስመር ላይ • ለመርዳት ዝግጁ", "Hello! 👋 I'm the RedRat AI Assistant. Ask me about:":"ሰላም! 👋 እኔ RedRat AI ረዳት ነኝ። ስለ እነዚህ ይጠይቁኝ:", "Web applications":"የድር መተግበሪያዎች", "Offline desktop software":"ኦፍላይን ዴስክቶፕ ሶፍትዌር", "Business systems":"የንግድ ስርዓቶች", "AI automation":"AI አውቶሜሽን", "Project packages":"የፕሮጀክት ጥቅሎች",
+    "Intelligent Software • Custom Applications • Digital Transformation":"ብልህ ሶፍትዌር • ብጁ መተግበሪያዎች • ዲጂታል ሽግግር", "© 2026 RedRat Ai Core. All rights reserved.":"© 2026 RedRat Ai Core። መብቱ የተጠበቀ ነው።", "Website":"ድር ጣቢያ", "ABOUT REDRAT":"ስለ REDRAT", "REDRAT SOLUTIONS":"የREDRAT መፍትሄዎች", "GLOBAL & EAST AFRICA TECHNOLOGY NETWORK":"የአለም እና የምስራቅ አፍሪካ የቴክኖሎጂ ኔትወርክ", "TECHNOLOGY JOURNAL":"የቴክኖሎጂ መጽሔት", "START A PROJECT":"ፕሮጀክት ጀምር", "CONTACT FORM":"የግንኙነት ቅጽ", "SECURE CLIENT AREA":"ደህንነቱ የተጠበቀ የደንበኛ ክልል", "SECURE PROJECT REQUEST":"ደህንነቱ የተጠበቀ የፕሮጀክት ጥያቄ", "STEP 1":"ደረጃ 1", "STEP 2":"ደረጃ 2", "Intelligence":"ብልህነት", "August 2026":"ኦገስት 2026", "July 2026":"ጁላይ 2026", "• Web applications":"• የድር መተግበሪያዎች", "• Offline desktop software":"• ኦፍላይን ዴስክቶፕ ሶፍትዌሮች", "• Business systems":"• የንግድ ስርዓቶች", "• AI automation":"• AI አውቶሜሽን", "• Project packages":"• የፕሮጀክት ጥቅሎች",
+    "Sales":"ሽያጭ", "Live":"ቀጥታ", "Cash":"ጥሬ ገንዘብ", "Controlled":"በቁጥጥር ስር", "Tracked":"ክትትል የተደረገበት", "AI":"AI", "Ready":"ዝግጁ", "POS + Finance":"POS + ፋይናንስ", "Inventory":"እቃ ክምችት", "AI + Insights":"AI + ግንዛቤ", "LANG":"ቋንቋ", "Online • Ready to help":"መስመር ላይ • ለመርዳት ዝግጁ", "Offline Desktop Engine Ready":"የኦፍላይን ዴስክቶፕ ሞተር ዝግጁ ነው", "Start a Project":"ፕሮጀክት ጀምር", "Blog":"ብሎግ", "Services":"አገልግሎቶች", "Warkaw":"ዋርካው", "Work":"ስራዎቻችን", "Contact":"አግኙን", "About":"ስለ እኛ", "Home":"መነሻ"
 
-    en: {
+  },
+  om: {
+    "Home":"Mana", "About":"Waa'ee Keenya", "Services":"Tajaajiloota", "Blog":"Blogii", "Warkaw":"Warkaw", "Work":"Hojii Keenya", "Why RedRat":"Maaliif RedRat?", "Contact":"Nu Qunnamaa", "Client Dashboard":"Daashboordii Maamilaa", "Request Quote":"Gatii Gaafadhu", "Explore Solutions":"Furmaata Ilaali", "Get in Touch":"Nu Qunnamaa", "See Warkaw":"Warkaw Ilaali", "Our Work":"Hojii Keenya", "Start Project":"Pirojektii Jalqabi",
+    "AI-Driven Digital Transformation & App Development":"Jijjiirama Dijitaalaa fi Misooma Appii AI’n Geggeeffamu", "Empowering Enterprises Through Intelligent Software & Custom Apps":"Dhaabbilee Sooftiweeriif fi Appii Addaa Barbaachisummaa Isaanii Irratti Hundaa’een Cimsuu", "We engineer powerful web applications, offline desktop software and intelligent digital ecosystems designed to improve efficiency, automate workflows and accelerate growth.":"Appilikeeshiniiwwan weebii humna qaban, sooftiweerota deeskitooppii offline fi sirna dijitaalaa sammuu qabu kan bu’a qabeessummaa fooyyeessu, hojiiwwan ofumaan gaggeessu fi guddina saffisa, ni ijaarra.",
+    "Ethiopia • East Africa":"Itoophiyaa • Bahaa Afrikaa", "Ashebir Tereda • Founder & CEO":"Ashebir Tereda • Hundheessaa fi CEO", "Offline-first":"Offline-Dursa", "Reliable operations without constant Internet dependency.":"Hojiiwwan murteessoo interneetii yeroo hunda irratti hirkachuu malee amanamummaan akka hojjetan ni taasifama.", "Built to fit":"Akka Hojii Keessanitti Kan Ijaarame", "Systems designed around your real workflow.":"Sirnoonni hojii keessan isa dhugaa irratti hundaa’anii ni qophaa’u.", "AI + verified data":"AI + Odeeffannoo Mirkanaa’e", "Intelligence with business calculations kept authoritative.":"Qorannoo sammuu qabu kan shallaggii daldalaa sirrii ta’e tiksu.", "Local & multilingual":"Naannoo fi Afaan Hedduu", "English, Amharic and Afaan Oromoo ready.":"Ingiliffaa, Amaariffaa fi Afaan Oromoo qophaa’oo.", "Core Languages":"Afaanota Ijoo", "Offline-First Option":"Filannoo Offline-Dursa", "Built Around You":"Naannoo Keessan Irratti Ijaarame",
+    "Founder & CEO • RedRat Ai Core":"Hundheessaa fi CEO • RedRat Ai Core", "Building":"Ijaaraa Jiru", "REDRAT INTELLIGENCE CORE":"Giddugala Sammuu RedRat", "AI AUTOMATION ENGINE • ONLINE":"Mootora Ofumaan Hojii Gaggeessu AI • ONLINE", "System intelligence initialized...":"Sammuun sirnaa jalqabameera...", "✔ Custom Web Architecture Loaded":"✔ Arkitektuura Weebii Addaa Fe'ameera", "✔ Offline Desktop Engine Ready":"✔ Mootorri Deeskitooppii Offline Qophaa’eera", "✔ Local Database Integration Active":"✔ Walitti Hidhamiinsi Deetaa Baasii Naannoo Hojiirra Ooleera", "✔ AI Automation Layer Connected":"✔ Qoodni Ofumaan Hojii Gaggeessu AI Walitti Hidhameera", "> Awaiting enterprise command...":"> Ajaja dhaabbataa eegaa jira...",
+    "Our Core Development Solutions":"Furmaata Misooma Ijoo Keenya", "Custom web applications and high-performance offline desktop software engineered for scaling enterprises.":"Appilikeeshiniiwwan weebii addaa fi sooftiweerota deeskitooppii offline raawwii olaanaa qaban kan dhaabbilee guddachaa jiranif qophaa’an.", "Custom Web Applications":"Appilikeeshiniiwwan Weebii Addaa", "Scalable, high-performance web solutions built with modern frameworks and robust backend architecture.":"Furmaata weebii guddachuu danda’u fi raawwii olaanaa qaban, framework ammayyaa fi arkitektuura backend cimaa irratti ijaaraman.", "Learn More":"Dabalata Beeki", "Offline Desktop Applications":"Appilikeeshiniiwwan Deeskitooppii Offline", "Secure standalone desktop software designed for fast offline operations, local data storage and reliability.":"Sooftiweerii deeskitooppii of danda’e kan hojii saffisaa offline, kuusaa deetaa naannoo fi amanamummaa irratti qophaa’e.", "Explore Desktop Solutions":"Furmaata Deeskitooppii Ilaali", "Enterprise Digital Suites":"Sirnoota Dijitaalaa Dhaabbataa", "Integrated inventory, payroll, accounting, automation and profit-cost analysis systems.":"Sirnoota kuusaa meeshaalee, mindaa, herrega, automation fi xiinxala baasii-fi-bu’aa walitti makaman.", "Build Your System":"Sirna Keessan Ijaaraa",
+    "Connected Enterprise Ecosystem":"Sirna Dijitaalaa Dhaabbataa Walitti Hidhame", "Building secure digital systems for businesses, organizations and entrepreneurs while combining local reliability with modern cloud technology.":"Daldaloota, dhaabbilee fi abbootii hojiiif sirnoota dijitaalaa nageenya qaban ijaarra; amanamummaa naannoo fi teeknooloojii cloud ammayyaa walitti makna.", "Regions Served":"Naannolee Tajaajilaman", "Node Stability":"Tasgabbiin Sirnaa",
+    "Architecting the Future of Software Engineering":"Fuuldura Injinariingii Sofiweeri Ijaaraa Jiru", "Founded by Ashebir Tereda, RedRat Ai Core specializes in robust web applications, secure offline desktop systems and intelligent enterprise software. We bridge complex business workflows with intuitive interfaces and practical digital solutions.":"RedRat Ai Core kan hundeeffame Ashebir Teredaan yoo ta’u, appilikeeshiniiwwan weebii cimaa, sirnoota deeskitooppii offline nageenya qaban fi sooftiweerota dhaabbataa sammuu qaban irratti xiyyeeffata. Adeemsa hojii daldalaa walxaxaa fi interfeesii salphaa akkasumas furmaata dijitaalaa hojii irra oolu walitti hidha.", "Next-Generation Intelligent Core":"Giddugala Sammuu Dhaloota Itti Aanu", "Intelligent workflow automation, secure local databases and custom enterprise architectures designed around real business needs.":"Automation hojii sammuu qabu, deetabaasii naannoo nageenya qabu fi arkitektuura dhaabbataa addaa kan fedhii daldalaa dhugaa irratti hundaa’e.", "Our Mission":"Ergama Keenya", "To empower organizations with robust, intelligent and tailored software solutions that improve productivity and scale effortlessly.":"Dhaabbilee furmaata sooftiweerii cimaa, sammuu qabu fi isaanii waliin walsimuun humneessuu; oomishtummaa fooyyeessuu fi salphumatti guddina isaanii deeggaruu.", "Our Vision":"Mul’ata Keenya", "To become a leading East African technology partner for custom web applications, offline desktop software and intelligent digital transformation.":"Baha Afrikaatti hirmaata teeknooloojii adda duree appilikeeshinii weebii addaa, sooftiweerii deeskitooppii offline fi jijjiirama dijitaalaa sammuu qabu ta’uu.",
+    "Flagship Product • v1.0.0":"Madda Oomishaa Ijoo • v1.0.0", "RedRat Ai Core Product":"Oomisha RedRat Ai Core", "Café & Restaurant":"Kaafee fi Mana Nyaataa", "Management System":"Sirna Bulchiinsaa", "An all-in-one platform connecting POS, finance, inventory, recipes, purchasing, management intelligence, security, backup and multilingual operations in one system.":"Poostiin POS, faayinaansii, kuusaa meeshaalee, reseepii, bittaa, sammuu bulchiinsaa, nageenya, baakaappii fi hojii afaanota hedduu sirna tokko keessatti walitti hidhu.", "Open Live Demo":"Demo Jireenya Banaa", "Discuss a Similar System":"Sirna Walfakkaataa Mari’adhu", "Sales, payments, cash & reports":"Gurgurtaa, kaffaltii, maallaqa fi gabaasa", "Purchasing, recipes & stock control":"Bittaa, reseepii fi to’annoo kuusaa", "Verified business intelligence":"Sammuu Daldalaa Mirkanaa’e", "WARKAW COMMAND CENTER":"Giddugala Ajaja WARKAW", "What needs attention?":"Maaltu xiyyeeffannoo barbaada?", "Low stock, cash reviews, margin pressure, supplier planning and operational alerts in one place.":"Kuusaa xiqqaa, gamaaggama maallaqaa, dhiibbaa bu’aa, karoora dhiyeessaa fi akeekkachiisa hojii bakka tokko keessatti.",
+    "Professional Development Services":"Tajaajila Misooma Piroofeeshinaalaa", "Tailored digital systems engineered for modern enterprises, retail businesses, organizations and digital startups.":"Sirnoota dijitaalaa addaa dhaabbilee ammayyaa, daldala retail, dhaabbilee fi startup dijitaalaaaf qophaa’an.", "Transparent Service Packages":"Paakeejii Tajaajilaa Ifa Ta’e", "Choose a package according to your operational scale.":"Akka guddina hojii keessaniitti paakeejii filadhaa.", "Starter Web Kit":"Paakeejii Weebii Jalqabaa", "Perfect for businesses establishing their professional digital presence.":"Daldaloota mul’ata dijitaalaa piroofeeshinaalaa isaanii jalqabanif mijataa dha.", "Responsive Web Application":"Appilikeeshinii Weebii Deebii Kennu", "Professional UI":"Interfeesii Piroofeeshinaalaa", "Standard Onboarding":"Qajeelfama Jalqabaa", "6 Months Support":"Deeggarsa Ji’a 6", "Request Consultation":"Marii Gaafadhu", "Most Popular":"Baay’ee Filatamaa", "Offline Desktop Suite":"Paakeejii Deeskitooppii Offline", "Advanced standalone offline desktop application with local database integration.":"Appilikeeshinii deeskitooppii offline sadarkaa olaanaa kan deetabaasii naannoo waliin walitti hidhame.", "Custom Offline Application":"Appilikeeshinii Offline Addaa", "Local Database Integration":"Walitti Hidhamiinsa Deetabaasii Naannoo", "Installer Setup":"Qophii Fe'umsaa", "Full Training":"Leenjii Guutuu", "1 Year Priority Support":"Deeggarsa Dursa Ji’a 1 Bara", "Bespoke AI Platform":"Poorteelii AI Addaa", "Fully customized architecture tailored precisely to enterprise workflows.":"Arkitektuura guutummaatti addaa kan adeemsa hojii dhaabbataa waliin sirriitti walsimu.", "Custom":"Addaa", "100% Custom Architecture":"100% Arkitektuura Addaa", "Dedicated Development":"Misooma Addaa", "AI Automation":"Automation AI", "Enterprise Integration":"Walitti Hidhamiinsa Dhaabbataa", "Long-Term Support":"Deeggarsa Yeroo Dheeraa",
+    "Selected Work":"Hojii Filatame", "Software Built for Real Business Problems":"Sooftiweerii Rakkoolee Daldalaa Dhugaaf Ijaarame", "A small showcase is more convincing than a long list of claims. Here is the kind of systems RedRat builds.":"Agarsiisni hojii gabaabaan tarree dheeraa waadaa caalaa amansiisaa dha. RedRat sirnoota akkasii ijaara.", "Hospitality":"Tajaajila Keessummaa", "Flagship":"Ijoon", "Warkaw Café & Restaurant Management System":"Sirna Bulchiinsaa Kaafee fi Mana Nyaataa Warkaw", "A full operational platform connecting sales, finance, inventory, recipes, purchasing, AI, security and management reporting.":"Poorteelii hojii guutuu kan gurgurtaa, faayinaansii, kuusaa, reseepii, bittaa, AI, nageenya fi gabaasa bulchiinsaa walitti hidhu.", "Orders & payments":"Ajaja fi kaffaltii", "Stock & purchasing":"Kuusaa fi bittaa", "AI + management insights":"AI + hubannoo bulchiinsaa", "Explore Warkaw":"Warkaw Ilaali", "Custom Systems":"Sirnoota Addaa", "Service":"Tajaajila", "Business Management Software":"Sooftiweerii Bulchiinsa Daldalaa", "Custom systems can connect inventory, costing, workflow, reporting, approvals and role-based operations around the way a business already works.":"Sirnoonni addaa kuusaa, baasii, adeemsa hojii, gabaasa, mirkaneessa fi hojiiwwan gahee irratti hundaa’an akkaataa daldalli amma itti hojjetu waliin walitti hidhuu danda’u.", "Workflow-driven design":"Qophii Adeemsa Hojii Irratti Hundaa’e", "Web or offline desktop deployment":"Raabsaa Weebii ykn Deeskitooppii Offline", "Training, support and upgrades":"Leenjii, deeggarsa fi fooyya’iinsa", "Discuss Your Workflow":"Adeemsa Hojii Keessan Mari’adhaa",
+    "Technology That Fits the Business":"Teeknooloojii Daldala Waliin Walsimu", "We focus on practical systems, not software for software's sake.":"Sooftiweerii qofaaf osoo hin taane sirnoota hojii irra oolan irratti xiyyeeffanna.", "Built Around Your Workflow":"Adeemsa Hojii Keessan Irratti Ijaarame", "We adapt the software to the real process instead of forcing your team into a rigid template.":"Garee keessan bifa jabaatti galchuu mannaa sooftiweerii adeemsa dhugaa keessan waliin walsimsiifna.", "Offline When It Matters":"Yeroo Barbaachisaa Ta’etti Offline", "Offline-capable systems reduce dependency on connectivity for critical daily operations.":"Sirnoonni offline ta’an hojii murteessoo guyyaa guyyaa irratti hirkannaa qunnamtii interneetii ni hir’isu.", "AI With Grounded Data":"AI Kan Odeeffannoo Dhugaa Irratti Hundaa’e", "AI is paired with verified business calculations so the numbers remain authoritative.":"AI shallaggii daldalaa mirkanaa’e waliin walitti makama; kanaaf lakkoofsotni sirrii ta’anii turu.", "Multilingual by Design":"Jalqabuma Irraa Afaanota Hedduu", "English, Amharic and Afaan Oromoo support make adoption easier for local teams.":"Deeggarsi Ingiliffaa, Amaariffaa fi Afaan Oromoo gareewwan naannoo biratti itti fayyadama salphisa.", "Security & Recovery":"Nageenya fi Deebisanii Kaasuu", "Role controls, audit trails, backups, migrations and support diagnostics are part of the product mindset.":"To’annoo gahee, galmee audit, baakaappii, migration fi qorannoon deeggarsaa yaada oomishaa keessaa jiru.", "Training & Support":"Leenjii fi Deeggarsa", "We don't just hand over software—we provide onboarding, user guidance and ongoing support.":"Sooftiweerii qofa hin kenninu—qophii jalqabaa, qajeelfama fayyadamaa fi deeggarsa itti fufiinsa qabu ni kennina.",
+    "Tech Insights & Development Tips":"Hubannoo Teeknooloojii fi Gorsa Misoomaa", "Discover how modern web apps, AI and offline desktop solutions are transforming enterprise software.":"Appilikeeshiniiwwan weebii ammayyaa, AI fi furmaata deeskitooppii offline sooftiweerii dhaabbataa akkamitti jijjiiraa jiran hubadhaa.", "Why Offline Desktop Apps Deliver Superior Reliability":"Maaliif Appilikeeshiniiwwan Deeskitooppii Offline Amanamummaa Ol’aanaa Kennu", "Explore how local architectures can eliminate internet dependency for critical business operations.":"Arkitektuuroonni naannoo hojii daldalaa murteessoo keessatti hirkannaa interneetii akkamitti dhabamsiisuu akka danda’an ilaalaa.", "Read Article":"Barreeffama Dubbisi", "The Role of AI in Streamlining Enterprise Software":"Gahee AI Hojii Sofiweeri Dhaabbataa Salphisuu Keessatti", "Discover how intelligent automation can improve database workflows, reporting and business operations.":"Automation sammuu qabu adeemsa deetabaasii, gabaasa fi hojii daldalaa akkamitti fooyyeessuu akka danda’u hubadhaa.",
+    "Connect With Our Engineering Team":"Garee Injinariingii Keenya Waliin Qunnamaa", "Ready to build your web app or offline desktop solution? Let's discuss your requirements.":"Appilikeeshinii weebii ykn furmaata deeskitooppii offline keessan ijaaruuf qophaa’ooftanii? Fedhii keessan haa mari’annu.", "Business Email":"Imeelii Daldalaa", "Professional business contact":"Qunnamtii daldalaa piroofeeshinaalaa", "Phone Contact":"Qunnamtii Bilbilaa", "Direct project contact":"Qunnamtii pirojektii kallattii", "Telegram Channel":"Chaanaalii Telegram", "Project Consultation":"Marii Pirojektii", "Confidential • Professional • Direct":"Iccitii • Piroofeeshinaalaa • Kallattii", "Message Received!":"Ergaan keessan nu gaheera!", "Thank you for reaching out. We will respond promptly.":"Nu qunnamuu keessaniif galatoomaa. Saffisaan isiniif deebina.", "Your Full Name":"Maqaa Guutuu Keessan", "Your Email Address":"Teessoo Imeelii Keessan", "Message":"Ergaa", "Send Message":"Ergaa Ergi",
+    "Client Project Dashboard":"Daashboordii Pirojektii Maamilaa", "Track project milestones and system status.":"Sadarkaalee pirojektii fi haala sirnaa hordofaa.", "All Systems Operational":"Sirnoonni Hundi Hojii Irra Jiru", "Active Deployments":"Raabsaalee Jiran", "Systems deployed":"Sirnoota Raabaman", "Support Tickets":"Gaaffilee Deeggarsaa", "No open tickets":"Gaaffiin Banaa Hin Jiru", "System Health":"Fayyaa Sirnaa", "Operational":"Hojii Irra Jira", "Recent Milestone Activity":"Sochii Sadarkaa Dhihoo", "Offline Desktop Application Installer Compiled":"Fe’umsaan Appilikeeshinii Deeskitooppii Offline Qophaa’eera", "Completed":"Xumurameera", "Web Application Frontend & Database Sync":"Wal-simsiisa Fuuldura Weebii fi Deetabaasii",
+    "Secure Package Checkout":"Kaffaltii Paakeejii Nageenya Qabu", "Selected Package:":"Paakeejii Filatame:", "Company / Business Name":"Maqaa Kampanii / Daldalaa", "Contact Email":"Imeelii Qunnamtii", "Continue":"Itti Fufi", "Project Request Ready":"Gaaffiin Pirojektii Qophaa’eera", "Your request details have been captured. Final payment integration can be connected to your preferred gateway.":"Bal’inni gaaffii keessanii galmaa’eera. Walitti hidhamiinsi kaffaltii xumuraa gateway filattan waliin walitti hidhamiinsa qabaachuu danda’a.", "Confirm Project Request":"Gaaffii Pirojektii Mirkaneessi",
+    "RedRat AI Assistant":"Gargaaraa AI RedRat", "Online • Ready to help":"Online • Gargaaruuf Qophaa’eera", "Hello! 👋 I'm the RedRat AI Assistant. Ask me about:":"Akkam! 👋 Ani Gargaaraa AI RedRat ti. Waa’ee kana na gaafadhaa:", "Web applications":"Appilikeeshinii Weebii", "Offline desktop software":"Sooftiweerii Deeskitooppii Offline", "Business systems":"Sirnoota Daldalaa", "AI automation":"Automation AI", "Project packages":"Paakeejiiwwan Pirojektii", "Intelligent Software • Custom Applications • Digital Transformation":"Sooftiweerii Sammuu Qabu • Appilikeeshiniiwwan Addaa • Jijjiirama Dijitaalaa", "© 2026 RedRat Ai Core. All rights reserved.":"© 2026 RedRat Ai Core. Mirgi hundi eegameera.", "Website":"Weebsaayitii", "ABOUT REDRAT":"Waa’ee REDRAT", "REDRAT SOLUTIONS":"Furmaata REDRAT", "GLOBAL & EAST AFRICA TECHNOLOGY NETWORK":"Neetworkii Teeknooloojii Addunyaa fi Baha Afrikaa", "TECHNOLOGY JOURNAL":"Barruulee Teeknooloojii", "START A PROJECT":"Pirojektii Jalqabi", "CONTACT FORM":"Foormii Qunnamtii", "SECURE CLIENT AREA":"Naannoo Maamilaa Nageenya Qabu", "SECURE PROJECT REQUEST":"Gaaffii Pirojektii Nageenya Qabu", "STEP 1":"Tarkaanfii 1", "STEP 2":"Tarkaanfii 2", "Intelligence":"Sammuu", "August 2026":"Hagayya 2026", "July 2026":"Adoolessa 2026", "• Web applications":"• Appilikeeshinii Weebii", "• Offline desktop software":"• Sofiweeri Deeskitooppii Offline", "• Business systems":"• Sirnoota Daldalaa", "• AI automation":"• Automation AI", "• Project packages":"• Paakeejii Pirojektii",
+    "Sales":"Gurgurtaa", "Live":"Jireenya", "Cash":"Maallaqa Qabsoo", "Controlled":"To’atame", "Tracked":"Hordofame", "AI":"AI", "Ready":"Qophaa’e", "POS + Finance":"POS + Faayinaansii", "Inventory":"Kuusaa", "AI + Insights":"AI + Hubannoo", "LANG":"Afaan", "Start a Project":"Pirojektii Jalqabi", "Blog":"Blogii", "Services":"Tajaajiloota", "Warkaw":"Warkaw", "Work":"Hojii Keenya", "Contact":"Nu Qunnamaa", "About":"Waa’ee Keenya", "Home":"Mana"
 
-        brand: "RedRat Ai Core",
-        ceo: "Founder & CEO: Ashebir Tereda"
-
-    },
-
-    am: {
-
-        brand: "ሬድራት አይቲ ሶሉሽን",
-        ceo: "መስራች እና ዋና ስራ አስፈፃሚ፡ አሸብር ተረዳ"
-
-    },
-
-    om: {
-
-        brand: "RedRat Ai Core",
-        ceo: "Hundheessaa fi CEO: Ashebir Tereda"
-
-    }
-
+  }
 };
 
+function normalizeText(v) {
+  return String(v || '').replace(/\s+/g, ' ').trim();
+}
+
+function translateDom(language) {
+  const map = languagePack[language] || {};
+  const all = document.querySelectorAll('body *');
+  all.forEach(el => {
+    el.childNodes.forEach(node => {
+      if (node.nodeType !== Node.TEXT_NODE) return;
+      const raw = normalizeText(node.nodeValue);
+      if (!raw) return;
+      const translated = map[raw];
+      if (translated) {
+        const lead = node.nodeValue.match(/^\s*/)?.[0] || '';
+        const trail = node.nodeValue.match(/\s*$/)?.[0] || '';
+        node.nodeValue = lead + translated + trail;
+      }
+    });
+  });
+
+  // Translate important attributes and metadata.
+  document.querySelectorAll('[placeholder],[title],[aria-label]').forEach(el => {
+    ['placeholder','title','aria-label'].forEach(attr => {
+      const v = el.getAttribute(attr);
+      const translated = map[normalizeText(v)];
+      if (translated) el.setAttribute(attr, translated);
+    });
+  });
+
+  const titleMap = {
+    en: 'RedRat Ai Core | Intelligent Software & Custom Apps',
+    am: 'RedRat Ai Core | ብልህ ሶፍትዌር እና ብጁ መተግበሪያዎች',
+    om: 'RedRat Ai Core | Sofiweeri Sammuu Qabu fi Appilikeeshiniiwwan Addaa'
+  };
+  document.title = titleMap[language] || titleMap.en;
+  const descriptionMap = {
+    en: 'RedRat Ai Core builds custom web applications, offline desktop systems, business management software and AI-powered solutions for real businesses.',
+    am: 'RedRat Ai Core ለእውነተኛ ንግዶች ብጁ የድር መተግበሪያዎችን፣ ኦፍላይን ዴስክቶፕ ስርዓቶችን፣ የንግድ አስተዳደር ሶፍትዌሮችን እና በAI የተደገፉ መፍትሄዎችን ይገነባል።',
+    om: 'RedRat Ai Core dhaabbilee dhugaatiif appilikeeshinii weebii addaa, sirnoota deeskitooppii offline, sooftiweerii bulchiinsa daldalaa fi furmaata AI irratti hundaa’e ni ijaara.'
+  };
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) metaDescription.setAttribute('content', descriptionMap[language] || descriptionMap.en);
+  document.documentElement.lang = language === 'am' ? 'am' : language === 'om' ? 'om' : 'en';
+  document.body.classList.toggle('lang-am', language === 'am');
+  document.body.classList.toggle('lang-om', language === 'om');
+}
+
+function restoreEnglish() {
+  // Rebuild from a pristine copy by reloading for language = EN.
+  if (location.hash === '#lang-reset') location.hash = '';
+}
 
 function setLanguage(language) {
-
-    const data =
-        translations[language];
-
-    if (!data) return;
-
-
-    document.getElementById(
-        "brandNameText"
-    ).textContent = data.brand;
-
-
-    document.getElementById(
-        "ceoTitleText"
-    ).textContent = data.ceo;
-
-
-    ["en","am","om"].forEach(lang => {
-
-        const button =
-            document.getElementById(
-                "lang-" + lang
-            );
-
-        if (!button) return;
-
-        if (lang === language) {
-
-            button.classList.add(
-                "bg-red-600",
-                "text-white",
-                "shadow"
-            );
-
-            button.classList.remove(
-                "text-slate-400"
-            );
-
-        } else {
-
-            button.classList.remove(
-                "bg-red-600",
-                "text-white",
-                "shadow"
-            );
-
-            button.classList.add(
-                "text-slate-400"
-            );
-
-        }
-
-    });
-
-
-    localStorage.setItem(
-        "redrat-language",
-        language
-    );
-
+  if (!languagePack[language]) language = "en";
+  localStorage.setItem("redrat-language", language);
+  location.reload();
 }
 
 
@@ -4838,18 +4869,19 @@ document.addEventListener(
         const savedPerf = localStorage.getItem("redrat-performance-mode");
         if (savedPerf === "1") document.body.classList.add("performance-mode");
 
-        const savedLanguage =
-            localStorage.getItem(
-                "redrat-language"
-            );
-
-        if (savedLanguage) {
-
-            setLanguage(
-                savedLanguage
-            );
-
+        const savedLanguage = localStorage.getItem("redrat-language") || "en";
+        if (savedLanguage === "am" || savedLanguage === "om") {
+            translateDom(savedLanguage);
         }
+
+        ["en","am","om"].forEach(lang => {
+            const button = document.getElementById("lang-" + lang);
+            if (!button) return;
+            button.classList.toggle("bg-red-600", lang === savedLanguage);
+            button.classList.toggle("text-white", lang === savedLanguage);
+            button.classList.toggle("shadow", lang === savedLanguage);
+            button.classList.toggle("text-slate-400", lang !== savedLanguage);
+        });
 
         switchTab("home");
 
